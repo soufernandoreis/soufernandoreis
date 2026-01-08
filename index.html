@@ -12,16 +12,26 @@
       --bg-2:#0B1630;
       --text:#EAF2FF;
       --muted:rgba(234,242,255,.78);
-      --ice:rgba(235, 245, 255, 0.16); /* “gelo” quase translúcido */
+
+      /* Card “gelo” */
+      --ice:rgba(235, 245, 255, 0.16);
       --ice-2:rgba(235, 245, 255, 0.10);
       --stroke:rgba(235, 245, 255, 0.22);
       --shadow: 0 18px 50px rgba(0,0,0,.35);
+
+      /* Destaques */
+      --h1-accent:#A7E8FF;          /* cor diferente do H1 */
+      --btn-bg: rgba(120, 255, 215, 0.22);  /* botão destacado */
+      --btn-bg-hover: rgba(120, 255, 215, 0.30);
+      --btn-stroke: rgba(120, 255, 215, 0.55);
+
       --radius: 18px;
       --maxw: 1100px;
     }
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
@@ -39,37 +49,13 @@
       padding: 48px 20px 72px;
     }
 
+    /* header vazio (mantém espaçamento/topo, sem “Seu Projeto” e sem mini card) */
     header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding: 10px 0 32px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      user-select:none;
-    }
-    .logoMark{
-      width:42px;
-      height:42px;
-      border-radius:14px;
-      background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
-      border:1px solid var(--stroke);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-    }
-    .brand span{
-      font-weight:700;
-      letter-spacing:.2px;
-      color: rgba(234,242,255,.92);
+      padding: 10px 0 18px;
     }
 
     .hero{
-      padding: 28px 0 26px;
+      padding: 18px 0 26px;
     }
 
     h1{
@@ -77,7 +63,10 @@
       font-size: clamp(32px, 5vw, 54px);
       line-height: 1.05;
       letter-spacing: -0.8px;
+      color: var(--h1-accent); /* destaque do H1 */
+      text-shadow: 0 14px 40px rgba(0,0,0,.35);
     }
+
     h2{
       margin: 0;
       font-size: clamp(16px, 2.2vw, 22px);
@@ -85,6 +74,11 @@
       color: var(--muted);
       line-height: 1.45;
       max-width: 820px;
+    }
+
+    /* Mobile: centralizar H1 */
+    @media (max-width: 640px){
+      h1{ text-align:center; }
     }
 
     .cards{
@@ -113,8 +107,12 @@
       -webkit-backdrop-filter: blur(14px);
       overflow:hidden;
       min-height: 170px;
+
+      /* centralizar textos e botão */
       display:flex;
       flex-direction:column;
+      align-items:center;
+      text-align:center;
       gap: 10px;
     }
 
@@ -140,81 +138,55 @@
       line-height: 1.5;
       font-size: 14.5px;
       flex: 1;
+      max-width: 36ch;
     }
 
-    .card .actions{
+    .actions{
       display:flex;
-      justify-content:flex-start;
+      justify-content:center; /* centraliza botão */
+      width:100%;
       margin-top: 4px;
     }
 
     .btn{
       appearance:none;
-      border: 1px solid rgba(255,255,255,.22);
-      background: rgba(255,255,255,.10);
-      color: rgba(234,242,255,.92);
-      padding: 10px 12px;
+      border: 1px solid var(--btn-stroke);
+      background: var(--btn-bg);
+      color: rgba(234,242,255,.96);
+      padding: 11px 14px;
       border-radius: 12px;
       cursor:pointer;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: .2px;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
       text-decoration:none;
       display:inline-flex;
       align-items:center;
+      justify-content:center;
       gap:8px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+      box-shadow: 0 14px 30px rgba(0,0,0,.22);
+      min-width: 160px;
     }
     .btn:hover{
       transform: translateY(-1px);
-      background: rgba(255,255,255,.14);
-      border-color: rgba(255,255,255,.30);
+      background: var(--btn-bg-hover);
+      border-color: rgba(120, 255, 215, 0.70);
+      box-shadow: 0 18px 36px rgba(0,0,0,.26);
     }
-    .btn:active{
-      transform: translateY(0px);
-    }
+    .btn:active{ transform: translateY(0px); }
 
-    footer{
-      margin-top: 44px;
-      color: rgba(234,242,255,.62);
-      font-size: 13px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      padding-top: 18px;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      color: rgba(234,242,255,.78);
-      font-size: 12.5px;
-      margin-top: 18px;
-      width: fit-content;
-    }
+    /* Rodapé removido (sem texto) */
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <header>
-      <div class="brand" aria-label="Marca">
-        <div class="logoMark" aria-hidden="true"></div>
-        <span>Seu Projeto</span>
-      </div>
-    </header>
+    <header aria-hidden="true"></header>
 
     <main>
       <section class="hero">
         <h1>A hora é agora. Você finalmente achou o lugar certo para aprender a viver do digital</h1>
         <h2>Vamos trabalhar juntos para você viver do digital de verdade</h2>
-
-        <div class="pill" aria-label="Contato">
-          📲 Clique em “clique aqui” para falar no WhatsApp
-        </div>
 
         <section class="cards" aria-label="Serviços e mentorias">
           <article class="card">
@@ -269,15 +241,6 @@
         </section>
       </section>
     </main>
-
-    <footer>
-      <div>© <span id="year"></span> • Todos os direitos reservados.</div>
-    </footer>
   </div>
-
-  <script>
-    // Ano automático no rodapé
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
