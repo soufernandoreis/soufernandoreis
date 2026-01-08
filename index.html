@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Viver do Digital</title>
+  <meta name="description" content="Aprenda e execute no digital com comunicação, tráfego pago, serviços, vídeo e IA para atendimento." />
+
+  <style>
+    :root{
+      --bg-1:#070A12;
+      --bg-2:#0B1630;
+      --text:#EAF2FF;
+      --muted:rgba(234,242,255,.78);
+      --ice:rgba(235, 245, 255, 0.16); /* “gelo” quase translúcido */
+      --ice-2:rgba(235, 245, 255, 0.10);
+      --stroke:rgba(235, 245, 255, 0.22);
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius: 18px;
+      --maxw: 1100px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(120, 170, 255, .18), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(120, 255, 215, .10), transparent 55%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 10px 0 32px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+    }
+    .logoMark{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+      border:1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .brand span{
+      font-weight:700;
+      letter-spacing:.2px;
+      color: rgba(234,242,255,.92);
+    }
+
+    .hero{
+      padding: 28px 0 26px;
+    }
+
+    h1{
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.8px;
+    }
+    h2{
+      margin: 0;
+      font-size: clamp(16px, 2.2vw, 22px);
+      font-weight: 500;
+      color: var(--muted);
+      line-height: 1.45;
+      max-width: 820px;
+    }
+
+    .cards{
+      margin-top: 28px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 980px){
+      .cards{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px){
+      .wrap{ padding-top: 34px; }
+      .cards{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      position:relative;
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      background: linear-gradient(180deg, var(--ice), var(--ice-2));
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow:hidden;
+      min-height: 170px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-60px -60px auto auto;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 60%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+
+    .card h3{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+    }
+    .card p{
+      margin:0;
+      color: rgba(234,242,255,.78);
+      line-height: 1.5;
+      font-size: 14.5px;
+      flex: 1;
+    }
+
+    .card .actions{
+      display:flex;
+      justify-content:flex-start;
+      margin-top: 4px;
+    }
+
+    .btn{
+      appearance:none;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.10);
+      color: rgba(234,242,255,.92);
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-weight: 600;
+      letter-spacing: .2px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.14);
+      border-color: rgba(255,255,255,.30);
+    }
+    .btn:active{
+      transform: translateY(0px);
+    }
+
+    footer{
+      margin-top: 44px;
+      color: rgba(234,242,255,.62);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      padding-top: 18px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: rgba(234,242,255,.78);
+      font-size: 12.5px;
+      margin-top: 18px;
+      width: fit-content;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand" aria-label="Marca">
+        <div class="logoMark" aria-hidden="true"></div>
+        <span>Seu Projeto</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>A hora é agora. Você finalmente achou o lugar certo para aprender a viver do digital</h1>
+        <h2>Vamos trabalhar juntos para você viver do digital de verdade</h2>
+
+        <div class="pill" aria-label="Contato">
+          📲 Clique em “clique aqui” para falar no WhatsApp
+        </div>
+
+        <section class="cards" aria-label="Serviços e mentorias">
+          <article class="card">
+            <h3>Comunicação no Digital</h3>
+            <p>Aprenda a se comunicar no digital.</p>
+            <div class="actions">
+              <a class="btn" href="https://wa.me/5562982331156" target="_blank" rel="noopener noreferrer">
+                Clique aqui ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Mentoria: formação de Gestor de tráfego pago</h3>
+            <p>Mentoria exclusiva 1 pra 1 com aulas ao vivo.</p>
+            <div class="actions">
+              <a class="btn" href="https://wa.me/5562982331156" target="_blank" rel="noopener noreferrer">
+                Clique aqui ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Prestação de serviço</h3>
+            <p>Utilize da minha experiência no mercado para alavancar seu negócio.</p>
+            <div class="actions">
+              <a class="btn" href="https://wa.me/5562982331156" target="_blank" rel="noopener noreferrer">
+                Clique aqui ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Videomaker</h3>
+            <p>Gravação e edição de vídeo para negócios locais.</p>
+            <div class="actions">
+              <a class="btn" href="https://wa.me/5562982331156" target="_blank" rel="noopener noreferrer">
+                Clique aqui ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>IA para atendimento ao cliente</h3>
+            <p>Agilize o atendimento dos leads que chegam pelo WhatsApp.</p>
+            <div class="actions">
+              <a class="btn" href="https://wa.me/5562982331156" target="_blank" rel="noopener noreferrer">
+                Clique aqui ↗
+              </a>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> • Todos os direitos reservados.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Ano automático no rodapé
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
