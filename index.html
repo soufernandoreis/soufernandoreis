@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Vídeo aula — Conteúdos que Funcionam no Instagram</title>
   <meta name="description" content="Vídeo aula para destravar sua produção de conteúdo com formatos prontos que estão funcionando no Instagram. É só adaptar, gravar e postar." />
 
@@ -10,7 +10,6 @@
     :root{
       --bg:#07070B;
       --panel:#11111A;
-      --panel2:#151523;
       --text:#F5F6FF;
       --muted:#B7B9CC;
       --line:rgba(255,255,255,.12);
@@ -23,10 +22,18 @@
       --shadow: 0 18px 60px rgba(0,0,0,.55);
       --radius: 18px;
       --max: 1120px;
+
+      /* "Sangria" (safe-area) p/ iPhone notch e barras do Instagram in-app */
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
+
+    /* CORREÇÃO: garantir que o fundo cole nas bordas no mobile/in-app (Instagram),
+       respeitando safe-area e removendo qualquer "folga" visual */
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
@@ -34,22 +41,38 @@
       line-height:1.55;
       overflow-x:hidden;
 
+      /* padding para safe-area (evita “solto” no topo/laterais em iPhone/Instagram) */
+      padding-top: var(--safe-top);
+      padding-left: var(--safe-left);
+      padding-right: var(--safe-right);
+
       background:
         radial-gradient(900px 500px at 12% 12%, rgba(255,61,129,.22), transparent 60%),
         radial-gradient(900px 520px at 88% 18%, rgba(255,184,0,.18), transparent 60%),
         radial-gradient(900px 700px at 50% 110%, rgba(53,240,161,.10), transparent 60%),
         var(--bg);
+      background-attachment: fixed; /* ajuda em webviews */
     }
 
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    /* Garantir que nenhum container limite o fundo */
+    main, header, footer { width: 100%; }
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 20px;
+    }
     a{color:inherit}
 
     /* Topo */
     .topbar{
-      position:sticky; top:0; z-index:50;
+      position:sticky;
+      top: var(--safe-top); /* cola no topo respeitando safe-area */
+      z-index:50;
       backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(7,7,11,.80), rgba(7,7,11,.45));
+      background: linear-gradient(to bottom, rgba(7,7,11,.88), rgba(7,7,11,.55));
       border-bottom:1px solid var(--line);
+      width:100%;
     }
     .topbar .inner{
       display:flex;
@@ -59,7 +82,7 @@
       gap:14px;
     }
 
-    /* Removido "Aula ao Vivo" do topo + removida a imagem/ícone (logo). */
+    /* Sem imagem no topo */
     .brand{
       display:flex;
       flex-direction:column;
@@ -72,7 +95,7 @@
     .btn{
       display:inline-flex;
       align-items:center;
-      justify-content:center; /* centraliza conteúdo do botão */
+      justify-content:center; /* centraliza */
       gap:10px;
       padding:12px 16px;
       border-radius:14px;
@@ -82,14 +105,14 @@
       background: rgba(255,255,255,.06);
       user-select:none;
       white-space:nowrap;
-      text-align:center; /* garante centralização do texto */
+      text-align:center;
       line-height:1.2;
     }
     .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.26)}
     .btn:active{transform: translateY(0)}
 
     .btn.primary{
-      background: linear-gradient(135deg, rgba(255,61,129,.95), rgba(255,184,0,.85));
+      background: linear-gradient(135deg, rgba(255,61,129,.96), rgba(255,184,0,.88));
       border-color: rgba(255,255,255,.18);
       box-shadow: 0 16px 42px rgba(255,61,129,.18);
       font-weight:800;
@@ -145,7 +168,7 @@
       max-width: 62ch;
     }
 
-    /* Lista "botões" (cards) com texto centralizado verticalmente */
+    /* Lista (cards) com texto centralizado */
     .bullets{
       margin:18px 0 22px;
       padding:0;
@@ -156,7 +179,7 @@
     .bullets li{
       display:flex;
       gap:10px;
-      align-items:center; /* <- centraliza verticalmente */
+      align-items:center; /* centraliza verticalmente */
       padding:12px 12px;
       border-radius: 14px;
       background: rgba(255,255,255,.045);
@@ -170,7 +193,6 @@
       flex:0 0 auto;
     }
     .check svg{width:14px;height:14px; fill: var(--ok)}
-    .bullets span{color: var(--text)}
     .bullets b{font-weight:800}
     .bullets em{color:var(--muted); font-style:normal}
 
@@ -197,7 +219,7 @@
     .side{
       padding:18px;
       position:sticky;
-      top:84px;
+      top: calc(var(--safe-top) + 84px);
     }
     .side h3{
       margin:0 0 10px;
@@ -257,7 +279,7 @@
     .box b{display:block; margin-bottom:6px; font-weight:850}
     .box p{margin:0; color:var(--muted)}
 
-    /* FAQ continua, mas sem o botão "Tirar dúvidas" abaixo do CTA */
+    /* FAQ */
     .faq{display:grid; gap:10px}
     details{
       border:1px solid rgba(255,255,255,.12);
@@ -286,7 +308,7 @@
     footer{
       border-top:1px solid var(--line);
       color: var(--muted);
-      padding: 18px 0 28px;
+      padding: 18px 0 calc(28px + env(safe-area-inset-bottom, 0px));
       font-size:.92rem;
     }
 
@@ -298,7 +320,16 @@
     }
 
     @media (max-width: 520px){
-      /* Centralizar o topo no mobile */
+      /* CORREÇÃO principal p/ aparência "solta" no mobile:
+         - remover excesso de padding lateral visual, e colar containers no viewport
+         - garantir 100vw e evitar qualquer overflow */
+      .wrap{
+        width: 100vw;
+        max-width: 100vw;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
       .topbar .inner{
         flex-direction:column;
         align-items:center;
@@ -306,8 +337,11 @@
         text-align:center;
       }
       .brand{min-width:auto; align-items:center}
-      .btn{width:100%}
-      .hero-actions{gap:10px}
+
+      .btn{
+        width:100%;
+      }
+      .hero{padding-top: 34px}
     }
   </style>
 </head>
@@ -384,7 +418,6 @@
               <a class="btn" href="#dor">Ver se isso é pra mim</a>
             </div>
 
-            <!-- Removido o "Tirar dúvidas" que estava logo abaixo do botão -->
             <div class="note">
               *Contato direto no WhatsApp: <b>(62) 98233-1156</b>
             </div>
@@ -560,8 +593,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Removida a seção inteira do print 4 (“Pronto(a) pra destravar...”) -->
   </main>
 
   <footer>
