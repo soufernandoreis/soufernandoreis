@@ -13,7 +13,6 @@
       --muted:#B7B9CC;
       --line:rgba(255,255,255,.12);
 
-      /* Cores com mais destaque */
       --accent:#FF3D81;   /* magenta */
       --accent2:#FFB800;  /* âmbar */
       --ok:#35F0A1;
@@ -22,7 +21,6 @@
       --radius: 18px;
       --max: 1120px;
 
-      /* altura do header (sem safe-area) */
       --header-h: 76px;
     }
 
@@ -36,10 +34,6 @@
       -webkit-text-size-adjust: 100%;
     }
 
-    /* CORREÇÃO DO “MOVENDO / SOLTO” NO MOBILE (Instagram in-app):
-       - remover 100vw (causa micro-scroll horizontal)
-       - remover background-attachment: fixed (bug comum no iOS webview)
-       - header FIXO com safe-area + main com padding-top fixo (evita “pular”) */
     body{
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
@@ -71,7 +65,7 @@
 
       padding-top: env(safe-area-inset-top, 0px);
       backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(7,7,11,.90), rgba(7,7,11,.60));
+      background: linear-gradient(to bottom, rgba(7,7,11,.92), rgba(7,7,11,.62));
       border-bottom:1px solid var(--line);
     }
     .topbar .inner{
@@ -124,7 +118,6 @@
       flex:0 0 auto;
     }
 
-    /* Empurra o conteúdo pra baixo do header fixo */
     main{
       padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
       width:100%;
@@ -139,27 +132,8 @@
       align-items:start;
     }
 
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      color: var(--muted);
-      font-size:.92rem;
-      margin-bottom:14px;
-    }
-    .badge .pill{
-      padding:4px 10px;
-      border-radius:999px;
-      background: rgba(255,61,129,.18);
-      color: #FFD0E1;
-      border:1px solid rgba(255,61,129,.28);
-      font-weight:800;
-      font-size:.82rem;
-    }
+    /* (REMOVIDO) badge do topo do hero (parte que você pediu pra retirar) */
+    /* .badge ... */
 
     h1{
       font-size: clamp(2rem, 3.2vw + 1rem, 3.4rem);
@@ -167,6 +141,21 @@
       margin:0 0 14px;
       letter-spacing:-.6px;
     }
+
+    /* Destaque da frase (centraliza no mobile + sombra) */
+    .highlight-phrase{
+      display:inline-block;
+      margin: 10px 0 18px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.28);
+      color: rgba(245,246,255,.96);
+      box-shadow: 0 12px 34px rgba(0,0,0,.55), 0 0 0 1px rgba(255,61,129,.10) inset;
+      text-shadow: 0 2px 10px rgba(0,0,0,.55);
+      font-weight: 700;
+    }
+
     .lead{
       color: var(--muted);
       font-size: 1.08rem;
@@ -208,11 +197,9 @@
       align-items:center;
       margin-top: 10px;
     }
-    .note{
-      color: var(--muted);
-      font-size:.95rem;
-      margin-top:10px;
-    }
+
+    /* (REMOVIDO) linha "*Contato direto..." (terceira imagem) */
+    /* .note ... */
 
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
@@ -323,22 +310,27 @@
     }
 
     @media (max-width: 520px){
+      :root{ --header-h: 96px; }
       .wrap{padding:0 16px}
 
       .topbar .inner{
-        height: auto;
+        height:auto;
         padding: 14px 0 14px;
         flex-direction:column;
         align-items:center;
         justify-content:center;
         text-align:center;
       }
-      /* atualiza altura efetiva do header no mobile */
-      :root{ --header-h: 96px; }
-
       .brand{min-width:auto; align-items:center}
       .btn{width:100%}
-      .hero{padding-top: 26px}
+
+      /* centraliza a frase destacada no mobile */
+      .highlight-phrase{
+        display:block;
+        text-align:center;
+        margin-left:auto;
+        margin-right:auto;
+      }
     }
   </style>
 </head>
@@ -367,21 +359,19 @@
       <div class="wrap">
         <div class="grid">
           <div>
-            <div class="badge">
-              <span class="pill">Ao vivo</span>
-              <span>Saia pronto para produzir conteúdos — é só gravar e postar</span>
-            </div>
+            <!-- REMOVIDO: badge "Ao vivo / Saia pronto..." -->
 
             <h1>Aqui não há terrorismo digital</h1>
 
+            <!-- FRASE DESTACADA (sombra + central no mobile) -->
+            <div class="highlight-phrase">Saia pronto para produzir conteúdos. É só gravar e postar.</div>
+
             <p class="lead">
-              Minha intenção não é te prender a um único formato “que está dando certo”.
-              É te mostrar que o formato que dá certo é aquele que você tem facilidade em fazer.
+              Minha intenção não é te prender a um único formato “que está dando certo”. É te mostrar que o formato que dá certo é aquele que você tem facilidade em fazer.
             </p>
 
             <p class="lead">
-              Vamos fazer isso por meio de uma <b>vídeo aula ao vivo</b>. Nessa aula vou te passar
-              os formatos que estão dando certo no Instagram e como fazer — tenho certeza que um deles é o seu.
+              Vamos fazer isso por meio de uma <b>vídeo aula</b>. Nessa aula vou te passar os formatos que estão dando certo no Instagram e como fazer. Tenho certeza que um deles é o seu.
             </p>
 
             <ul class="bullets" aria-label="Benefícios">
@@ -389,25 +379,25 @@
                 <span class="check" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg>
                 </span>
-                <span><b>Saia da aula pronto para produzir</b> <em>— é só gravar e postar.</em></span>
+                <span><b>Saia da aula pronto para produzir.</b> <em>É só gravar e postar.</em></span>
               </li>
               <li>
                 <span class="check" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg>
                 </span>
-                <span><b>Nunca mais travar na hora de produzir</b> <em>— sem criar do zero.</em></span>
+                <span><b>Nunca mais travar na hora de produzir.</b> <em>Sem criar do zero.</em></span>
               </li>
               <li>
                 <span class="check" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg>
                 </span>
-                <span><b>Conteúdo leve e autêntico</b> <em>— adaptar, gravar e postar todos os dias.</em></span>
+                <span><b>Conteúdo leve e autêntico.</b> <em>Adaptar, gravar e postar todos os dias.</em></span>
               </li>
             </ul>
 
             <div class="hero-actions">
               <a class="btn primary"
-                 href="https://wa.me/5562982331156?text=Quero%20participar%20da%20aula%20ao%20vivo.%20Me%20manda%20os%20detalhes!"
+                 href="https://wa.me/5562982331156?text=Quero%20participar%20da%20video%20aula.%20Me%20manda%20os%20detalhes."
                  target="_blank" rel="noopener">
                 Entrar em contato no WhatsApp
               </a>
@@ -415,16 +405,13 @@
               <a class="btn" href="#dor">Ver se isso é pra mim</a>
             </div>
 
-            <div class="note">
-              *Contato direto no WhatsApp: <b>(62) 98233-1156</b>
-            </div>
+            <!-- REMOVIDO: "*Contato direto..." -->
           </div>
 
           <aside class="card side" aria-label="Resumo da aula">
             <h3>O que você vai levar da aula</h3>
             <p>
-              Um caminho simples pra parar de travar e produzir com consistência — sem “terrorismo digital”
-              e sem depender de ideias geniais.
+              Um caminho simples pra parar de travar e produzir com consistência. Sem depender de ideias geniais.
             </p>
 
             <div class="mini">
@@ -444,7 +431,7 @@
                 </div>
                 <div>
                   <b>Velocidade na criação</b>
-                  <small>Menos tempo pensando, mais tempo postando.</small>
+                  <small>Menos tempo pensando. Mais tempo postando.</small>
                 </div>
               </div>
 
@@ -454,14 +441,14 @@
                 </div>
                 <div>
                   <b>Consistência leve</b>
-                  <small>Rotina realista e autêntica — do seu jeito.</small>
+                  <small>Rotina realista e autêntica. Do seu jeito.</small>
                 </div>
               </div>
             </div>
 
             <div style="margin-top:14px">
               <a class="btn primary" style="width:100%"
-                 href="https://wa.me/5562982331156?text=Quero%20destravar%20meu%20conte%C3%BAdo.%20Como%20fa%C3%A7o%20pra%20entrar%20na%20aula%3F"
+                 href="https://wa.me/5562982331156?text=Quero%20destravar%20meu%20conteudo.%20Como%20fa%C3%A7o%20pra%20entrar%20na%20video%20aula."
                  target="_blank" rel="noopener">
                 Falar agora no WhatsApp
               </a>
@@ -485,11 +472,11 @@
           </div>
           <div class="box">
             <b>Você fica horas pensando em uma ideia</b>
-            <p>E no fim… não posta nada. O tempo vai embora e o perfil fica parado.</p>
+            <p>E no fim não posta nada. O tempo vai embora e o perfil fica parado.</p>
           </div>
           <div class="box">
             <b>Seu perfil está parado no tempo</b>
-            <p>Não cresce, não engaja, não vende — apesar de você tentar.</p>
+            <p>Não cresce, não engaja, não vende. Apesar de você tentar.</p>
           </div>
 
           <div class="box">
@@ -498,7 +485,7 @@
           </div>
           <div class="box">
             <b>Você já comprou cursos e ainda trava pra gravar</b>
-            <p>Informação não falta — falta um caminho simples e aplicável no dia a dia.</p>
+            <p>Informação não falta. Falta um caminho simples e aplicável no dia a dia.</p>
           </div>
           <div class="box">
             <b>Você acha que precisa de uma ideia genial</b>
@@ -512,8 +499,7 @@
       <div class="wrap">
         <h2>O ponto central</h2>
         <p class="sub">
-          Você <b>não</b> precisa ter uma ideia genial a cada vídeo novo.
-          Você só precisa de um modelo, um roteiro e uma forma de adaptar pro que você já sabe.
+          Você não precisa ter uma ideia genial a cada vídeo novo. Você só precisa de um modelo, um roteiro e uma forma de adaptar pro que você já sabe.
         </p>
 
         <div class="card" style="padding:18px">
@@ -528,15 +514,15 @@
             </div>
             <div class="box" style="background:rgba(7,7,11,.35)">
               <b>Postar</b>
-              <p>Consistência leve: todo dia, sem drama, do seu jeito.</p>
+              <p>Consistência leve. Todo dia. Do seu jeito.</p>
             </div>
           </div>
 
           <div class="hero-actions" style="margin-top:14px">
             <a class="btn primary"
-               href="https://wa.me/5562982331156?text=Quero%20os%20formatos%20que%20est%C3%A3o%20funcionando%20no%20Instagram.%20Como%20entro%20na%20aula%3F"
+               href="https://wa.me/5562982331156?text=Quero%20os%20formatos%20que%20est%C3%A3o%20funcionando%20no%20Instagram.%20Como%20entro%20na%20video%20aula."
                target="_blank" rel="noopener">
-              Quero entrar (WhatsApp)
+              Quero entrar no WhatsApp
             </a>
           </div>
         </div>
@@ -546,7 +532,7 @@
     <section id="faq" class="section">
       <div class="wrap">
         <h2>Perguntas rápidas</h2>
-        <p class="sub">Pra você entender se faz sentido pra você, sem enrolação.</p>
+        <p class="sub">Pra você entender se faz sentido pra você. Sem enrolação.</p>
 
         <div class="faq">
           <details>
@@ -555,7 +541,7 @@
               <svg class="chev" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
             </summary>
             <p>
-              A proposta é te mostrar formatos replicáveis e como adaptar. O conteúdo final fica com a sua mensagem, do seu jeito.
+              A proposta é te mostrar formatos replicáveis e como adaptar. O conteúdo final fica com a sua mensagem. Do seu jeito.
             </p>
           </details>
 
@@ -565,7 +551,7 @@
               <svg class="chev" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
             </summary>
             <p>
-              A ideia é diminuir o atrito: você não vai depender de “inspiração”. Com formato e roteiro, gravar fica bem mais leve.
+              A ideia é diminuir o atrito. Você não vai depender de “inspiração”. Com formato e roteiro, gravar fica mais leve.
             </p>
           </details>
 
@@ -582,7 +568,7 @@
 
         <div style="margin-top:16px">
           <a class="btn primary"
-             href="https://wa.me/5562982331156?text=Quero%20saber%20os%20detalhes%20da%20aula%20e%20destravar%20meu%20conte%C3%BAdo."
+             href="https://wa.me/5562982331156?text=Quero%20saber%20os%20detalhes%20da%20video%20aula.%20Me%20manda%20por%20favor."
              target="_blank" rel="noopener">
             <span class="dot" aria-hidden="true"></span>
             Falar no WhatsApp agora
@@ -595,7 +581,7 @@
   <footer>
     <div class="wrap">
       <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
-        <div>© <span id="y"></span> — Página de inscrição</div>
+        <div>© <span id="y"></span> Página de inscrição</div>
         <div>Sem terrorismo digital. Formato simples. Conteúdo autêntico.</div>
       </div>
     </div>
