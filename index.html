@@ -5,20 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Formatos que deixam o jogo mais fácil</title>
   <meta name="description" content="Descubra o formato de conteúdo que você tem mais facilidade em fazer e destrave seus resultados no Instagram. Clique e mande 'formatos' no WhatsApp." />
-  <meta name="theme-color" content="#0b0b0f" />
+  <meta name="theme-color" content="#07070b" />
 
   <style>
     :root{
       --bg: #07070b;
-      --panel: rgba(18,18,24,.68);
       --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
+      --muted: rgba(255,255,255,.74);
+      --stroke: rgba(255,255,255,.12);
+
+      /* amarelo só no fundo / identidade (não no H1) */
       --yellow: #ffea00;
       --yellow2:#ffd000;
-      --black:#0b0b0f;
-      --stroke: rgba(255,255,255,.12);
-      --shadow: 0 18px 55px rgba(0,0,0,.60);
-      --shadow2: 0 18px 75px rgba(255,234,0,.18);
+
+      /* WhatsApp CTA verde */
+      --wa1: #0b6b3a;   /* verde escuro */
+      --wa2: #1db954;   /* verde vivo */
+      --wa3: #25d366;   /* verde whatsapp */
+      --waText: #ffffff;
+
+      --shadow: 0 18px 60px rgba(0,0,0,.62);
+      --shadow2: 0 18px 75px rgba(255,234,0,.16);
       --radius: 24px;
     }
 
@@ -35,7 +42,7 @@
       overflow-x:hidden;
     }
 
-    /* fundo com glow animado */
+    /* glow animado de fundo */
     .bgGlow{
       position:fixed;
       inset:-20%;
@@ -54,13 +61,13 @@
       to{ transform: translate3d(1.2%, 1.0%, 0) scale(1.04); }
     }
 
-    /* textura leve */
+    /* textura */
     .noise{
       position:fixed;
       inset:0;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
       mix-blend-mode: overlay;
-      opacity:.20;
+      opacity:.18;
       pointer-events:none;
       z-index:-1;
     }
@@ -68,95 +75,106 @@
     .container{
       width:min(1100px, 92vw);
       margin:0 auto;
-      padding: 48px 0 62px;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
+      padding: 54px 0 70px;
     }
 
-    .hero{
-      width:100%;
-      padding: clamp(22px, 3.2vw, 34px);
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,.12);
-      background:
-        linear-gradient(135deg, rgba(255,234,0,.12) 0%, rgba(255,255,255,.04) 35%, rgba(255,234,0,.10) 100%),
-        rgba(10,10,14,.55);
-      box-shadow: var(--shadow), var(--shadow2);
-      position:relative;
-      overflow:hidden;
+    /* Sem card em volta de tudo: layout solto */
+    .content{
+      max-width: 980px;
     }
 
-    .hero:after{
-      content:"";
+    /* Overlay sutil atrás do texto (não é card) */
+    .readabilityFade{
       position:absolute;
-      inset:-2px;
-      background: radial-gradient(650px 220px at 25% 0%, rgba(255,234,0,.22), transparent 72%);
+      inset:-40px -20px auto -20px;
+      height: 520px;
+      background: linear-gradient(180deg, rgba(0,0,0,.22) 0%, rgba(0,0,0,.10) 45%, rgba(0,0,0,0) 100%);
+      filter: blur(0px);
       pointer-events:none;
-      opacity:.95;
+      z-index:0;
     }
 
-    /* H1 mais destacado */
+    /* BLOCO PRINCIPAL sem moldura */
+    .hero{
+      position:relative;
+      padding: 0;
+    }
+
+    /* H1 organizado + composição (quebra manual + recuo na 2ª linha) */
     h1{
-      margin: 0 0 14px;
+      margin: 0 0 18px;
       font-size: clamp(34px, 4.6vw, 66px);
       line-height: 1.02;
       letter-spacing: -1.1px;
+      font-weight: 950;
       position:relative;
       z-index:1;
-      text-transform: none;
+
+      /* “B”: 3D chamativo (extrusão) */
+      color: rgba(255,255,255,.95);
       text-shadow:
-        0 18px 55px rgba(0,0,0,.75),
-        0 0 32px rgba(255,234,0,.18),
-        0 2px 0 rgba(0,0,0,.20);
+        1px 1px 0 rgba(0,0,0,.55),
+        2px 2px 0 rgba(0,0,0,.50),
+        3px 3px 0 rgba(0,0,0,.45),
+        4px 4px 0 rgba(0,0,0,.40),
+        5px 5px 0 rgba(0,0,0,.34),
+        0 18px 60px rgba(0,0,0,.78);
+      filter: drop-shadow(0 14px 28px rgba(0,0,0,.50));
+      max-width: 20ch; /* controla a “cara” do título em telas grandes */
     }
 
-    .h1Accent{
-      display:inline-block;
-      color: var(--yellow);
+    .h1Line1{ display:block; }
+    .h1Line2{
+      display:block;
+      padding-left: clamp(10px, 3.2vw, 46px); /* recuo visual controlado */
+      font-weight: 900;
+      color: rgba(255,255,255,.82);
       text-shadow:
-        0 20px 60px rgba(0,0,0,.80),
-        0 0 38px rgba(255,234,0,.30);
-      filter: drop-shadow(0 16px 26px rgba(0,0,0,.55));
-      position:relative;
+        1px 1px 0 rgba(0,0,0,.50),
+        2px 2px 0 rgba(0,0,0,.44),
+        3px 3px 0 rgba(0,0,0,.38),
+        0 14px 48px rgba(0,0,0,.72);
     }
-    .h1Accent:after{
+
+    /* halo controlado (amarelo, bem sutil) só pra profundidade */
+    h1:after{
       content:"";
       position:absolute;
-      left:-8px; right:-8px;
-      bottom:-10px;
-      height: 10px;
-      background: radial-gradient(closest-side, rgba(255,234,0,.55), transparent 70%);
-      filter: blur(10px);
-      opacity:.55;
+      left:-14px; right:-14px;
+      top:-10px;
+      height: 110%;
+      background: radial-gradient(closest-side at 22% 18%, rgba(255,234,0,.18), transparent 68%);
+      filter: blur(14px);
+      opacity:.75;
       z-index:-1;
+      pointer-events:none;
     }
 
     .lead{
       margin: 0 0 16px;
-      color: rgba(255,255,255,.78);
+      color: rgba(255,255,255,.80);
       font-size: 16px;
-      line-height: 1.65;
+      line-height: 1.7;
       position:relative;
       z-index:1;
-      max-width: 72ch;
+      max-width: 78ch;
     }
 
     .highlightBox{
       margin: 18px 0 18px;
       padding: 18px 16px;
       border-radius: 18px;
-      border: 1px solid rgba(255,234,0,.30);
-      background: linear-gradient(135deg, rgba(255,234,0,.18), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,234,0,.26);
+      background: linear-gradient(135deg, rgba(255,234,0,.16), rgba(255,255,255,.03));
       box-shadow:
         0 16px 55px rgba(0,0,0,.60),
-        0 0 0 1px rgba(255,234,0,.10) inset;
+        0 0 0 1px rgba(255,234,0,.08) inset;
       position:relative;
       z-index:1;
       overflow:hidden;
+      max-width: 980px;
     }
 
-    /* texto bem destacado com cor, sombra e movimento */
     .bigShout{
       margin:0;
       font-weight: 950;
@@ -171,7 +189,7 @@
       color: transparent;
       text-shadow:
         0 16px 65px rgba(0,0,0,.80),
-        0 0 34px rgba(255,234,0,.32);
+        0 0 34px rgba(255,234,0,.28);
       filter: drop-shadow(0 12px 22px rgba(0,0,0,.55));
       animation: popGlow 2.2s ease-in-out infinite;
       position:relative;
@@ -208,6 +226,7 @@
       margin-top: 14px;
       position:relative;
       z-index:1;
+      max-width: 980px;
     }
 
     .btn{
@@ -227,18 +246,18 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* botão WhatsApp principal */
+    /* Botões WhatsApp VERDES (principal) */
     .btnWhats{
-      background: linear-gradient(135deg, var(--yellow) 0%, #ffffff 35%, var(--yellow2) 100%);
-      color: #0b0b0f;
+      background: linear-gradient(135deg, var(--wa1) 0%, var(--wa2) 45%, var(--wa3) 100%);
+      color: var(--waText);
       box-shadow:
         0 18px 60px rgba(0,0,0,.62),
-        0 18px 70px rgba(255,234,0,.22);
+        0 18px 80px rgba(37,211,102,.20);
       position:relative;
       overflow:hidden;
-      border: 1px solid rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.14);
       animation: ctaBounce 1.6s ease-in-out infinite;
-      min-width: min(520px, 100%);
+      min-width: min(560px, 100%);
       text-align:center;
     }
     @keyframes ctaBounce{
@@ -251,31 +270,23 @@
       inset:-45%;
       background: conic-gradient(from 180deg,
         rgba(255,255,255,0) 0%,
-        rgba(255,255,255,.45) 30%,
+        rgba(255,255,255,.35) 28%,
         rgba(255,255,255,0) 60%,
         rgba(255,255,255,0) 100%);
-      animation: spin 1.8s linear infinite;
-      opacity:.55;
+      animation: spin 1.9s linear infinite;
+      opacity:.45;
       pointer-events:none;
     }
     @keyframes spin{
       from{ transform: rotate(0deg); }
       to{ transform: rotate(360deg); }
     }
-    .btnWhats:hover{ transform: translateY(-2px) scale(1.01); filter:saturate(1.03); }
+    .btnWhats:hover{ transform: translateY(-2px) scale(1.01); filter:saturate(1.05) brightness(1.03); }
     .btnWhats:active{ transform: translateY(0) scale(.99); }
 
-    .micro{
-      font-size: 12px;
-      color: rgba(255,255,255,.64);
-      line-height: 1.45;
-      margin-top: 12px;
-      max-width: 78ch;
-      position:relative;
-      z-index:1;
-    }
+    .waIcon{ width:18px; height:18px; display:inline-block; }
 
-    /* Botão flutuante WhatsApp (mantido) */
+    /* Botão flutuante WhatsApp (mantido e verde) */
     .floatingWA{
       position:fixed;
       right: 18px;
@@ -286,12 +297,12 @@
       gap:10px;
       padding: 12px 14px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--yellow) 0%, #ffffff 35%, var(--yellow2) 100%);
-      color: #0b0b0f;
+      background: linear-gradient(135deg, var(--wa1) 0%, var(--wa2) 45%, var(--wa3) 100%);
+      color: var(--waText);
       text-decoration:none;
       font-weight: 950;
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 18px 55px rgba(0,0,0,.60), 0 16px 60px rgba(255,234,0,.22);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 18px 55px rgba(0,0,0,.60), 0 16px 70px rgba(37,211,102,.20);
       animation: floatPulse 1.8s ease-in-out infinite;
     }
     @keyframes floatPulse{
@@ -300,13 +311,13 @@
     }
     .floatingWA:active{ transform: scale(.98); }
 
-    .waIcon{ width:18px; height:18px; display:inline-block; }
-
     @media (max-width: 540px){
       .btnWhats{ min-width: 100%; }
+      h1{ max-width: 22ch; }
+      .h1Line2{ padding-left: 18px; }
     }
 
-    /* acessibilidade */
+    /* Acessibilidade */
     @media (prefers-reduced-motion: reduce){
       .bgGlow, .bigShout, .scanline, .btnWhats, .floatingWA{
         animation: none !important;
@@ -321,59 +332,60 @@
 
   <div class="container">
     <section class="hero" aria-label="Página de vendas">
-      <h1>
-        <span class="h1Accent">Riqueza é criada</span> por meio de inovação, esforço, ideias, risco e tempo.
-      </h1>
+      <div class="readabilityFade" aria-hidden="true"></div>
 
-      <p class="lead">
-        Eu entendi como ter bons resultados no Instagram, isso me custou horas conectado, analisando inúmeras contas,
-        observando a comunicação e principalmente o formato que cada pessoa encontrou para gerar conteúdo.
-      </p>
+      <div class="content">
+        <h1>
+          <span class="h1Line1">Riqueza é criada por meio de inovação,</span>
+          <span class="h1Line2">esforço, ideias, risco e tempo.</span>
+        </h1>
 
-      <p class="lead">
-        Eu encontrei algo em comum entre todos esses perfis.
-        Descobri que o formato que mais dá certo é justamente aquele que você tem mais facilidade em fazer.
-      </p>
+        <p class="lead">
+          Eu entendi como ter bons resultados no Instagram, isso me custou horas conectado, analisando inúmeras contas,
+          observando a comunicação e principalmente o formato que cada pessoa encontrou para gerar conteúdo.
+        </p>
 
-      <div class="highlightBox" aria-label="Destaque principal">
-        <div class="scanline" aria-hidden="true"></div>
-        <p class="bigShout">ISSO DEIXA O JOGO INCRIVELMENTE MAIS FÁCIL</p>
+        <p class="lead">
+          Eu encontrei algo em comum entre todos esses perfis.
+          Descobri que o formato que mais dá certo é justamente aquele que você tem mais facilidade em fazer.
+        </p>
+
+        <div class="highlightBox" aria-label="Destaque principal">
+          <div class="scanline" aria-hidden="true"></div>
+          <p class="bigShout">ISSO DEIXA O JOGO INCRIVELMENTE MAIS FÁCIL</p>
+        </div>
+
+        <p class="lead">
+          Há inúmeras formas de criar conteúdos, mas 4 formatos se destacam, pela facilidade em criar, pela retenção das
+          pessoas em seu vídeo e pelo alcance que pode ser gerado. Isto significa: <strong>Mais pessoas te enxergando.</strong>
+        </p>
+
+        <p class="lead" style="margin-bottom:10px;">
+          Clique aqui. Me mande uma mensagem no WhatsApp com a palavra <strong>"formatos"</strong>.
+          Posso analisar o seu perfil e entender melhor o que falta para que você tenha melhores resultados.
+        </p>
+
+        <p class="lead" style="margin-bottom:14px;">
+          Mas me responde algo antes de clicar nesse botão. <strong>hora de arriscar ?</strong>
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn btnWhats" id="waBtn" href="#" target="_blank" rel="noopener">
+            <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M19.1 17.3c-.3-.2-1.7-.8-2-.9s-.5-.2-.7.2-.8.9-1 .9-.4.1-.7-.1c-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.9-1.8-2.2s0-.5.1-.7c.2-.2.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.6-1-2.2c-.3-.6-.6-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.7 1.2 3.1 1.4 3.3c.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.7-.7 2-1.3.2-.6.2-1.2.2-1.3 0-.1-.3-.2-.6-.4z" fill="#ffffff"/>
+              <path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.5L3 29l6.7-1.7c1.9 1 4 1.6 6.3 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.2c-2.1 0-4-.6-5.7-1.6l-.4-.2-4 .9.9-3.9-.2-.4c-1.1-1.7-1.8-3.7-1.8-5.9C5 9.9 9.9 5 16 5s11 4.9 11 11-4.9 10.2-11 10.2z" fill="#ffffff"/>
+            </svg>
+            Me mande “FORMATOS” no WhatsApp
+          </a>
+        </div>
       </div>
-
-      <p class="lead">
-        Há inúmeras formas de criar conteúdos, mas 4 formatos se destacam, pela facilidade em criar, pela retenção das
-        pessoas em seu vídeo e pelo alcance que pode ser gerado. Isto significa: <strong>Mais pessoas te enxergando.</strong>
-      </p>
-
-      <p class="lead" style="margin-bottom:10px;">
-        Clique aqui. Me mande uma mensagem no WhatsApp com a palavra <strong>"formatos"</strong>.
-        Posso analisar o seu perfil e entender melhor o que falta para que você tenha melhores resultados.
-      </p>
-
-      <p class="lead" style="margin-bottom:14px;">
-        Mas me responde algo antes de clicar nesse botão. <strong>hora de arriscar ?</strong>
-      </p>
-
-      <div class="ctaRow">
-        <a class="btn btnWhats" id="waBtn" href="#" target="_blank" rel="noopener">
-          <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
-            <path d="M19.1 17.3c-.3-.2-1.7-.8-2-.9s-.5-.2-.7.2-.8.9-1 .9-.4.1-.7-.1c-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.9-1.8-2.2s0-.5.1-.7c.2-.2.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.6-1-2.2c-.3-.6-.6-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.7 1.2 3.1 1.4 3.3c.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.7-.7 2-1.3.2-.6.2-1.2.2-1.3 0-.1-.3-.2-.6-.4z" fill="#0b0b0f"/>
-            <path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.5L3 29l6.7-1.7c1.9 1 4 1.6 6.3 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.2c-2.1 0-4-.6-5.7-1.6l-.4-.2-4 .9.9-3.9-.2-.4c-1.1-1.7-1.8-3.7-1.8-5.9C5 9.9 9.9 5 16 5s11 4.9 11 11-4.9 10.2-11 10.2z" fill="#0b0b0f"/>
-          </svg>
-          Me mande “FORMATOS” no WhatsApp
-        </a>
-      </div>
-
-      <p class="micro">
-        Dica: a mensagem já vai preenchida automaticamente com “formatos”.
-      </p>
     </section>
   </div>
 
   <a class="floatingWA" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
     <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M19.1 17.3c-.3-.2-1.7-.8-2-.9s-.5-.2-.7.2-.8.9-1 .9-.4.1-.7-.1c-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.9-1.8-2.2s0-.5.1-.7c.2-.2.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.6-1-2.2c-.3-.6-.6-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.7 1.2 3.1 1.4 3.3c.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.7-.7 2-1.3.2-.6.2-1.2.2-1.3 0-.1-.3-.2-.6-.4z" fill="#0b0b0f"/>
-      <path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.5L3 29l6.7-1.7c1.9 1 4 1.6 6.3 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.2c-2.1 0-4-.6-5.7-1.6l-.4-.2-4 .9.9-3.9-.2-.4c-1.1-1.7-1.8-3.7-1.8-5.9C5 9.9 9.9 5 16 5s11 4.9 11 11-4.9 10.2-11 10.2z" fill="#0b0b0f"/>
+      <path d="M19.1 17.3c-.3-.2-1.7-.8-2-.9s-.5-.2-.7.2-.8.9-1 .9-.4.1-.7-.1c-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.9-1.8-2.2s0-.5.1-.7c.2-.2.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.6-1-2.2c-.3-.6-.6-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.7 1.2 3.1 1.4 3.3c.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.7-.7 2-1.3.2-.6.2-1.2.2-1.3 0-.1-.3-.2-.6-.4z" fill="#ffffff"/>
+      <path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.5L3 29l6.7-1.7c1.9 1 4 1.6 6.3 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.2c-2.1 0-4-.6-5.7-1.6l-.4-.2-4 .9.9-3.9-.2-.4c-1.1-1.7-1.8-3.7-1.8-5.9C5 9.9 9.9 5 16 5s11 4.9 11 11-4.9 10.2-11 10.2z" fill="#ffffff"/>
     </svg>
     WhatsApp
   </a>
