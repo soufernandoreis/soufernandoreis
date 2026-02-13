@@ -87,43 +87,47 @@
     }
 
     /* =========================
-       H1 (corrigido para MOBILE)
-       Mantém 2 linhas, alinhado e com 3D limpo.
+       H1 (CORRIGIDO / MOBILE)
        ========================= */
+
+    /* bloco do H1: centraliza o bloco, alinha texto à esquerda */
     h1{
       margin: 0 0 18px;
       font-weight: 950;
       letter-spacing: -1.05px;
       position:relative;
       z-index:1;
-
-      /* Desktop (default): preserva impacto */
-      font-size: clamp(34px, 4.6vw, 66px);
-      line-height: 1.04;
       color: rgba(255,255,255,.95);
+      line-height: 1.04;
+
+      /* IMPORTANTÍSSIMO: largura “física” (pixel responsivo) p/ travar 2 linhas no mobile */
+      width: min(92vw, 560px);
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+
+      /* Desktop default */
+      font-size: clamp(34px, 4.6vw, 66px);
       text-shadow:
         1px 1px 0 rgba(0,0,0,.55),
         2px 2px 0 rgba(0,0,0,.44),
         3px 3px 0 rgba(0,0,0,.33),
         0 16px 55px rgba(0,0,0,.78);
       filter: drop-shadow(0 14px 28px rgba(0,0,0,.45));
-      max-width: 22ch;
     }
 
-    /* Mantém estrutura em 2 linhas e o recuo leve */
-    .h1Line1{ display:block; }
+    /* Força exatamente 2 linhas SEM depender de max-width em ch */
+    .h1Line1,
+    .h1Line2{ display:block; }
+
+    /* Recuo da 2ª linha sem influenciar quebra (transform, não padding) */
     .h1Line2{
-      display:block;
-      padding-left: clamp(10px, 3.2vw, 46px);
+      transform: translateX(0px);
       font-weight: 900;
       color: rgba(255,255,255,.84);
-      text-shadow:
-        1px 1px 0 rgba(0,0,0,.50),
-        2px 2px 0 rgba(0,0,0,.38),
-        0 14px 48px rgba(0,0,0,.72);
     }
 
-    /* halo amarelo sutil (identidade) */
+    /* halo amarelo sutil */
     h1:after{
       content:"";
       position:absolute;
@@ -137,37 +141,37 @@
       pointer-events:none;
     }
 
-    /* MOBILE: fixa alinhamento e evita “3ª linha feia” */
+    /* MOBILE: trava a composição e elimina “quebra feia” */
     @media (max-width: 520px){
       h1{
-        /* bloco centralizado e texto alinhado internamente */
-        max-width: 18ch;          /* força 2 linhas (não 3) */
-        margin-left: auto;
-        margin-right: auto;
-        text-align: left;
-
-        /* tamanho/altura ajustados pro celular */
-        font-size: clamp(30px, 8.2vw, 40px);
+        /* tamanho calibrado p/ não virar 3 linhas */
+        font-size: clamp(30px, 8.4vw, 40px);
         line-height: 1.06;
 
-        /* 3D mais limpo no mobile (menos extrusão = menos borrão) */
+        /* 3D mais curto e nítido no mobile (menos borrão) */
         text-shadow:
           1px 1px 0 rgba(0,0,0,.55),
           2px 2px 0 rgba(0,0,0,.38),
           0 14px 42px rgba(0,0,0,.72);
       }
 
+      /* recuo proporcional e estável */
       .h1Line2{
-        padding-left: 14px; /* recuo menor pra não “quebrar” feio */
-        color: rgba(255,255,255,.82);
+        transform: translateX(14px);
       }
     }
 
-    /* safety para telas muito estreitas (ex: 320px) */
+    /* telas MUITO estreitas (320px) */
     @media (max-width: 360px){
-      h1{ max-width: 17ch; }
-      .h1Line2{ padding-left: 12px; }
+      h1{
+        font-size: clamp(28px, 8.7vw, 38px);
+      }
+      .h1Line2{ transform: translateX(12px); }
     }
+
+    /* =========================
+       RESTO DA PÁGINA (igual)
+       ========================= */
 
     .lead{
       margin: 0 0 16px;
@@ -343,6 +347,7 @@
       <div class="readabilityFade" aria-hidden="true"></div>
 
       <div class="content">
+        <!-- H1: mantém exatamente o texto e a posição em 2 linhas -->
         <h1>
           <span class="h1Line1">Riqueza é criada por meio de inovação,</span>
           <span class="h1Line2">esforço, ideias, risco e tempo.</span>
@@ -403,7 +408,6 @@
       const phone = "62982331156";
       const msg = 'Olá! Vim pela página. A palavra é: "formatos". Pode analisar meu perfil?';
       const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-
       document.getElementById("waBtn").href = waLink;
       document.getElementById("waFloat").href = waLink;
 
@@ -419,7 +423,7 @@
             { transform: "translateX(2px) translateY(-1px) scale(1.01)" },
             { transform: "translateX(-2px) translateY(0) scale(1.01)" },
             { transform: "translateX(0) translateY(0) scale(1)" }
-          ],
+        ],
           { duration: 420, iterations: 1 }
         );
       });
