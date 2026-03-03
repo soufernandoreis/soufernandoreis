@@ -41,6 +41,7 @@
       align-items:center;
       position:relative;
       overflow:hidden;
+
       background:
         linear-gradient(90deg,
           rgba(255,255,255,.92) 0%,
@@ -69,6 +70,8 @@
       width:min(1100px, 92vw);
       margin:0 auto;
       padding: 34px 0 46px;
+      position: relative;
+      z-index: 2; /* acima dos vagalumes */
     }
 
     .grid{
@@ -84,6 +87,8 @@
     .copy{
       color: var(--text);
       max-width: 760px;
+      position: relative;
+      z-index: 2;
     }
 
     h1{
@@ -130,6 +135,8 @@
       color: var(--text);
       max-width: 520px;
       justify-self:end;
+      position: relative;
+      z-index: 2;
     }
     @media (max-width: 920px){
       .card{ justify-self:start; max-width: 760px; }
@@ -226,15 +233,70 @@
       box-shadow: var(--shadow2);
       border: 1px solid rgba(255,255,255,.18);
     }
+
+    /* ===== VAGALUMES ===== */
+    .firefly{
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        #fffce1 0%,
+        #ffe26f 45%,
+        rgba(255, 226, 111, 0.2) 60%,
+        transparent 70%
+      );
+      box-shadow: 0 0 14px rgba(255, 246, 196, 1);
+      opacity: 0;
+      animation: firefly 4.5s linear infinite;
+      pointer-events: none;
+      z-index: 1; /* atrás do conteúdo, acima do fundo */
+    }
+
+    .firefly--1{ left: 48%; bottom: 210px; animation-delay: -0.5s; }
+    .firefly--2{ left: 60%; bottom: 230px; animation-delay: -1.3s; }
+    .firefly--3{ left: 38%; bottom: 240px; animation-delay: -2.1s; }
+    .firefly--4{ left: 55%; bottom: 260px; animation-delay: -2.7s; }
+    .firefly--5{ left: 30%; bottom: 220px; animation-delay: -3.1s; }
+    .firefly--6{ left: 68%; bottom: 235px; animation-delay: -3.7s; }
+
+    @keyframes firefly{
+      0%{
+        transform: translate3d(0, 0, 0) scale(0.5);
+        opacity: 0;
+      }
+      20%{ opacity: 1; }
+      60%{
+        transform: translate3d(12px, -34px, 0) scale(1.05);
+        opacity: 1;
+      }
+      100%{
+        transform: translate3d(-8px, -70px, 0) scale(0.4);
+        opacity: 0;
+      }
+    }
+
+    /* Acessibilidade: reduz movimento */
+    @media (prefers-reduced-motion: reduce){
+      .firefly{ animation: none !important; opacity: .35; }
+    }
   </style>
 </head>
 
 <body>
   <section class="hero">
+    <!-- Vagalumes -->
+    <div class="firefly firefly--1"></div>
+    <div class="firefly firefly--2"></div>
+    <div class="firefly firefly--3"></div>
+    <div class="firefly firefly--4"></div>
+    <div class="firefly firefly--5"></div>
+    <div class="firefly firefly--6"></div>
+
     <div class="container">
       <div class="grid">
         <div class="copy">
-          <!-- TÍTULO NOVO (removi o texto que você mandou apagar) -->
           <h1>Diagnóstico do seu Instagram + formato certo pra você executar</h1>
 
           <p class="questions">
@@ -252,7 +314,6 @@
         </div>
 
         <aside class="card" aria-label="Detalhes do encontro">
-          <!-- ALTERAÇÃO PEDIDA -->
           <p class="cardTitle">Sessão individual por vídeo chamada</p>
 
           <ul class="formatList">
