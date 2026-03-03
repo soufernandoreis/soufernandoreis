@@ -11,17 +11,12 @@
     :root{
       --bg:#0b0f18;
       --text:#0b0f18;
-      --muted:#1b2433;
       --white:#ffffff;
 
       /* WhatsApp */
       --wa1:#0b6b3a;
       --wa2:#1db954;
       --wa3:#25d366;
-
-      /* Accent */
-      --accent:#17b26a;
-      --accentSoft: rgba(23,178,106,.14);
 
       --radius: 18px;
       --shadow: 0 18px 55px rgba(0,0,0,.18);
@@ -40,15 +35,12 @@
       color: var(--white);
     }
 
-    /* HERO */
     .hero{
       min-height: 100vh;
       display:flex;
       align-items:center;
       position:relative;
       overflow:hidden;
-
-      /* “véu” claro para leitura (como seu print) */
       background:
         linear-gradient(90deg,
           rgba(255,255,255,.92) 0%,
@@ -89,7 +81,6 @@
       .grid{ grid-template-columns: 1fr; }
     }
 
-    /* LEFT (copy) */
     .copy{
       color: var(--text);
       max-width: 760px;
@@ -123,15 +114,6 @@
       box-shadow: 0 8px 18px rgba(37,211,102,.25);
     }
 
-    .kicker{
-      margin: 0 0 10px;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: .6px;
-      text-transform: uppercase;
-      color: rgba(11,15,24,.70);
-    }
-
     .questions{
       margin: 0 0 14px;
       font-size: 18px;
@@ -158,28 +140,6 @@
       max-width: 74ch;
     }
 
-    .formatList{
-      margin: 0 0 18px;
-      padding: 0;
-      list-style:none;
-      display:grid;
-      gap: 10px;
-      color: rgba(11,15,24,.92);
-      font-weight: 800;
-    }
-    .formatList li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-    }
-    .bullet{
-      margin-top: 7px;
-      width:10px; height:10px; border-radius:999px;
-      background: rgba(11,15,24,.22);
-      flex: 0 0 auto;
-    }
-
-    /* RIGHT (pricing card) */
     .card{
       background: rgba(255,255,255,.88);
       border: 1px solid rgba(0,0,0,.08);
@@ -199,6 +159,27 @@
       font-weight: 950;
       font-size: 16px;
       letter-spacing: -.2px;
+    }
+
+    .formatList{
+      margin: 10px 0 14px;
+      padding: 0;
+      list-style:none;
+      display:grid;
+      gap: 10px;
+      color: rgba(11,15,24,.92);
+      font-weight: 800;
+    }
+    .formatList li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .bullet{
+      margin-top: 7px;
+      width:10px; height:10px; border-radius:999px;
+      background: rgba(11,15,24,.22);
+      flex: 0 0 auto;
     }
 
     .price{
@@ -247,7 +228,6 @@
 
     .waIcon{ width:18px; height:18px; display:inline-block; }
 
-    /* floating WhatsApp */
     .floatingWA{
       position:fixed;
       right: 16px;
@@ -272,7 +252,6 @@
   <section class="hero">
     <div class="container">
       <div class="grid">
-        <!-- LEFT -->
         <div class="copy">
           <h1>O metodo passo a passo do básico ao avançado que te ensina a como criar conteúdo e viver das redes sociais</h1>
 
@@ -281,21 +260,24 @@
             <span>A primeira análise do perfil é grátis</span>
           </div>
 
-          <p class="kicker">Headline</p>
-          <p class="questions">Você tem um posicionamento claro?<br>Já definiu o melhor formato de conteúdo para o seu perfil?</p>
+          <p class="questions">
+            Você tem um posicionamento claro?<br>
+            Já definiu o melhor formato de conteúdo para o seu perfil?
+          </p>
 
-          <p class="kicker">Subheadline</p>
-          <p class="subhead">Aula prática por vídeo chamada, 100% focada em aprendizado e aplicação real no seu perfil.</p>
+          <p class="subhead">
+            Aula prática por vídeo chamada, 100% focada em aprendizado e aplicação real no seu perfil.
+          </p>
 
-          <p class="kicker">Descrição da oferta</p>
-          <p class="offer">Durante o encontro, vamos analisar seu posicionamento, ajustar sua comunicação e definir o formato de conteúdo mais estratégico para o seu Instagram.</p>
+          <p class="offer">
+            Durante o encontro, vamos analisar seu posicionamento, ajustar sua comunicação e definir o formato de conteúdo mais estratégico para o seu Instagram.
+          </p>
         </div>
 
-        <!-- RIGHT -->
-        <aside class="card" aria-label="Formato e investimento">
-          <p class="cardTitle">Formato</p>
-          <ul class="formatList" style="margin-top:10px;">
-            <li><span class="bullet" aria-hidden="true"></span>Sessão individual ao vivo</li>
+        <aside class="card" aria-label="Detalhes do encontro">
+          <p class="cardTitle">Sessão individual ao vivo</p>
+
+          <ul class="formatList">
             <li><span class="bullet" aria-hidden="true"></span>Aula prática e personalizada</li>
           </ul>
 
@@ -304,7 +286,7 @@
             <span>Investimento</span>
           </div>
 
-          <p class="mini">Clique no botão para falar no WhatsApp e receber sua análise do perfil.</p>
+          <p class="mini">Clique no botão para falar no WhatsApp e solicitar sua análise.</p>
 
           <a class="btnWA" id="waBtn" href="#" target="_blank" rel="noopener">
             <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
