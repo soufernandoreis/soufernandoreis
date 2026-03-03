@@ -14,6 +14,11 @@
   --wa2:#1db954;
   --wa3:#25d366;
 
+  /* Azul escuro (novo botão da oferta) */
+  --b1:#0b1b3a;
+  --b2:#0f2a64;
+  --b3:#133a8a;
+
   --radius:18px;
   --shadow:0 18px 55px rgba(0,0,0,.35);
   --shadow2:0 22px 70px rgba(0,0,0,.45);
@@ -80,7 +85,7 @@ body{
 
 .copy{max-width:760px;}
 
-/* NOVOS TEXTOS */
+/* Textos principais */
 .mainQuestion{
   font-size:clamp(32px,4vw,48px);
   font-weight:900;
@@ -92,6 +97,86 @@ body{
   margin-bottom:22px;
   opacity:.9;
 }
+
+/* Frase adicionada anteriormente */
+.newLine{
+  font-size:22px;
+  font-weight:800;
+  margin-bottom:24px;
+  opacity:.95;
+}
+
+/* Oferta (novo bloco) */
+.offerBlock{
+  margin: 0 0 22px;
+  padding: 16px 16px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.28);
+  border: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(6px);
+}
+.offerTitle{
+  font-weight:900;
+  font-size:18px;
+  line-height:1.45;
+  margin-bottom:10px;
+}
+.offerList{
+  list-style:none;
+  margin: 0 0 12px;
+  padding:0;
+  display:grid;
+  gap:10px;
+}
+.offerList li{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  font-weight:700;
+  opacity:.95;
+  line-height:1.5;
+}
+.offerBullet{
+  margin-top:7px;
+  width:10px;height:10px;border-radius:999px;
+  background: rgba(255,255,255,.22);
+  flex: 0 0 auto;
+}
+.offerMeta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 16px;
+  align-items:baseline;
+  margin-top: 6px;
+}
+.offerPrice{
+  font-weight:950;
+  font-size:22px;
+}
+.offerMeta small{
+  opacity:.85;
+  font-weight:650;
+}
+
+/* Botão azul (novo) */
+.btnBlue{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  text-decoration:none;
+  font-weight:900;
+  color:#ffffff;
+  background: linear-gradient(135deg, var(--b1), var(--b2), var(--b3));
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 18px 45px rgba(8,18,46,.35);
+  transition: .2s ease;
+  user-select:none;
+  -webkit-tap-highlight-color: transparent;
+}
+.btnBlue:active{ transform: scale(.98); }
 
 .questions{
   margin:0 0 16px;
@@ -181,7 +266,6 @@ body{
 }
 
 /* ===== VAGALUMES ===== */
-
 .firefly{
   position:absolute;
   width:8px;
@@ -214,68 +298,93 @@ body{
 <body>
 <section class="hero">
 
-<!-- Vagalumes -->
-<div class="firefly firefly--1"></div>
-<div class="firefly firefly--2"></div>
-<div class="firefly firefly--3"></div>
-<div class="firefly firefly--4"></div>
-<div class="firefly firefly--5"></div>
-<div class="firefly firefly--6"></div>
+  <!-- Vagalumes -->
+  <div class="firefly firefly--1"></div>
+  <div class="firefly firefly--2"></div>
+  <div class="firefly firefly--3"></div>
+  <div class="firefly firefly--4"></div>
+  <div class="firefly firefly--5"></div>
+  <div class="firefly firefly--6"></div>
 
-<div class="container">
-<div class="grid">
+  <div class="container">
+    <div class="grid">
 
-<div class="copy">
+      <div class="copy">
 
-<p class="mainQuestion">Eu não sei o que postar!</p>
-<p class="subQuestion">Isso acontece com você?</p>
+        <p class="mainQuestion">Eu não sei o que postar!</p>
+        <p class="subQuestion">Isso acontece com você?</p>
 
-<p class="questions">
-Você tem um posicionamento claro?<br>
-Já definiu o melhor formato de conteúdo para o seu perfil?
-</p>
+        <p class="newLine">Aprenda a fazer trafego pago</p>
 
-<p class="subhead">
-Aula prática por vídeo chamada, 100% focada em aprendizado e aplicação real no seu perfil.
-</p>
+        <!-- NOVA ESTRUTURA DA OFERTA (adicionada sem mexer no resto) -->
+        <div class="offerBlock">
+          <p class="offerTitle">Mentoria prática de tráfego pago para quem quer:</p>
 
-<p class="offer">
-Durante o encontro, vamos analisar seu posicionamento, ajustar sua comunicação e definir o formato de conteúdo mais estratégico para o seu Instagram.
-</p>
+          <ul class="offerList">
+            <li><span class="offerBullet" aria-hidden="true"></span>Gerar clientes de forma previsível no próprio negócio</li>
+            <li><span class="offerBullet" aria-hidden="true"></span>Construir uma nova fonte de renda dominando anúncios online</li>
+          </ul>
 
-</div>
+          <div class="offerMeta">
+            <span class="offerPrice">Valor: R$ 267,00</span>
+            <small>Aulas realizadas por vídeo chamada</small>
+          </div>
 
-<aside class="card">
-<p class="cardTitle">Sessão individual por vídeo chamada</p>
+          <div style="margin-top:14px;">
+            <a class="btnBlue" id="waBlue" href="#" target="_blank" rel="noopener">
+              Chamar no WhatsApp
+            </a>
+          </div>
+        </div>
 
-<ul class="formatList">
-<li>Aula prática e personalizada</li>
-</ul>
+        <p class="questions">
+          Você tem um posicionamento claro?<br>
+          Já definiu o melhor formato de conteúdo para o seu perfil?
+        </p>
 
-<div class="price">
-<strong>R$ 67,90</strong>
-</div>
+        <p class="subhead">
+          Aula prática por vídeo chamada, 100% focada em aprendizado e aplicação real no seu perfil.
+        </p>
 
-<a class="btnWA" id="waBtn" href="#" target="_blank">
-Quero uma análise do meu perfil
-</a>
+        <p class="offer">
+          Durante o encontro, vamos analisar seu posicionamento, ajustar sua comunicação e definir o formato de conteúdo mais estratégico para o seu Instagram.
+        </p>
 
-</aside>
+      </div>
 
-</div>
-</div>
+      <aside class="card">
+        <p class="cardTitle">Sessão individual por vídeo chamada</p>
+
+        <ul class="formatList">
+          <li>Aula prática e personalizada</li>
+        </ul>
+
+        <!-- Ajuste do valor conforme sua oferta -->
+        <div class="price">
+          <strong>R$ 267,00</strong>
+        </div>
+
+        <a class="btnWA" id="waBtn" href="#" target="_blank" rel="noopener">
+          Quero uma análise do meu perfil
+        </a>
+      </aside>
+
+    </div>
+  </div>
 </section>
 
-<a class="floatingWA" id="waFloat" href="#" target="_blank">
-WhatsApp
+<a class="floatingWA" id="waFloat" href="#" target="_blank" rel="noopener">
+  WhatsApp
 </a>
 
 <script>
-const phone="62982331156";
-const msg="quero uma analise do meu perfil";
-const link=`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-document.getElementById("waBtn").href=link;
-document.getElementById("waFloat").href=link;
+  const phone="62982331156";
+  const msg="quero uma analise do meu perfil";
+  const link=`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+
+  document.getElementById("waBtn").href=link;
+  document.getElementById("waFloat").href=link;
+  document.getElementById("waBlue").href=link;
 </script>
 
 </body>
