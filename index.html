@@ -630,49 +630,87 @@
     const SUPABASE_URL = "https://vuztkuyakgiylfvzhzcd.supabase.co";
     const SUPABASE_KEY = "sb_publishable_FEmdo8ReamngQFgKjZL-MA_l2ysWIBV";
 
+    const TELEGRAM_BOT_TOKEN = "8927822938:AAGP0bEkEYD_gK0iOSkm_yGPTeRN7wWwdx0";
+    const TELEGRAM_CHAT_ID = "5893824296";
+
     const supabaseClient = supabase.createClient(
       SUPABASE_URL,
       SUPABASE_KEY
     );
 
-    const leadForm = document.getElementById('leadForm');
-    const formMessage = document.getElementById('formMessage');
-    const submitButton = document.getElementById('submitButton');
+    const leadForm = document.getElementById("leadForm");
+    const formMessage = document.getElementById("formMessage");
+    const submitButton = document.getElementById("submitButton");
 
     function showMessage(message, type) {
       formMessage.textContent = message;
-      formMessage.classList.remove('success', 'error');
-      formMessage.classList.add('active');
+      formMessage.classList.remove("success", "error");
+      formMessage.classList.add("active");
 
       if (type) {
         formMessage.classList.add(type);
       }
     }
 
-    leadForm.addEventListener('submit', async function(event) {
+    async function sendTelegramMessage(nome, instagram, telefone) {
+      const message = `
+🔥 NOVO LEAD
+
+👤 Nome:
+${nome}
+
+📸 Instagram:
+${instagram}
+
+📱 WhatsApp:
+${telefone}
+
+📌 Origem:
+Landing Page
+`;
+
+      const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+      const response = await fetch(telegramUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: message
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao enviar mensagem para o Telegram");
+      }
+    }
+
+    leadForm.addEventListener("submit", async function(event) {
       event.preventDefault();
 
-      const nome = document.getElementById('nome').value.trim();
-      const instagram = document.getElementById('instagram').value.trim();
-      const telefone = document.getElementById('telefone').value.trim();
+      const nome = document.getElementById("nome").value.trim();
+      const instagram = document.getElementById("instagram").value.trim();
+      const telefone = document.getElementById("telefone").value.trim();
 
       if (!nome || !instagram || !telefone) {
-        showMessage('Preencha todos os campos antes de enviar.', 'error');
+        showMessage("Preencha todos os campos antes de enviar.", "error");
         return;
       }
 
       submitButton.disabled = true;
-      submitButton.textContent = 'Enviando...';
+      submitButton.textContent = "Enviando...";
 
       try {
         const { error } = await supabaseClient
-          .from('leads')
+          .from("leads")
           .insert([
             {
               nome: nome,
               instagram: instagram,
               telefone: telefone,
-              origem: 'landing_page'
+              origem: "landing_page"
             }
           ]);
 
@@ -680,21 +718,26 @@
           throw error;
         }
 
-        showMessage('Cadastro recebido. Em breve entraremos em contato.', 'success');
+        await sendTelegramMessage(nome, instagram, telefone);
+
+        showMessage(
+          "Cadastro recebido. Em breve entraremos em contato.",
+          "success"
+        );
 
         leadForm.reset();
 
       } catch (error) {
-        console.error('Erro ao enviar lead:', error);
+        console.error("Erro ao enviar lead:", error);
 
         showMessage(
-          'Erro ao enviar. Tente novamente em alguns instantes.',
-          'error'
+          "Erro ao enviar. Tente novamente em alguns instantes.",
+          "error"
         );
 
       } finally {
         submitButton.disabled = false;
-        submitButton.textContent = 'Quero construir minha fonte de oportunidades ↗';
+        submitButton.textContent = "Quero construir minha fonte de oportunidades ↗";
       }
     });
   </script>
