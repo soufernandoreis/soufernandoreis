@@ -45,13 +45,6 @@
       overscroll-behavior-x: none;
     }
 
-    img,
-    video,
-    iframe {
-      max-width: 100%;
-      display: block;
-    }
-
     button,
     input {
       font-family: inherit;
@@ -152,7 +145,6 @@
       font-weight: 900;
       margin: 0 auto 28px;
       overflow-wrap: break-word;
-      word-break: normal;
     }
 
     h1 span {
@@ -304,17 +296,32 @@
       box-shadow: 0 0 54px rgba(255, 0, 85, 0.58);
     }
 
+    .lead-form button:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .form-message {
       display: none;
       margin-top: 22px;
       text-align: center;
       color: var(--white);
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       font-weight: 700;
+      line-height: 1.5;
     }
 
     .form-message.active {
       display: block;
+    }
+
+    .form-message.success {
+      color: #ffffff;
+    }
+
+    .form-message.error {
+      color: #ff7a9f;
     }
 
     .section {
@@ -555,7 +562,7 @@
             <input type="text" id="instagram" name="instagram" placeholder="@seuinstagram" required>
             <input type="tel" id="telefone" name="telefone" placeholder="WhatsApp com DDD" required>
 
-            <button type="submit">
+            <button type="submit" id="submitButton">
               Quero construir minha fonte de oportunidades ↗
             </button>
           </form>
@@ -617,11 +624,32 @@
     </footer>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script>
+    const SUPABASE_URL = "https://vuztkuyakgiylfvzhzcd.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_FEmdo8ReamngQFgKjZL-MA_l2ysWIBV";
+
+    const supabaseClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
     const leadForm = document.getElementById('leadForm');
     const formMessage = document.getElementById('formMessage');
+    const submitButton = document.getElementById('submitButton');
 
-    leadForm.addEventListener('submit', function(event) {
+    function showMessage(message, type) {
+      formMessage.textContent = message;
+      formMessage.classList.remove('success', 'error');
+      formMessage.classList.add('active');
+
+      if (type) {
+        formMessage.classList.add(type);
+      }
+    }
+
+    leadForm.addEventListener('submit', async function(event) {
       event.preventDefault();
 
       const nome = document.getElementById('nome').value.trim();
@@ -629,31 +657,45 @@
       const telefone = document.getElementById('telefone').value.trim();
 
       if (!nome || !instagram || !telefone) {
-        formMessage.textContent = 'Preencha todos os campos antes de enviar.';
-        formMessage.classList.add('active');
+        showMessage('Preencha todos os campos antes de enviar.', 'error');
         return;
       }
 
-      /*
-        INTEGRAÇÃO FUTURA COM SUPABASE
+      submitButton.disabled = true;
+      submitButton.textContent = 'Enviando...';
 
-        Campos previstos:
-        - nome
-        - instagram
-        - telefone
-        - created_at
-      */
+      try {
+        const { error } = await supabaseClient
+          .from('leads')
+          .insert([
+            {
+              nome: nome,
+              instagram: instagram,
+              telefone: telefone,
+              origem: 'landing_page'
+            }
+          ]);
 
-      console.log({
-        nome,
-        instagram,
-        telefone
-      });
+        if (error) {
+          throw error;
+        }
 
-      formMessage.textContent = 'Cadastro recebido. Em breve entraremos em contato.';
-      formMessage.classList.add('active');
+        showMessage('Cadastro recebido. Em breve entraremos em contato.', 'success');
 
-      leadForm.reset();
+        leadForm.reset();
+
+      } catch (error) {
+        console.error('Erro ao enviar lead:', error);
+
+        showMessage(
+          'Erro ao enviar. Tente novamente em alguns instantes.',
+          'error'
+        );
+
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Quero construir minha fonte de oportunidades ↗';
+      }
     });
   </script>
 </body>
