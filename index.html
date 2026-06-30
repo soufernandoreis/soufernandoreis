@@ -2,744 +2,1395 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Domine as Redes Sociais</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title id="pageTitle">Landing Page Premium</title>
+  <meta name="description" content="Landing page premium para campanhas de Meta Ads com foco em WhatsApp." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://seudominio.com.br/" />
+
+  <meta property="og:title" content="Landing Page Premium" />
+  <meta property="og:description" content="Campanha premium focada em conversão pelo WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://seudominio.com.br/" />
+  <meta property="og:image" content="assets/images/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Landing Page Premium" />
+  <meta name="twitter:description" content="Campanha premium focada em conversão pelo WhatsApp." />
+  <meta name="twitter:image" content="assets/images/og-image.jpg" />
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg: #f7f8fb;
+      --surface: #ffffff;
+      --surface-2: #f1f3f7;
+      --text: #111827;
+      --muted: #667085;
+      --primary: #111827;
+      --secondary: #2563eb;
+      --accent: #16a34a;
+      --border: rgba(17, 24, 39, .10);
+      --shadow: 0 20px 60px rgba(15, 23, 42, .10);
+      --radius: 24px;
+      --font: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    :root {
-      --bg: #050505;
-      --bg-soft: #0d0d0d;
-      --white: #ffffff;
-      --gray: #b7b7b7;
-      --gray-dark: #777777;
-      --accent: #ff0055;
-      --accent-hover: #ff2f73;
-      --border: rgba(255, 255, 255, 0.12);
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
-      width: 100%;
-      min-height: 100%;
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
 
     body {
-      width: 100%;
-      min-height: 100dvh;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       background: var(--bg);
-      color: var(--white);
+      color: var(--text);
       overflow-x: hidden;
-      position: relative;
-      overscroll-behavior-x: none;
-    }
-
-    button,
-    input {
-      font-family: inherit;
-    }
-
-    .page {
-      width: 100%;
-      min-height: 100dvh;
-      overflow-x: hidden;
-      background:
-        radial-gradient(circle at top center, rgba(255, 0, 85, 0.22), transparent 32%),
-        linear-gradient(180deg, #050505 0%, #090909 100%);
-    }
-
-    .container {
-      width: 100%;
-      max-width: 430px;
-      margin: 0 auto;
-      padding-left: 18px;
-      padding-right: 18px;
-    }
-
-    header {
-      width: 100%;
-      padding: 22px 0;
-      overflow-x: hidden;
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 0.9rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.04em;
-      white-space: nowrap;
-    }
-
-    .header-cta {
-      display: none;
-      color: var(--white);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 800;
-      border: 1px solid var(--border);
-      padding: 12px 20px;
-      border-radius: 999px;
-      transition: 0.3s ease;
-      white-space: nowrap;
-    }
-
-    .header-cta:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .hero {
-      width: 100%;
-      padding: 52px 0 64px;
-      text-align: center;
-      overflow-x: hidden;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 24px;
-      color: var(--accent);
-      font-size: 0.68rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      max-width: 100%;
-    }
-
-    .eyebrow::before {
-      content: "";
-      flex: 0 0 auto;
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 22px var(--accent);
-    }
-
-    h1 {
-      width: 100%;
-      max-width: 100%;
-      font-size: clamp(2.65rem, 13.5vw, 3.9rem);
-      line-height: 0.92;
-      letter-spacing: -0.055em;
-      font-weight: 900;
-      margin: 0 auto 28px;
-      overflow-wrap: break-word;
-    }
-
-    h1 span {
-      display: block;
-      color: var(--accent);
-    }
-
-    .intro {
-      width: 100%;
-      max-width: 100%;
-      margin: 0 auto;
-      color: var(--gray);
-      font-size: 1rem;
-      line-height: 1.55;
-      font-weight: 500;
-    }
-
-    .intro strong {
-      color: var(--white);
-      font-weight: 800;
-    }
-
-    .copy-box {
-      width: 100%;
-      max-width: 100%;
-      margin: 34px auto 0;
-      padding: 24px 20px;
-      background: rgba(255, 255, 255, 0.045);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      backdrop-filter: blur(16px);
-      text-align: left;
-      overflow: hidden;
-    }
-
-    .copy-box p {
-      color: var(--gray);
-      font-size: 0.96rem;
-      line-height: 1.65;
-      margin-bottom: 20px;
-    }
-
-    .copy-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    .copy-box strong {
-      color: var(--white);
-    }
-
-    .form-section {
-      width: 100%;
-      padding: 36px 0 72px;
-      overflow-x: hidden;
-    }
-
-    .form-wrapper {
-      width: 100%;
-      max-width: 100%;
-      padding: 30px 18px;
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at top right, rgba(255, 0, 85, 0.18), transparent 36%),
-        #0b0b0b;
-      border: 1px solid var(--border);
-      box-shadow: 0 30px 120px rgba(0, 0, 0, 0.45);
-      overflow: hidden;
-    }
-
-    .form-title {
-      width: 100%;
-      max-width: 100%;
-      font-size: clamp(2rem, 11vw, 3rem);
-      line-height: 0.95;
-      letter-spacing: -0.055em;
-      font-weight: 900;
-      text-align: center;
-      margin-bottom: 18px;
-      overflow-wrap: break-word;
-    }
-
-    .form-title span {
-      color: var(--accent);
-      display: block;
-    }
-
-    .form-subtitle {
-      max-width: 100%;
-      margin: 0 auto 32px;
-      text-align: center;
-      color: var(--gray);
-      font-size: 0.96rem;
-      line-height: 1.6;
-    }
-
-    .lead-form {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin: 0 auto;
-    }
-
-    .lead-form input {
-      width: 100%;
-      max-width: 100%;
-      min-height: 58px;
-      padding: 0 20px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--white);
-      font-size: 0.9rem;
-      font-weight: 600;
-      outline: none;
-      transition: 0.3s ease;
-    }
-
-    .lead-form input::placeholder {
-      color: #8a8a8a;
-    }
-
-    .lead-form input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 4px rgba(255, 0, 85, 0.12);
-    }
-
-    .lead-form button {
-      width: 100%;
-      max-width: 100%;
-      min-height: 58px;
-      padding: 14px 20px;
-      border: none;
-      border-radius: 999px;
-      background: var(--accent);
-      color: var(--white);
-      font-size: 0.9rem;
-      line-height: 1.25;
-      font-weight: 900;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 0 36px rgba(255, 0, 85, 0.42);
-      transition: 0.3s ease;
-    }
-
-    .lead-form button:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 0 54px rgba(255, 0, 85, 0.58);
-    }
-
-    .lead-form button:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .form-message {
-      display: none;
-      margin-top: 22px;
-      text-align: center;
-      color: var(--white);
-      font-size: 0.95rem;
-      font-weight: 700;
       line-height: 1.5;
     }
 
-    .form-message.active {
+    img, iframe {
+      max-width: 100%;
       display: block;
     }
 
-    .form-message.success {
-      color: #ffffff;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .form-message.error {
-      color: #ff7a9f;
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
     }
 
     .section {
-      width: 100%;
       padding: 72px 0;
-      overflow-x: hidden;
     }
 
-    .section-title {
-      width: 100%;
-      max-width: 100%;
-      font-size: clamp(2rem, 10vw, 3rem);
-      line-height: 1;
-      letter-spacing: -0.055em;
-      font-weight: 900;
-      margin-bottom: 22px;
-      text-align: center;
-      overflow-wrap: break-word;
-    }
-
-    .section-title span {
-      color: var(--accent);
-    }
-
-    .section-subtitle {
-      max-width: 100%;
-      margin: 0 auto 36px;
-      text-align: center;
-      color: var(--gray);
-      font-size: 0.96rem;
-      line-height: 1.6;
-    }
-
-    .cards {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 100%;
-      background: var(--bg-soft);
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
       border: 1px solid var(--border);
-      border-radius: 26px;
-      padding: 28px 24px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      backdrop-filter: blur(12px);
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-weight: 800;
+      border: 0;
+      cursor: pointer;
+      box-shadow: 0 16px 40px rgba(22, 163, 74, .26);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 50px rgba(22, 163, 74, .34);
+    }
+
+    .btn.secondary {
+      background: var(--primary);
+      box-shadow: 0 16px 40px rgba(17, 24, 39, .18);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 248, 251, .82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -.03em;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      object-fit: cover;
+      background: var(--primary);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .hero {
+      position: relative;
+      padding: 72px 0 56px;
       overflow: hidden;
     }
 
-    .card-number {
-      color: var(--accent);
-      font-size: 0.9rem;
-      font-weight: 900;
-      margin-bottom: 18px;
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 560px;
+      height: 560px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(37,99,235,.14), transparent 68%);
+      right: -220px;
+      top: -180px;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      margin-top: 18px;
+      font-size: clamp(38px, 9vw, 76px);
+      line-height: .95;
+      letter-spacing: -.07em;
+      max-width: 900px;
+    }
+
+    .hero-copy p {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: clamp(17px, 4vw, 22px);
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .trust {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .trust-item {
+      background: rgba(255,255,255,.76);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 22px;
+      letter-spacing: -.04em;
+    }
+
+    .trust-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .hero-media {
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(30px, 6vw, 52px);
+      line-height: 1;
+      letter-spacing: -.06em;
+    }
+
+    .section-title p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .cards-3 {
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 8px 30px rgba(15,23,42,.05);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--surface-2);
+      font-size: 22px;
+      margin-bottom: 16px;
     }
 
     .card h3 {
-      font-size: 1.35rem;
-      line-height: 1.2;
-      letter-spacing: -0.04em;
-      margin-bottom: 14px;
+      font-size: 20px;
+      letter-spacing: -.03em;
+      margin-bottom: 8px;
     }
 
-    .card p {
-      color: var(--gray);
-      line-height: 1.65;
-      font-size: 0.98rem;
+    .card p, .card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .video-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 32px;
+      background: #000;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .video-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      background: var(--surface-2);
+    }
+
+    .product-card ul {
+      margin: 14px 0 18px 18px;
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform .35s ease;
+    }
+
+    .testimonial {
+      min-width: 100%;
+      padding: 4px;
+    }
+
+    .testimonial-inner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 8px 30px rgba(15,23,42,.05);
+    }
+
+    .stars {
+      color: #f59e0b;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .carousel-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .circle-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 18px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 20px;
+      background: transparent;
+      border: 0;
+      text-align: left;
+      font-weight: 800;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 16px;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 20px;
+      color: var(--muted);
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .final-cta {
+      background: linear-gradient(135deg, var(--primary), #020617);
+      color: white;
+      border-radius: 36px;
+      padding: 42px 26px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .final-cta h2 {
+      font-size: clamp(30px, 7vw, 56px);
+      line-height: 1;
+      letter-spacing: -.06em;
+      margin-bottom: 16px;
+    }
+
+    .final-cta p {
+      color: rgba(255,255,255,.72);
+      max-width: 640px;
+      margin: 0 auto 24px;
+      font-size: 18px;
     }
 
     footer {
-      width: 100%;
-      padding: 28px 0;
+      padding: 36px 0;
+      color: var(--muted);
+      font-size: 14px;
       border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--gray-dark);
-      font-size: 0.85rem;
-      overflow-x: hidden;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .cookie-banner {
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      z-index: 100;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display: none;
+    }
+
+    .cookie-banner.active {
+      display: block;
+    }
+
+    .cookie-banner p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    [data-animate].visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     @media (min-width: 768px) {
-      .container {
-        max-width: 720px;
-        padding-left: 32px;
-        padding-right: 32px;
+      .nav-links {
+        display: flex;
       }
 
-      .header-cta {
-        display: inline-flex;
+      .hero-grid {
+        grid-template-columns: 1.05fr .95fr;
       }
 
-      .hero {
-        padding-top: 70px;
-        padding-bottom: 100px;
+      .hero-actions {
+        flex-direction: row;
       }
 
-      h1 {
-        font-size: clamp(4.5rem, 8vw, 6.8rem);
-        letter-spacing: -0.075em;
+      .trust {
+        grid-template-columns: repeat(4, 1fr);
       }
 
-      .intro {
-        max-width: 760px;
-        font-size: 1.18rem;
-      }
-
-      .copy-box {
-        padding: 36px;
-        border-radius: 30px;
-      }
-
-      .copy-box p {
-        font-size: 1.05rem;
-        line-height: 1.75;
-      }
-
-      .form-section {
-        padding-top: 80px;
-        padding-bottom: 110px;
-      }
-
-      .form-wrapper {
-        padding: 56px;
-        border-radius: 40px;
-      }
-
-      .form-title {
-        font-size: clamp(3rem, 5vw, 4.5rem);
-        letter-spacing: -0.07em;
-      }
-
-      .form-subtitle {
-        max-width: 640px;
-        font-size: 1.08rem;
-        margin-bottom: 42px;
-      }
-
-      .lead-form {
-        max-width: 720px;
-        gap: 16px;
-      }
-
-      .lead-form input,
-      .lead-form button {
-        min-height: 64px;
-        font-size: 1rem;
-      }
-
-      .section {
-        padding-top: 100px;
-        padding-bottom: 100px;
-      }
-
-      .section-title {
-        font-size: clamp(3rem, 4vw, 4rem);
-        letter-spacing: -0.06em;
-      }
-
-      .section-subtitle {
-        max-width: 680px;
-        font-size: 1.1rem;
-        margin-bottom: 56px;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .container {
-        max-width: 1100px;
-      }
-
-      .cards {
+      .cards-3 {
         grid-template-columns: repeat(3, 1fr);
-        gap: 22px;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+      }
+
+      .cookie-banner {
+        width: 420px;
+        left: auto;
       }
     }
   </style>
+
+  <script type="application/ld+json" id="schemaJson"></script>
 </head>
 
 <body>
-  <main class="page">
-    <header>
-      <div class="container header-inner">
-        <div class="logo">Marketing Digital</div>
-        <a href="#formulario" class="header-cta">Preencher formulário</a>
-      </div>
-    </header>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand" data-event="nav_logo">
+        <img class="brand-logo" id="brandLogo" alt="Logo da empresa" loading="eager" />
+        <span id="brandName">Empresa</span>
+      </a>
 
+      <nav class="nav-links">
+        <a href="#beneficios">Benefícios</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#faq">FAQ</a>
+        <a href="#" data-whatsapp>WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
     <section class="hero">
-      <div class="container">
-        <div class="eyebrow">Estratégia, método e execução</div>
+      <div class="container hero-grid">
+        <div class="hero-copy" data-animate>
+          <span class="pill" id="heroPill">Atendimento rápido pelo WhatsApp</span>
+          <h1 id="headline">Headline principal da campanha</h1>
+          <p id="subheadline">Subheadline clara, persuasiva e focada na conversão.</p>
 
-        <h1>
-          DOMINE AS REDES SOCIAIS
-          <span>E CONSTRUA SUA PRÓPRIA FONTE DE OPORTUNIDADES.</span>
-        </h1>
+          <div class="hero-actions">
+            <a href="#" class="btn" data-whatsapp data-product="principal" id="heroCta">Chamar no WhatsApp</a>
+            <a href="#produtos" class="btn secondary" data-track-click="products_anchor">Ver produtos</a>
+          </div>
 
-        <p class="intro">
-          As redes sociais podem ser uma das ferramentas mais poderosas para gerar
-          <strong>autoridade, conexões, clientes e novas oportunidades de crescimento.</strong>
-        </p>
+          <div class="trust" id="trustIndicators"></div>
+        </div>
 
-        <div class="copy-box">
-          <p><strong>Mas isso não acontece por acaso.</strong></p>
-
-          <p>
-            Se você está procurando fórmulas mágicas, atalhos ou resultados sem esforço,
-            provavelmente meu trabalho não é para você.
-          </p>
-
-          <p>
-            Agora, se você entende que resultados consistentes são construídos com
-            estratégia, método e execução, então estamos falando a mesma língua.
-          </p>
-
-          <p>
-            Meu foco é ajudar pessoas que valorizam processos eficientes, decisões inteligentes
-            e um trabalho contínuo que gera crescimento real ao longo do tempo.
-          </p>
+        <div class="hero-media" data-animate>
+          <img id="heroImage" alt="Imagem principal" loading="eager" fetchpriority="high" />
         </div>
       </div>
     </section>
 
-    <section class="form-section" id="formulario">
+    <section class="section" id="beneficios">
       <div class="container">
-        <div class="form-wrapper">
-          <h2 class="form-title">
-            SE ESSE É O SEU PERFIL,
-            <span>PREENCHA O FORMULÁRIO.</span>
-          </h2>
+        <div class="section-title" data-animate>
+          <h2 id="benefitsTitle">Por que escolher?</h2>
+          <p id="benefitsSubtitle">Benefícios objetivos para aumentar confiança e intenção de compra.</p>
+        </div>
 
-          <p class="form-subtitle">
-            Informe seus dados abaixo para avaliarmos se faz sentido trabalharmos juntos.
-            O contato será feito pelo WhatsApp ou Instagram informado.
-          </p>
+        <div class="grid cards-3" id="benefitsGrid"></div>
+      </div>
+    </section>
 
-          <form class="lead-form" id="leadForm">
-            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
-            <input type="text" id="instagram" name="instagram" placeholder="@seuinstagram" required>
-            <input type="tel" id="telefone" name="telefone" placeholder="WhatsApp com DDD" required>
+    <section class="section" id="videoSection">
+      <div class="container">
+        <div class="section-title" data-animate>
+          <h2 id="videoTitle">Veja antes de comprar</h2>
+          <p id="videoSubtitle">Use vídeo para aumentar retenção, confiança e intenção.</p>
+        </div>
 
-            <button type="submit" id="submitButton">
-              Quero construir minha fonte de oportunidades ↗
-            </button>
-          </form>
+        <div class="video-box" data-animate id="videoWrapper"></div>
+      </div>
+    </section>
 
-          <div class="form-message" id="formMessage">
-            Cadastro recebido. Em breve entraremos em contato.
+    <section class="section" id="produtos">
+      <div class="container">
+        <div class="section-title" data-animate>
+          <h2 id="productsTitle">Produtos em destaque</h2>
+          <p id="productsSubtitle">Cards configuráveis para qualquer cliente.</p>
+        </div>
+
+        <div class="grid products-grid" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonialsSection">
+      <div class="container">
+        <div class="section-title" data-animate>
+          <h2 id="testimonialsTitle">Quem comprou, recomenda</h2>
+          <p id="testimonialsSubtitle">Prova social para reduzir objeções.</p>
+        </div>
+
+        <div class="carousel" data-animate>
+          <div class="carousel-track" id="carouselTrack"></div>
+          <div class="carousel-actions">
+            <button class="circle-btn" id="prevTestimonial" aria-label="Depoimento anterior">‹</button>
+            <button class="circle-btn" id="nextTestimonial" aria-label="Próximo depoimento">›</button>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="faqSection">
+      <div class="container">
+        <div class="section-title" data-animate>
+          <h2 id="faqTitle">Perguntas frequentes</h2>
+          <p id="faqSubtitle">Respostas rápidas para as principais dúvidas.</p>
+        </div>
+
+        <div id="faqList" data-animate></div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">
-          Redes sociais não são sobre postar mais.
-          <span>São sobre postar com direção.</span>
-        </h2>
-
-        <p class="section-subtitle">
-          O objetivo não é apenas aparecer. É construir uma presença digital capaz de atrair
-          as pessoas certas e transformar atenção em oportunidades reais.
-        </p>
-
-        <div class="cards">
-          <div class="card">
-            <div class="card-number">01</div>
-            <h3>Autoridade</h3>
-            <p>
-              Posicione sua imagem ou sua empresa de forma mais clara, estratégica e confiável
-              para o público que você deseja alcançar.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card-number">02</div>
-            <h3>Consistência</h3>
-            <p>
-              Aprenda a construir uma rotina de conteúdo com método, sem depender apenas de
-              inspiração, tendências ou improviso.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card-number">03</div>
-            <h3>Oportunidades</h3>
-            <p>
-              Use as redes sociais como uma ferramenta para gerar conexões, clientes,
-              propostas, vendas e crescimento real.
-            </p>
-          </div>
+        <div class="final-cta" data-animate>
+          <h2 id="finalCtaTitle">Pronto para comprar?</h2>
+          <p id="finalCtaText">Clique no botão abaixo e fale com nossa equipe pelo WhatsApp.</p>
+          <a href="#" class="btn" data-whatsapp data-product="cta_final" id="finalCtaButton">Chamar no WhatsApp</a>
         </div>
       </div>
     </section>
-
-    <footer>
-      <div class="container">
-        © 2026 — Todos os direitos reservados.
-      </div>
-    </footer>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong id="footerCompany">Empresa</strong>
+        <div id="footerAddress">Endereço da empresa</div>
+      </div>
+
+      <div>
+        <a href="#" id="footerInstagram" target="_blank" rel="noopener">Instagram</a>
+        ·
+        <a href="#" id="footerMap" target="_blank" rel="noopener" data-track-click="map">Mapa</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Usamos dados de navegação para melhorar sua experiência e mensurar campanhas.</p>
+    <button class="btn" id="acceptCookies">Aceitar</button>
+  </div>
 
   <script>
-    const SUPABASE_URL = "https://vuztkuyakgiylfvzhzcd.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_FEmdo8ReamngQFgKjZL-MA_l2ysWIBV";
+    const CONFIG = {
+      FLAGS: {
+        ENABLE_PIXEL: true,
+        ENABLE_GA4: false,
+        ENABLE_SCROLL_EVENTS: true,
+        ENABLE_TIME_EVENTS: true,
+        ENABLE_FAQ: true,
+        ENABLE_TESTIMONIALS: true,
+        ENABLE_VIDEO: true,
+        ENABLE_PRODUCTS: true,
+        ENABLE_WHATSAPP_TRACKING: true,
+        ENABLE_LOCAL_STORAGE: true,
+        ENABLE_UTM_CAPTURE: true,
+        ENABLE_FBCLID: true,
+        ENABLE_GCLID: true,
+        ENABLE_TTCLID: true,
+        ENABLE_SUPABASE: false,
+        ENABLE_N8N: false,
+        ENABLE_CONVERSIONS_API: false,
+        ENABLE_LINKEDIN_PIXEL: false,
+        ENABLE_TIKTOK_PIXEL: false,
+        ENABLE_GOOGLE_TAG_MANAGER: false,
+        ENABLE_COOKIE_BANNER: true,
+        ENABLE_DARK_MODE: false,
+        ENABLE_DEBUG_MODE: true
+      },
 
-    const TELEGRAM_BOT_TOKEN = "8927822938:AAGP0bEkEYD_gK0iOSkm_yGPTeRN7wWwdx0";
-    const TELEGRAM_CHAT_ID = "5893824296";
+      CLIENT: {
+        companyName: "Base Nutrição Esportiva",
+        logo: "https://placehold.co/120x120/111827/ffffff?text=BASE",
+        phone: "+55 62 98233-1156",
+        whatsappNumber: "5562982331156",
+        instagram: "https://instagram.com/",
+        facebook: "https://facebook.com/",
+        address: "Goiânia, GO",
+        mapUrl: "https://maps.google.com/",
+        canonicalUrl: "https://seudominio.com.br/",
+        pageTitle: "Base Nutrição Esportiva | Suplementos em Goiânia",
+        metaDescription: "Suplementos para energia, performance, emagrecimento e ganho de massa muscular. Atendimento rápido pelo WhatsApp."
+      },
 
-    const supabaseClient = supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
-
-    const leadForm = document.getElementById("leadForm");
-    const formMessage = document.getElementById("formMessage");
-    const submitButton = document.getElementById("submitButton");
-
-    function showMessage(message, type) {
-      formMessage.textContent = message;
-      formMessage.classList.remove("success", "error");
-      formMessage.classList.add("active");
-
-      if (type) {
-        formMessage.classList.add(type);
-      }
-    }
-
-    async function sendTelegramMessage(nome, instagram, telefone) {
-      const message = `
-🔥 NOVO LEAD
-
-👤 Nome:
-${nome}
-
-📸 Instagram:
-${instagram}
-
-📱 WhatsApp:
-${telefone}
-
-📌 Origem:
-Landing Page
-`;
-
-      const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-
-      const response = await fetch(telegramUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
+      BRAND: {
+        colors: {
+          bg: "#f7f8fb",
+          surface: "#ffffff",
+          surface2: "#f1f3f7",
+          text: "#111827",
+          muted: "#667085",
+          primary: "#111827",
+          secondary: "#2563eb",
+          accent: "#16a34a"
         },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: message
-        })
+        font: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+      },
+
+      CONTENT: {
+        heroPill: "Suplementos selecionados para seu objetivo",
+        headline: "Mais resultado no treino começa com a suplementação certa.",
+        subheadline: "Fale com nossa equipe pelo WhatsApp e receba uma indicação objetiva para energia, desempenho, emagrecimento ou ganho de massa.",
+        ctaText: "Chamar no WhatsApp",
+        heroImage: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?q=80&w=1200&auto=format&fit=crop",
+        whatsappMessage: "Olá! Vim pelo anúncio e quero saber mais sobre os suplementos.",
+
+        trustIndicators: [
+          { number: "Atendimento", label: "rápido pelo WhatsApp" },
+          { number: "Produtos", label: "selecionados" },
+          { number: "Objetivo", label: "energia e performance" },
+          { number: "Local", label: "Goiânia e região" }
+        ],
+
+        benefitsTitle: "Uma escolha mais inteligente",
+        benefitsSubtitle: "A página foi criada para reduzir dúvidas, gerar confiança e levar o cliente para o WhatsApp com mais intenção.",
+        benefits: [
+          {
+            icon: "⚡",
+            title: "Mais intenção de compra",
+            text: "Estrutura focada em Meta Ads, com CTA direto para WhatsApp e dados de origem preservados."
+          },
+          {
+            icon: "📊",
+            title: "Dados para otimização",
+            text: "Captura UTM, origem, campanha, criativo, dispositivo, navegador e comportamento do usuário."
+          },
+          {
+            icon: "🚀",
+            title: "Alta performance",
+            text: "HTML, CSS e JavaScript puro, sem frameworks pesados e com carregamento otimizado."
+          }
+        ],
+
+        video: {
+          title: "Veja a apresentação",
+          subtitle: "Use um vídeo curto para aumentar confiança antes do clique.",
+          youtubeEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        },
+
+        productsTitle: "Produtos em destaque",
+        productsSubtitle: "Configure os produtos no CONFIG sem alterar o HTML.",
+        products: [
+          {
+            id: "pre_treino_evora",
+            name: "Pré-Treino Évora",
+            image: "https://images.unsplash.com/photo-1612532774276-cfa70ca7aa35?q=80&w=900&auto=format&fit=crop",
+            description: "Mais energia, foco e intensidade para treinos mais fortes.",
+            benefits: ["Mais energia", "Mais resistência", "Mais foco"],
+            cta: "Tenho interesse"
+          },
+          {
+            id: "dimethylex",
+            name: "Dimethylex",
+            image: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=900&auto=format&fit=crop",
+            description: "Termogênico para quem busca mais disposição e suporte ao emagrecimento.",
+            benefits: ["Controle de apetite", "Queima de gordura", "Mais disposição"],
+            cta: "Quero saber mais"
+          },
+          {
+            id: "creatina",
+            name: "Creatina",
+            image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?q=80&w=900&auto=format&fit=crop",
+            description: "Suplemento essencial para força, desempenho e evolução nos treinos.",
+            benefits: ["Mais força", "Mais desempenho", "Uso diário"],
+            cta: "Pedir indicação"
+          }
+        ],
+
+        testimonialsTitle: "Depoimentos",
+        testimonialsSubtitle: "Prova social simples e direta.",
+        testimonials: [
+          {
+            name: "Cliente Base",
+            text: "Fui muito bem atendido e consegui escolher o suplemento certo para meu objetivo."
+          },
+          {
+            name: "Cliente WhatsApp",
+            text: "Cheguei pelo anúncio, chamei no WhatsApp e recebi uma indicação rápida."
+          },
+          {
+            name: "Cliente Local",
+            text: "Gostei da praticidade. Atendimento objetivo e produtos de qualidade."
+          }
+        ],
+
+        faqTitle: "Dúvidas frequentes",
+        faqSubtitle: "Responda objeções antes do lead chamar no WhatsApp.",
+        faq: [
+          {
+            question: "Como faço para comprar?",
+            answer: "Clique no botão de WhatsApp e fale com nossa equipe. Vamos confirmar disponibilidade e forma de entrega ou retirada."
+          },
+          {
+            question: "Vocês indicam o suplemento ideal?",
+            answer: "Sim. Informe seu objetivo, rotina de treino e preferência. A equipe indica uma opção mais adequada."
+          },
+          {
+            question: "Atendem Goiânia e região?",
+            answer: "Sim. O atendimento pode ser feito pelo WhatsApp, com orientação conforme a região."
+          }
+        ],
+
+        finalCtaTitle: "Fale agora com nossa equipe",
+        finalCtaText: "Clique no botão abaixo, diga seu objetivo e receba uma indicação pelo WhatsApp."
+      },
+
+      INTEGRATIONS: {
+        metaPixelId: "000000000000000",
+        ga4Id: "",
+        gtmId: "",
+        tikTokPixelId: "",
+        linkedinPartnerId: "",
+        supabaseUrl: "",
+        supabaseAnonKey: "",
+        n8nWebhookUrl: "",
+        conversionsApiEndpoint: ""
+      }
+    };
+
+    const Utils = (() => {
+      const log = (...args) => {
+        if (CONFIG.FLAGS.ENABLE_DEBUG_MODE) console.log("[LandingLab]", ...args);
+      };
+
+      const qs = (selector, scope = document) => scope.querySelector(selector);
+      const qsa = (selector, scope = document) => [...scope.querySelectorAll(selector)];
+
+      const getParam = (key) => new URLSearchParams(window.location.search).get(key);
+
+      const safeJson = (data) => {
+        try { return JSON.stringify(data); } catch { return "{}"; }
+      };
+
+      const now = () => new Date().toISOString();
+
+      const device = () => ({
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        platform: navigator.platform,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        screen: `${window.screen.width}x${window.screen.height}`,
+        viewport: `${window.innerWidth}x${window.innerHeight}`
       });
 
-      if (!response.ok) {
-        throw new Error("Erro ao enviar mensagem para o Telegram");
-      }
-    }
+      return { log, qs, qsa, getParam, safeJson, now, device };
+    })();
 
-    leadForm.addEventListener("submit", async function(event) {
-      event.preventDefault();
+    const Storage = (() => {
+      const KEY = "landing_lab_data";
 
-      const nome = document.getElementById("nome").value.trim();
-      const instagram = document.getElementById("instagram").value.trim();
-      const telefone = document.getElementById("telefone").value.trim();
+      const get = () => {
+        if (!CONFIG.FLAGS.ENABLE_LOCAL_STORAGE) return {};
+        try {
+          return JSON.parse(localStorage.getItem(KEY)) || {};
+        } catch {
+          return {};
+        }
+      };
 
-      if (!nome || !instagram || !telefone) {
-        showMessage("Preencha todos os campos antes de enviar.", "error");
-        return;
-      }
+      const set = (payload) => {
+        if (!CONFIG.FLAGS.ENABLE_LOCAL_STORAGE) return;
+        const current = get();
+        localStorage.setItem(KEY, JSON.stringify({ ...current, ...payload }));
+      };
 
-      submitButton.disabled = true;
-      submitButton.textContent = "Enviando...";
+      const pushEvent = (event) => {
+        if (!CONFIG.FLAGS.ENABLE_LOCAL_STORAGE) return;
+        const current = get();
+        const events = current.events || [];
+        events.push(event);
+        set({ events });
+      };
 
-      try {
-        const { error } = await supabaseClient
-          .from("leads")
-          .insert([
-            {
-              nome: nome,
-              instagram: instagram,
-              telefone: telefone,
-              origem: "landing_page"
-            }
-          ]);
+      return { get, set, pushEvent };
+    })();
 
-        if (error) {
-          throw error;
+    const UTM = (() => {
+      const capture = () => {
+        const data = {
+          utm_source: Utils.getParam("utm_source"),
+          utm_medium: Utils.getParam("utm_medium"),
+          utm_campaign: Utils.getParam("utm_campaign"),
+          utm_content: Utils.getParam("utm_content"),
+          utm_term: Utils.getParam("utm_term"),
+          origin: document.referrer || "direct"
+        };
+
+        if (CONFIG.FLAGS.ENABLE_FBCLID) data.fbclid = Utils.getParam("fbclid");
+        if (CONFIG.FLAGS.ENABLE_GCLID) data.gclid = Utils.getParam("gclid");
+        if (CONFIG.FLAGS.ENABLE_TTCLID) data.ttclid = Utils.getParam("ttclid");
+
+        Storage.set({
+          acquisition: data,
+          device: Utils.device(),
+          capturedAt: Utils.now()
+        });
+
+        Utils.log("UTM captured", data);
+        return data;
+      };
+
+      return { capture };
+    })();
+
+    const Pixel = (() => {
+      const init = () => {
+        if (!CONFIG.FLAGS.ENABLE_PIXEL || !CONFIG.INTEGRATIONS.metaPixelId) return;
+
+        !(function(f,b,e,v,n,t,s){
+          if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)
+        })(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+        fbq("init", CONFIG.INTEGRATIONS.metaPixelId);
+        fbq("track", "PageView");
+      };
+
+      const track = (name, params = {}) => {
+        if (CONFIG.FLAGS.ENABLE_PIXEL && typeof fbq === "function") {
+          fbq("track", name, params);
+        }
+      };
+
+      const custom = (name, params = {}) => {
+        if (CONFIG.FLAGS.ENABLE_PIXEL && typeof fbq === "function") {
+          fbq("trackCustom", name, params);
+        }
+      };
+
+      return { init, track, custom };
+    })();
+
+    const Analytics = (() => {
+      const send = async (name, payload = {}) => {
+        const event = {
+          name,
+          payload,
+          timestamp: Utils.now(),
+          url: window.location.href,
+          path: window.location.pathname
+        };
+
+        Storage.pushEvent(event);
+        Utils.log("Event", event);
+
+        if (CONFIG.FLAGS.ENABLE_N8N && CONFIG.INTEGRATIONS.n8nWebhookUrl) {
+          try {
+            await fetch(CONFIG.INTEGRATIONS.n8nWebhookUrl, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(event)
+            });
+          } catch (error) {
+            Utils.log("N8N error", error);
+          }
         }
 
-        await sendTelegramMessage(nome, instagram, telefone);
+        if (CONFIG.FLAGS.ENABLE_SUPABASE) {
+          Utils.log("Supabase prepared", event);
+        }
 
-        showMessage(
-          "Cadastro recebido. Em breve entraremos em contato.",
-          "success"
-        );
+        if (CONFIG.FLAGS.ENABLE_CONVERSIONS_API) {
+          Utils.log("Conversions API prepared", event);
+        }
+      };
 
-        leadForm.reset();
+      const viewContent = () => {
+        Pixel.track("ViewContent", {
+          content_name: CONFIG.CLIENT.companyName
+        });
+        send("ViewContent", { company: CONFIG.CLIENT.companyName });
+      };
 
-      } catch (error) {
-        console.error("Erro ao enviar lead:", error);
+      const lead = (payload = {}) => {
+        Pixel.track("Lead", payload);
+        send("Lead", payload);
+      };
 
-        showMessage(
-          "Erro ao enviar. Tente novamente em alguns instantes.",
-          "error"
-        );
+      return { send, viewContent, lead };
+    })();
 
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = "Quero construir minha fonte de oportunidades ↗";
-      }
-    });
+    const Renderer = (() => {
+      const applyTheme = () => {
+        const colors = CONFIG.BRAND.colors;
+        Object.entries(colors).forEach(([key, value]) => {
+          const cssKey = key === "surface2" ? "surface-2" : key;
+          document.documentElement.style.setProperty(`--${cssKey}`, value);
+        });
+        document.documentElement.style.setProperty("--font", CONFIG.BRAND.font);
+      };
+
+      const renderSeo = () => {
+        document.title = CONFIG.CLIENT.pageTitle;
+        Utils.qs('meta[name="description"]').setAttribute("content", CONFIG.CLIENT.metaDescription);
+        Utils.qs('link[rel="canonical"]').setAttribute("href", CONFIG.CLIENT.canonicalUrl);
+
+        Utils.qs('meta[property="og:title"]').setAttribute("content", CONFIG.CLIENT.pageTitle);
+        Utils.qs('meta[property="og:description"]').setAttribute("content", CONFIG.CLIENT.metaDescription);
+        Utils.qs('meta[property="og:url"]').setAttribute("content", CONFIG.CLIENT.canonicalUrl);
+
+        Utils.qs('meta[name="twitter:title"]').setAttribute("content", CONFIG.CLIENT.pageTitle);
+        Utils.qs('meta[name="twitter:description"]').setAttribute("content", CONFIG.CLIENT.metaDescription);
+
+        const schema = {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": CONFIG.CLIENT.companyName,
+          "telephone": CONFIG.CLIENT.phone,
+          "address": CONFIG.CLIENT.address,
+          "url": CONFIG.CLIENT.canonicalUrl,
+          "sameAs": [CONFIG.CLIENT.instagram, CONFIG.CLIENT.facebook]
+        };
+
+        Utils.qs("#schemaJson").textContent = JSON.stringify(schema);
+      };
+
+      const renderContent = () => {
+        const C = CONFIG.CONTENT;
+
+        Utils.qs("#brandLogo").src = CONFIG.CLIENT.logo;
+        Utils.qs("#brandName").textContent = CONFIG.CLIENT.companyName;
+        Utils.qs("#heroPill").textContent = C.heroPill;
+        Utils.qs("#headline").textContent = C.headline;
+        Utils.qs("#subheadline").textContent = C.subheadline;
+        Utils.qs("#heroCta").textContent = C.ctaText;
+        Utils.qs("#heroImage").src = C.heroImage;
+
+        Utils.qs("#benefitsTitle").textContent = C.benefitsTitle;
+        Utils.qs("#benefitsSubtitle").textContent = C.benefitsSubtitle;
+
+        Utils.qs("#productsTitle").textContent = C.productsTitle;
+        Utils.qs("#productsSubtitle").textContent = C.productsSubtitle;
+
+        Utils.qs("#testimonialsTitle").textContent = C.testimonialsTitle;
+        Utils.qs("#testimonialsSubtitle").textContent = C.testimonialsSubtitle;
+
+        Utils.qs("#faqTitle").textContent = C.faqTitle;
+        Utils.qs("#faqSubtitle").textContent = C.faqSubtitle;
+
+        Utils.qs("#finalCtaTitle").textContent = C.finalCtaTitle;
+        Utils.qs("#finalCtaText").textContent = C.finalCtaText;
+        Utils.qs("#finalCtaButton").textContent = C.ctaText;
+
+        Utils.qs("#footerCompany").textContent = CONFIG.CLIENT.companyName;
+        Utils.qs("#footerAddress").textContent = CONFIG.CLIENT.address;
+        Utils.qs("#footerInstagram").href = CONFIG.CLIENT.instagram;
+        Utils.qs("#footerMap").href = CONFIG.CLIENT.mapUrl;
+
+        Utils.qs("#trustIndicators").innerHTML = C.trustIndicators.map(item => `
+          <div class="trust-item">
+            <strong>${item.number}</strong>
+            <span>${item.label}</span>
+          </div>
+        `).join("");
+
+        Utils.qs("#benefitsGrid").innerHTML = C.benefits.map(item => `
+          <article class="card" data-animate>
+            <div class="icon">${item.icon}</div>
+            <h3>${item.title}</h3>
+            <p>${item.text}</p>
+          </article>
+        `).join("");
+      };
+
+      return { applyTheme, renderSeo, renderContent };
+    })();
+
+    const Products = (() => {
+      const render = () => {
+        const section = Utils.qs("#produtos");
+
+        if (!CONFIG.FLAGS.ENABLE_PRODUCTS) {
+          section.classList.add("hidden");
+          return;
+        }
+
+        Utils.qs("#productsGrid").innerHTML = CONFIG.CONTENT.products.map(product => `
+          <article class="card product-card" data-animate data-product-card="${product.id}">
+            <img src="${product.image}" alt="${product.name}" loading="lazy">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <ul>
+              ${product.benefits.map(item => `<li>${item}</li>`).join("")}
+            </ul>
+            <a href="#" class="btn" data-whatsapp data-product="${product.id}">
+              ${product.cta}
+            </a>
+          </article>
+        `).join("");
+      };
+
+      return { render };
+    })();
+
+    const Video = (() => {
+      const render = () => {
+        const section = Utils.qs("#videoSection");
+
+        if (!CONFIG.FLAGS.ENABLE_VIDEO) {
+          section.classList.add("hidden");
+          return;
+        }
+
+        Utils.qs("#videoTitle").textContent = CONFIG.CONTENT.video.title;
+        Utils.qs("#videoSubtitle").textContent = CONFIG.CONTENT.video.subtitle;
+
+        Utils.qs("#videoWrapper").innerHTML = `
+          <iframe
+            src="${CONFIG.CONTENT.video.youtubeEmbedUrl}"
+            title="Vídeo da campanha"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            data-track-click="video">
+          </iframe>
+        `;
+      };
+
+      return { render };
+    })();
+
+    const FAQ = (() => {
+      const render = () => {
+        const section = Utils.qs("#faqSection");
+
+        if (!CONFIG.FLAGS.ENABLE_FAQ) {
+          section.classList.add("hidden");
+          return;
+        }
+
+        Utils.qs("#faqList").innerHTML = CONFIG.CONTENT.faq.map((item, index) => `
+          <div class="faq-item">
+            <button class="faq-question" data-faq-index="${index}">
+              ${item.question}
+              <span>+</span>
+            </button>
+            <div class="faq-answer">${item.answer}</div>
+          </div>
+        `).join("");
+
+        Utils.qsa(".faq-question").forEach(button => {
+          button.addEventListener("click", () => {
+            const item = button.closest(".faq-item");
+            item.classList.toggle("active");
+
+            Analytics.send("FAQ_Click", {
+              index: button.dataset.faqIndex,
+              question: button.textContent.trim()
+            });
+
+            Pixel.custom("FAQ_Click", {
+              question: button.textContent.trim()
+            });
+          });
+        });
+      };
+
+      return { render };
+    })();
+
+    const Carousel = (() => {
+      let index = 0;
+
+      const render = () => {
+        const section = Utils.qs("#testimonialsSection");
+
+        if (!CONFIG.FLAGS.ENABLE_TESTIMONIALS) {
+          section.classList.add("hidden");
+          return;
+        }
+
+        Utils.qs("#carouselTrack").innerHTML = CONFIG.CONTENT.testimonials.map(item => `
+          <div class="testimonial">
+            <div class="testimonial-inner">
+              <div class="stars">★★★★★</div>
+              <p>“${item.text}”</p>
+              <br>
+              <strong>${item.name}</strong>
+            </div>
+          </div>
+        `).join("");
+
+        bind();
+      };
+
+      const update = () => {
+        const track = Utils.qs("#carouselTrack");
+        track.style.transform = `translateX(-${index * 100}%)`;
+      };
+
+      const bind = () => {
+        Utils.qs("#nextTestimonial").addEventListener("click", () => {
+          index = (index + 1) % CONFIG.CONTENT.testimonials.length;
+          update();
+          Analytics.send("Testimonial_Next");
+        });
+
+        Utils.qs("#prevTestimonial").addEventListener("click", () => {
+          index = (index - 1 + CONFIG.CONTENT.testimonials.length) % CONFIG.CONTENT.testimonials.length;
+          update();
+          Analytics.send("Testimonial_Prev");
+        });
+      };
+
+      return { render };
+    })();
+
+    const WhatsApp = (() => {
+      const buildUrl = (product = "geral") => {
+        const storage = Storage.get();
+        const message = `${CONFIG.CONTENT.whatsappMessage}
+
+Produto/Interesse: ${product}
+Campanha: ${storage?.acquisition?.utm_campaign || "não informado"}
+Origem: ${storage?.acquisition?.utm_source || storage?.acquisition?.origin || "direto"}`;
+
+        return `https://wa.me/${CONFIG.CLIENT.whatsappNumber}?text=${encodeURIComponent(message)}`;
+      };
+
+      const bind = () => {
+        Utils.qsa("[data-whatsapp]").forEach(button => {
+          button.addEventListener("click", async (event) => {
+            event.preventDefault();
+
+            const product = button.dataset.product || "geral";
+
+            const payload = {
+              product,
+              clickedAt: Utils.now(),
+              acquisition: Storage.get().acquisition || {},
+              device: Storage.get().device || Utils.device()
+            };
+
+            if (CONFIG.FLAGS.ENABLE_WHATSAPP_TRACKING) {
+              Storage.set({
+                lastWhatsappClick: payload
+              });
+
+              await Analytics.lead(payload);
+              Pixel.custom("WhatsApp_Click", payload);
+            }
+
+            window.location.href = buildUrl(product);
+          });
+        });
+      };
+
+      return { bind };
+    })();
+
+    const ScrollEvents = (() => {
+      const fired = new Set();
+
+      const init = () => {
+        if (!CONFIG.FLAGS.ENABLE_SCROLL_EVENTS) return;
+
+        window.addEventListener("scroll", () => {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const percentage = Math.round((scrollTop / docHeight) * 100);
+
+          [25, 50, 75, 100].forEach(mark => {
+            if (percentage >= mark && !fired.has(mark)) {
+              fired.add(mark);
+              Analytics.send(`Scroll_${mark}`, { percentage: mark });
+              Pixel.custom(`Scroll_${mark}`, { percentage: mark });
+            }
+          });
+        }, { passive: true });
+      };
+
+      return { init };
+    })();
+
+    const TimerEvents = (() => {
+      const init = () => {
+        if (!CONFIG.FLAGS.ENABLE_TIME_EVENTS) return;
+
+        [15, 30, 60].forEach(seconds => {
+          setTimeout(() => {
+            Analytics.send(`Time_${seconds}s`, { seconds });
+            Pixel.custom(`Time_${seconds}s`, { seconds });
+          }, seconds * 1000);
+        });
+      };
+
+      return { init };
+    })();
+
+    const Animations = (() => {
+      const init = () => {
+        const elements = Utils.qsa("[data-animate]");
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .12 });
+
+        elements.forEach(element => observer.observe(element));
+      };
+
+      return { init };
+    })();
+
+    const ClickTracking = (() => {
+      const bind = () => {
+        Utils.qsa("[data-track-click]").forEach(element => {
+          element.addEventListener("click", () => {
+            const name = element.dataset.trackClick;
+            Analytics.send("Click", { target: name });
+            Pixel.custom("Click", { target: name });
+          });
+        });
+      };
+
+      return { bind };
+    })();
+
+    const Cookies = (() => {
+      const init = () => {
+        if (!CONFIG.FLAGS.ENABLE_COOKIE_BANNER) return;
+
+        const accepted = localStorage.getItem("landing_lab_cookie_accepted");
+        const banner = Utils.qs("#cookieBanner");
+
+        if (!accepted) banner.classList.add("active");
+
+        Utils.qs("#acceptCookies").addEventListener("click", () => {
+          localStorage.setItem("landing_lab_cookie_accepted", "true");
+          banner.classList.remove("active");
+          Analytics.send("Cookie_Accepted");
+        });
+      };
+
+      return { init };
+    })();
+
+    const App = (() => {
+      const init = () => {
+        Renderer.applyTheme();
+        Renderer.renderSeo();
+        Renderer.renderContent();
+
+        UTM.capture();
+        Pixel.init();
+
+        Products.render();
+        Video.render();
+        FAQ.render();
+        Carousel.render();
+
+        WhatsApp.bind();
+        ClickTracking.bind();
+        ScrollEvents.init();
+        TimerEvents.init();
+        Cookies.init();
+        Animations.init();
+
+        Analytics.viewContent();
+
+        Utils.log("Framework initialized");
+      };
+
+      return { init };
+    })();
+
+    document.addEventListener("DOMContentLoaded", App.init);
   </script>
 </body>
 </html>
