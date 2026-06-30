@@ -3,36 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title id="pageTitle">Landing Page Premium</title>
-  <meta name="description" content="Landing page premium para campanhas de Meta Ads com foco em WhatsApp." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://seudominio.com.br/" />
-
-  <meta property="og:title" content="Landing Page Premium" />
-  <meta property="og:description" content="Campanha premium focada em conversão pelo WhatsApp." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://seudominio.com.br/" />
-  <meta property="og:image" content="assets/images/og-image.jpg" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Landing Page Premium" />
-  <meta name="twitter:description" content="Campanha premium focada em conversão pelo WhatsApp." />
-  <meta name="twitter:image" content="assets/images/og-image.jpg" />
+  <title>Creative OS V1</title>
+  <meta name="description" content="Creative OS — sistema interno para análise de criativos Meta Ads." />
 
   <style>
     :root {
-      --bg: #f7f8fb;
+      --bg: #f6f7f9;
       --surface: #ffffff;
-      --surface-2: #f1f3f7;
+      --surface-2: #f1f3f5;
       --text: #111827;
-      --muted: #667085;
-      --primary: #111827;
-      --secondary: #2563eb;
-      --accent: #16a34a;
-      --border: rgba(17, 24, 39, .10);
-      --shadow: 0 20px 60px rgba(15, 23, 42, .10);
-      --radius: 24px;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --black: #050505;
+      --green: #16a34a;
+      --green-bg: #dcfce7;
+      --yellow: #ca8a04;
+      --yellow-bg: #fef9c3;
+      --red: #dc2626;
+      --red-bg: #fee2e2;
+      --blue: #2563eb;
+      --shadow: 0 20px 50px rgba(15, 23, 42, .08);
+      --radius: 18px;
+      --sidebar: 260px;
       --font: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
@@ -44,7 +36,6 @@
 
     html {
       scroll-behavior: smooth;
-      overflow-x: hidden;
     }
 
     body {
@@ -52,1345 +43,1710 @@
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
-      line-height: 1.5;
     }
 
-    img, iframe {
-      max-width: 100%;
-      display: block;
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 72px 0;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: rgba(255,255,255,.72);
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 600;
-      backdrop-filter: blur(12px);
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: white;
-      font-weight: 800;
-      border: 0;
+    button {
       cursor: pointer;
-      box-shadow: 0 16px 40px rgba(22, 163, 74, .26);
-      transition: transform .2s ease, box-shadow .2s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 50px rgba(22, 163, 74, .34);
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr;
     }
 
-    .btn.secondary {
-      background: var(--primary);
-      box-shadow: 0 16px 40px rgba(17, 24, 39, .18);
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(247, 248, 251, .82);
+    .sidebar {
+      display: none;
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--sidebar);
+      background: rgba(255,255,255,.86);
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav {
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      border-right: 1px solid var(--border);
+      padding: 22px;
+      z-index: 20;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 900;
-      letter-spacing: -.03em;
-    }
-
-    .brand-logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      object-fit: cover;
-      background: var(--primary);
-    }
-
-    .nav-links {
-      display: none;
-      align-items: center;
-      gap: 24px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .hero {
-      position: relative;
-      padding: 72px 0 56px;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 560px;
-      height: 560px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(37,99,235,.14), transparent 68%);
-      right: -220px;
-      top: -180px;
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      display: grid;
-      gap: 36px;
-      align-items: center;
-    }
-
-    .hero-copy h1 {
-      margin-top: 18px;
-      font-size: clamp(38px, 9vw, 76px);
-      line-height: .95;
-      letter-spacing: -.07em;
-      max-width: 900px;
-    }
-
-    .hero-copy p {
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: clamp(17px, 4vw, 22px);
-      max-width: 720px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .trust {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .trust-item {
-      background: rgba(255,255,255,.76);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 16px;
-    }
-
-    .trust-item strong {
-      display: block;
-      font-size: 22px;
-      letter-spacing: -.04em;
-    }
-
-    .trust-item span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 2px;
-    }
-
-    .hero-media {
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      background: var(--surface);
-      border: 1px solid var(--border);
-    }
-
-    .hero-media img {
-      width: 100%;
-      height: 420px;
-      object-fit: cover;
-    }
-
-    .section-title {
-      max-width: 760px;
       margin-bottom: 28px;
     }
 
-    .section-title h2 {
-      font-size: clamp(30px, 6vw, 52px);
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--black);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      letter-spacing: -.04em;
+    }
+
+    .brand small {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav button,
+    .mobile-nav button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 12px 14px;
+      border-radius: 12px;
+      text-align: left;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .nav button:hover,
+    .nav button.active {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    .main {
+      padding: 20px 16px 92px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .page-title h2 {
+      font-size: clamp(28px, 5vw, 44px);
       line-height: 1;
       letter-spacing: -.06em;
     }
 
-    .section-title p {
-      margin-top: 14px;
+    .page-title p {
+      margin-top: 8px;
       color: var(--muted);
-      font-size: 18px;
+      font-size: 15px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 8px 20px rgba(15,23,42,.04);
+    }
+
+    .btn.primary {
+      background: var(--black);
+      color: #fff;
+      border-color: var(--black);
+    }
+
+    .btn.danger {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+
+    .btn.green {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
     }
 
     .grid {
       display: grid;
-      gap: 16px;
+      gap: 14px;
     }
 
-    .cards-3 {
-      grid-template-columns: 1fr;
+    .metrics-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: 0 8px 30px rgba(15,23,42,.05);
-      transition: transform .22s ease, box-shadow .22s ease;
+      padding: 18px;
+      box-shadow: 0 10px 35px rgba(15,23,42,.045);
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-    }
-
-    .icon {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: var(--surface-2);
-      font-size: 22px;
-      margin-bottom: 16px;
-    }
-
-    .card h3 {
-      font-size: 20px;
-      letter-spacing: -.03em;
+    .metric small {
+      display: block;
+      color: var(--muted);
+      font-weight: 700;
       margin-bottom: 8px;
     }
 
-    .card p, .card li {
-      color: var(--muted);
-      font-size: 15px;
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      letter-spacing: -.05em;
+      line-height: 1;
     }
 
-    .video-box {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      border-radius: 32px;
-      background: #000;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-    }
-
-    .video-box iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      border-radius: 18px;
-      margin-bottom: 18px;
-      background: var(--surface-2);
-    }
-
-    .product-card ul {
-      margin: 14px 0 18px 18px;
-    }
-
-    .carousel {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform .35s ease;
-    }
-
-    .testimonial {
-      min-width: 100%;
-      padding: 4px;
-    }
-
-    .testimonial-inner {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 26px;
-      box-shadow: 0 8px 30px rgba(15,23,42,.05);
-    }
-
-    .stars {
-      color: #f59e0b;
-      margin-bottom: 12px;
-      letter-spacing: 2px;
-    }
-
-    .carousel-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .circle-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    .faq-item {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      border-radius: 18px;
-      margin-bottom: 12px;
-      overflow: hidden;
-    }
-
-    .faq-question {
-      width: 100%;
-      padding: 20px;
-      background: transparent;
-      border: 0;
-      text-align: left;
-      font-weight: 800;
-      color: var(--text);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      font-size: 16px;
-    }
-
-    .faq-answer {
+    .section {
       display: none;
-      padding: 0 20px 20px;
-      color: var(--muted);
     }
 
-    .faq-item.active .faq-answer {
+    .section.active {
       display: block;
     }
 
-    .final-cta {
-      background: linear-gradient(135deg, var(--primary), #020617);
-      color: white;
-      border-radius: 36px;
-      padding: 42px 26px;
-      text-align: center;
-      box-shadow: var(--shadow);
+    .section-header {
+      margin: 30px 0 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .final-cta h2 {
-      font-size: clamp(30px, 7vw, 56px);
-      line-height: 1;
-      letter-spacing: -.06em;
-      margin-bottom: 16px;
+    .section-header h3 {
+      font-size: 22px;
+      letter-spacing: -.04em;
     }
 
-    .final-cta p {
-      color: rgba(255,255,255,.72);
-      max-width: 640px;
-      margin: 0 auto 24px;
-      font-size: 18px;
-    }
-
-    footer {
-      padding: 36px 0;
-      color: var(--muted);
-      font-size: 14px;
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-grid {
+    .filters {
       display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 12px;
+      color: var(--text);
+      outline: none;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--muted);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 14px;
     }
 
-    .cookie-banner {
-      position: fixed;
-      left: 16px;
-      right: 16px;
-      bottom: 16px;
-      z-index: 100;
+    .form-wide {
+      grid-column: 1 / -1;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 35px rgba(15,23,42,.04);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1100px;
+    }
+
+    th,
+    td {
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      background: #fafafa;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .badge.green {
+      color: var(--green);
+      background: var(--green-bg);
+    }
+
+    .badge.yellow {
+      color: var(--yellow);
+      background: var(--yellow-bg);
+    }
+
+    .badge.red {
+      color: var(--red);
+      background: var(--red-bg);
+    }
+
+    .badge.gray {
+      color: var(--muted);
+      background: var(--surface-2);
+    }
+
+    .row-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .icon-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-weight: 800;
+    }
+
+    .method-list {
+      display: grid;
+      gap: 10px;
+      counter-reset: method;
+    }
+
+    .method-item {
       background: var(--surface);
       border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .method-item::before {
+      counter-increment: method;
+      content: counter(method);
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+      border-radius: 10px;
+      background: var(--black);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .hook-category {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hook-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hook-chip {
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .mobile-nav {
+      position: fixed;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      z-index: 30;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--border);
       border-radius: 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 8px;
       box-shadow: var(--shadow);
-      padding: 18px;
-      display: none;
     }
 
-    .cookie-banner.active {
-      display: block;
+    .mobile-nav button {
+      text-align: center;
+      font-size: 12px;
+      padding: 10px 4px;
     }
 
-    .cookie-banner p {
+    .mobile-nav button.active {
+      background: var(--black);
+      color: white;
+    }
+
+    .empty {
       color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 12px;
+      padding: 20px;
+      text-align: center;
     }
 
-    .hidden {
-      display: none !important;
-    }
-
-    [data-animate] {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-
-    [data-animate].visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (min-width: 768px) {
-      .nav-links {
-        display: flex;
+    @media (min-width: 860px) {
+      .app {
+        grid-template-columns: var(--sidebar) 1fr;
       }
 
-      .hero-grid {
-        grid-template-columns: 1.05fr .95fr;
+      .sidebar {
+        display: block;
       }
 
-      .hero-actions {
-        flex-direction: row;
+      .main {
+        grid-column: 2;
+        padding: 32px;
       }
 
-      .trust {
-        grid-template-columns: repeat(4, 1fr);
+      .mobile-nav {
+        display: none;
       }
 
-      .cards-3 {
+      .metrics-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .filters {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .form-grid {
         grid-template-columns: repeat(3, 1fr);
-      }
-
-      .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr auto;
-        align-items: center;
-      }
-
-      .cookie-banner {
-        width: 420px;
-        left: auto;
       }
     }
   </style>
-
-  <script type="application/ld+json" id="schemaJson"></script>
 </head>
 
 <body>
-  <header>
-    <div class="container nav">
-      <a href="#" class="brand" data-event="nav_logo">
-        <img class="brand-logo" id="brandLogo" alt="Logo da empresa" loading="eager" />
-        <span id="brandName">Empresa</span>
-      </a>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">OS</div>
+        <div>
+          <h1>Creative OS</h1>
+          <small>Meta Ads Lab V1</small>
+        </div>
+      </div>
 
-      <nav class="nav-links">
-        <a href="#beneficios">Benefícios</a>
-        <a href="#produtos">Produtos</a>
-        <a href="#faq">FAQ</a>
-        <a href="#" data-whatsapp>WhatsApp</a>
-      </nav>
-    </div>
-  </header>
+      <nav class="nav" id="desktopNav"></nav>
+    </aside>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy" data-animate>
-          <span class="pill" id="heroPill">Atendimento rápido pelo WhatsApp</span>
-          <h1 id="headline">Headline principal da campanha</h1>
-          <p id="subheadline">Subheadline clara, persuasiva e focada na conversão.</p>
+    <main class="main">
+      <div class="topbar">
+        <div class="page-title">
+          <h2 id="pageTitle">Dashboard</h2>
+          <p id="pageSubtitle">Análise operacional de criativos para campanhas Meta Ads.</p>
+        </div>
 
-          <div class="hero-actions">
-            <a href="#" class="btn" data-whatsapp data-product="principal" id="heroCta">Chamar no WhatsApp</a>
-            <a href="#produtos" class="btn secondary" data-track-click="products_anchor">Ver produtos</a>
+        <div class="actions">
+          <button class="btn" id="exportCsvBtn">Exportar CSV</button>
+          <button class="btn danger" id="clearDataBtn">Limpar dados</button>
+          <button class="btn primary" data-go="cadastro">Novo experimento</button>
+        </div>
+      </div>
+
+      <section id="dashboard" class="section active">
+        <div class="grid metrics-grid" id="metricsGrid"></div>
+
+        <div class="section-header">
+          <h3>Ranking dos criativos</h3>
+        </div>
+
+        <div class="filters">
+          <select id="filterClient"></select>
+          <select id="filterProduct"></select>
+          <select id="filterStatus"></select>
+          <select id="filterHook"></select>
+          <select id="sortBy">
+            <option value="iqc">Ordenar por IQC</option>
+            <option value="costPerConversation">Ordenar por custo por conversa</option>
+            <option value="sales">Ordenar por vendas</option>
+            <option value="ctr">Ordenar por CTR Link</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Criativo</th>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Status</th>
+                <th>Hook</th>
+                <th>CTR</th>
+                <th>CPC</th>
+                <th>Custo conversa</th>
+                <th>Conv./Clique</th>
+                <th>Fechamento</th>
+                <th>Vendas</th>
+                <th>ROAS</th>
+                <th>IQC</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="rankingTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="clientes" class="section">
+        <div class="card">
+          <h3>Cadastrar cliente</h3>
+          <br>
+          <div class="form-grid">
+            <label>Nome do cliente
+              <input id="clientName" placeholder="Ex: Base Nutrição Esportiva">
+            </label>
+            <label>Nicho
+              <input id="clientNiche" placeholder="Ex: Suplementos">
+            </label>
+            <label>Cidade
+              <input id="clientCity" placeholder="Ex: Goiânia">
+            </label>
+            <label class="form-wide">Observações
+              <textarea id="clientNotes" placeholder="Observações sobre o cliente"></textarea>
+            </label>
+          </div>
+          <br>
+          <button class="btn primary" id="saveClientBtn">Salvar cliente</button>
+        </div>
+
+        <div class="section-header">
+          <h3>Clientes cadastrados</h3>
+        </div>
+
+        <div class="grid" id="clientsList"></div>
+      </section>
+
+      <section id="experimentos" class="section">
+        <div class="section-header">
+          <h3>Experimentos cadastrados</h3>
+          <button class="btn primary" data-go="cadastro">Cadastrar experimento</button>
+        </div>
+
+        <div class="filters">
+          <select id="expFilterClient"></select>
+          <select id="expFilterProduct"></select>
+          <select id="expFilterStatus"></select>
+          <select id="expFilterHook"></select>
+          <select id="expSortBy">
+            <option value="createdAt">Mais recentes</option>
+            <option value="iqc">Maior IQC</option>
+            <option value="costPerConversation">Menor custo por conversa</option>
+            <option value="sales">Mais vendas</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Criativo</th>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Status</th>
+                <th>Hipótese</th>
+                <th>Hook</th>
+                <th>IQC</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="experimentsTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="cadastro" class="section">
+        <div class="card">
+          <h3 id="experimentFormTitle">Cadastro de experimento</h3>
+          <br>
+
+          <input type="hidden" id="experimentId">
+
+          <div class="form-grid">
+            <label>Cliente
+              <select id="expClient"></select>
+            </label>
+
+            <label>Produto
+              <input id="expProduct" placeholder="Ex: Pré-treino Évora">
+            </label>
+
+            <label>Nome do criativo
+              <input id="expName" placeholder="Ex: R1 - Hook Energia">
+            </label>
+
+            <label>Status
+              <select id="expStatus">
+                <option>Controle</option>
+                <option>Desafiante</option>
+                <option>Pausado</option>
+                <option>Vencedor</option>
+                <option>Perdedor</option>
+              </select>
+            </label>
+
+            <label>Data de início
+              <input type="date" id="expStartDate">
+            </label>
+
+            <label>Data de análise
+              <input type="date" id="expAnalysisDate">
+            </label>
+
+            <label>Campanha
+              <input id="expCampaign">
+            </label>
+
+            <label>Conjunto
+              <input id="expAdset">
+            </label>
+
+            <label>Categoria do hook
+              <select id="expHookCategory"></select>
+            </label>
+
+            <label class="form-wide">Hipótese testada
+              <textarea id="expHypothesis"></textarea>
+            </label>
+
+            <label class="form-wide">Hook
+              <textarea id="expHook"></textarea>
+            </label>
+
+            <label>Ângulo
+              <input id="expAngle" placeholder="Ex: Energia no treino">
+            </label>
+
+            <label>Oferta
+              <input id="expOffer" placeholder="Ex: Chame no WhatsApp">
+            </label>
+
+            <label>Headline
+              <input id="expHeadline">
+            </label>
+
+            <label class="form-wide">Copy
+              <textarea id="expCopy"></textarea>
+            </label>
+
+            <label>CTA
+              <input id="expCta" placeholder="Ex: Chamar no WhatsApp">
+            </label>
+
+            <label>Variável testada
+              <input id="expVariable" placeholder="Ex: Hook">
+            </label>
+
+            <label>Público
+              <input id="expAudience" placeholder="Ex: Goiânia, 18-65, musculação">
+            </label>
+
+            <label>Orçamento diário
+              <input type="number" id="expBudget" step="0.01">
+            </label>
+
+            <label class="form-wide">Observações
+              <textarea id="expNotes"></textarea>
+            </label>
+
+            <label>Impressões
+              <input type="number" id="mImpressions">
+            </label>
+
+            <label>Alcance
+              <input type="number" id="mReach">
+            </label>
+
+            <label>Cliques no link
+              <input type="number" id="mClicks">
+            </label>
+
+            <label>Conversas iniciadas
+              <input type="number" id="mConversations">
+            </label>
+
+            <label>Valor gasto
+              <input type="number" id="mSpend" step="0.01">
+            </label>
+
+            <label>Vendas
+              <input type="number" id="mSales">
+            </label>
+
+            <label>Faturamento
+              <input type="number" id="mRevenue" step="0.01">
+            </label>
+
+            <label>Lucro estimado
+              <input type="number" id="mProfit" step="0.01">
+            </label>
           </div>
 
-          <div class="trust" id="trustIndicators"></div>
-        </div>
+          <br>
 
-        <div class="hero-media" data-animate>
-          <img id="heroImage" alt="Imagem principal" loading="eager" fetchpriority="high" />
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="beneficios">
-      <div class="container">
-        <div class="section-title" data-animate>
-          <h2 id="benefitsTitle">Por que escolher?</h2>
-          <p id="benefitsSubtitle">Benefícios objetivos para aumentar confiança e intenção de compra.</p>
-        </div>
-
-        <div class="grid cards-3" id="benefitsGrid"></div>
-      </div>
-    </section>
-
-    <section class="section" id="videoSection">
-      <div class="container">
-        <div class="section-title" data-animate>
-          <h2 id="videoTitle">Veja antes de comprar</h2>
-          <p id="videoSubtitle">Use vídeo para aumentar retenção, confiança e intenção.</p>
-        </div>
-
-        <div class="video-box" data-animate id="videoWrapper"></div>
-      </div>
-    </section>
-
-    <section class="section" id="produtos">
-      <div class="container">
-        <div class="section-title" data-animate>
-          <h2 id="productsTitle">Produtos em destaque</h2>
-          <p id="productsSubtitle">Cards configuráveis para qualquer cliente.</p>
-        </div>
-
-        <div class="grid products-grid" id="productsGrid"></div>
-      </div>
-    </section>
-
-    <section class="section" id="testimonialsSection">
-      <div class="container">
-        <div class="section-title" data-animate>
-          <h2 id="testimonialsTitle">Quem comprou, recomenda</h2>
-          <p id="testimonialsSubtitle">Prova social para reduzir objeções.</p>
-        </div>
-
-        <div class="carousel" data-animate>
-          <div class="carousel-track" id="carouselTrack"></div>
-          <div class="carousel-actions">
-            <button class="circle-btn" id="prevTestimonial" aria-label="Depoimento anterior">‹</button>
-            <button class="circle-btn" id="nextTestimonial" aria-label="Próximo depoimento">›</button>
+          <div class="actions" style="justify-content:flex-start;">
+            <button class="btn primary" id="saveExperimentBtn">Salvar experimento</button>
+            <button class="btn" id="resetExperimentBtn">Limpar formulário</button>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="faqSection">
-      <div class="container">
-        <div class="section-title" data-animate>
-          <h2 id="faqTitle">Perguntas frequentes</h2>
-          <p id="faqSubtitle">Respostas rápidas para as principais dúvidas.</p>
+      <section id="metodo" class="section">
+        <div class="method-list">
+          <div class="method-item">Sempre manter um criativo controle.</div>
+          <div class="method-item">O novo criativo é sempre um desafiante.</div>
+          <div class="method-item">Testar apenas uma variável por vez.</div>
+          <div class="method-item">Não editar anúncios antigos; pausar e criar um novo.</div>
+          <div class="method-item">Avaliar com no mínimo 72 horas.</div>
+          <div class="method-item">Tomar decisão em até 7 dias.</div>
+          <div class="method-item">Priorizar vendas e custo por venda quando houver dados.</div>
+          <div class="method-item">Registrar aprendizados, não apenas métricas.</div>
+        </div>
+      </section>
+
+      <section id="hooks" class="section">
+        <div class="card">
+          <h3>Cadastrar hook</h3>
+          <br>
+          <div class="form-grid">
+            <label>Categoria
+              <select id="hookCategory"></select>
+            </label>
+            <label class="form-wide">Hook
+              <input id="hookText" placeholder="Digite o hook">
+            </label>
+          </div>
+          <br>
+          <button class="btn primary" id="saveHookBtn">Salvar hook</button>
         </div>
 
-        <div id="faqList" data-animate></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="final-cta" data-animate>
-          <h2 id="finalCtaTitle">Pronto para comprar?</h2>
-          <p id="finalCtaText">Clique no botão abaixo e fale com nossa equipe pelo WhatsApp.</p>
-          <a href="#" class="btn" data-whatsapp data-product="cta_final" id="finalCtaButton">Chamar no WhatsApp</a>
+        <div class="section-header">
+          <h3>Biblioteca de hooks</h3>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <strong id="footerCompany">Empresa</strong>
-        <div id="footerAddress">Endereço da empresa</div>
-      </div>
+        <div class="grid" id="hooksLibrary"></div>
+      </section>
 
-      <div>
-        <a href="#" id="footerInstagram" target="_blank" rel="noopener">Instagram</a>
-        ·
-        <a href="#" id="footerMap" target="_blank" rel="noopener" data-track-click="map">Mapa</a>
-      </div>
-    </div>
-  </footer>
+      <section id="aprendizados" class="section">
+        <div class="card">
+          <h3>Registrar aprendizado</h3>
+          <br>
+          <input type="hidden" id="learningId">
 
-  <div class="cookie-banner" id="cookieBanner">
-    <p>Usamos dados de navegação para melhorar sua experiência e mensurar campanhas.</p>
-    <button class="btn" id="acceptCookies">Aceitar</button>
+          <div class="form-grid">
+            <label>Data
+              <input type="date" id="learningDate">
+            </label>
+
+            <label>Cliente
+              <select id="learningClient"></select>
+            </label>
+
+            <label>Produto
+              <input id="learningProduct">
+            </label>
+
+            <label>Criativo
+              <input id="learningCreative">
+            </label>
+
+            <label class="form-wide">Hipótese
+              <textarea id="learningHypothesis"></textarea>
+            </label>
+
+            <label class="form-wide">Resultado
+              <textarea id="learningResult"></textarea>
+            </label>
+
+            <label class="form-wide">Aprendizado
+              <textarea id="learningText"></textarea>
+            </label>
+
+            <label class="form-wide">Recomendação futura
+              <textarea id="learningRecommendation"></textarea>
+            </label>
+          </div>
+
+          <br>
+          <button class="btn primary" id="saveLearningBtn">Salvar aprendizado</button>
+        </div>
+
+        <div class="section-header">
+          <h3>Biblioteca de aprendizados</h3>
+        </div>
+
+        <div class="grid" id="learningsList"></div>
+      </section>
+
+      <section id="configuracoes" class="section">
+        <div class="card">
+          <h3>Configurações</h3>
+          <br>
+          <p style="color:var(--muted);">
+            Esta V1 usa localStorage. A estrutura já está preparada para migração futura para Supabase, N8N ou banco próprio.
+          </p>
+          <br>
+          <button class="btn" id="loadDemoBtn">Carregar dados de exemplo</button>
+        </div>
+      </section>
+    </main>
   </div>
+
+  <nav class="mobile-nav" id="mobileNav"></nav>
 
   <script>
     const CONFIG = {
-      FLAGS: {
-        ENABLE_PIXEL: true,
-        ENABLE_GA4: false,
-        ENABLE_SCROLL_EVENTS: true,
-        ENABLE_TIME_EVENTS: true,
-        ENABLE_FAQ: true,
-        ENABLE_TESTIMONIALS: true,
-        ENABLE_VIDEO: true,
-        ENABLE_PRODUCTS: true,
-        ENABLE_WHATSAPP_TRACKING: true,
-        ENABLE_LOCAL_STORAGE: true,
-        ENABLE_UTM_CAPTURE: true,
-        ENABLE_FBCLID: true,
-        ENABLE_GCLID: true,
-        ENABLE_TTCLID: true,
-        ENABLE_SUPABASE: false,
-        ENABLE_N8N: false,
-        ENABLE_CONVERSIONS_API: false,
-        ENABLE_LINKEDIN_PIXEL: false,
-        ENABLE_TIKTOK_PIXEL: false,
-        ENABLE_GOOGLE_TAG_MANAGER: false,
-        ENABLE_COOKIE_BANNER: true,
-        ENABLE_DARK_MODE: false,
-        ENABLE_DEBUG_MODE: true
+      appName: "Creative OS",
+      version: "V1",
+      defaultClient: {
+        id: crypto.randomUUID(),
+        name: "Base Nutrição Esportiva",
+        niche: "Suplementos",
+        city: "Goiânia",
+        notes: "Cliente padrão para campanhas Meta Ads focadas em WhatsApp."
       },
-
-      CLIENT: {
-        companyName: "Base Nutrição Esportiva",
-        logo: "https://placehold.co/120x120/111827/ffffff?text=BASE",
-        phone: "+55 62 98233-1156",
-        whatsappNumber: "5562982331156",
-        instagram: "https://instagram.com/",
-        facebook: "https://facebook.com/",
-        address: "Goiânia, GO",
-        mapUrl: "https://maps.google.com/",
-        canonicalUrl: "https://seudominio.com.br/",
-        pageTitle: "Base Nutrição Esportiva | Suplementos em Goiânia",
-        metaDescription: "Suplementos para energia, performance, emagrecimento e ganho de massa muscular. Atendimento rápido pelo WhatsApp."
-      },
-
-      BRAND: {
-        colors: {
-          bg: "#f7f8fb",
-          surface: "#ffffff",
-          surface2: "#f1f3f7",
-          text: "#111827",
-          muted: "#667085",
-          primary: "#111827",
-          secondary: "#2563eb",
-          accent: "#16a34a"
-        },
-        font: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
-      },
-
-      CONTENT: {
-        heroPill: "Suplementos selecionados para seu objetivo",
-        headline: "Mais resultado no treino começa com a suplementação certa.",
-        subheadline: "Fale com nossa equipe pelo WhatsApp e receba uma indicação objetiva para energia, desempenho, emagrecimento ou ganho de massa.",
-        ctaText: "Chamar no WhatsApp",
-        heroImage: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?q=80&w=1200&auto=format&fit=crop",
-        whatsappMessage: "Olá! Vim pelo anúncio e quero saber mais sobre os suplementos.",
-
-        trustIndicators: [
-          { number: "Atendimento", label: "rápido pelo WhatsApp" },
-          { number: "Produtos", label: "selecionados" },
-          { number: "Objetivo", label: "energia e performance" },
-          { number: "Local", label: "Goiânia e região" }
+      hookCategories: [
+        "Pergunta",
+        "Dor",
+        "Curiosidade",
+        "Erro",
+        "Economia",
+        "Autoridade",
+        "Resultado",
+        "Oferta"
+      ],
+      initialHooks: {
+        Pergunta: [
+          "Seu treino travou?",
+          "Você já usa whey e creatina juntos?"
         ],
-
-        benefitsTitle: "Uma escolha mais inteligente",
-        benefitsSubtitle: "A página foi criada para reduzir dúvidas, gerar confiança e levar o cliente para o WhatsApp com mais intenção.",
-        benefits: [
-          {
-            icon: "⚡",
-            title: "Mais intenção de compra",
-            text: "Estrutura focada em Meta Ads, com CTA direto para WhatsApp e dados de origem preservados."
-          },
-          {
-            icon: "📊",
-            title: "Dados para otimização",
-            text: "Captura UTM, origem, campanha, criativo, dispositivo, navegador e comportamento do usuário."
-          },
-          {
-            icon: "🚀",
-            title: "Alta performance",
-            text: "HTML, CSS e JavaScript puro, sem frameworks pesados e com carregamento otimizado."
-          }
+        Dor: [
+          "Sente que falta força no treino?",
+          "Treina pesado, mas sente que poderia render mais?"
         ],
-
-        video: {
-          title: "Veja a apresentação",
-          subtitle: "Use um vídeo curto para aumentar confiança antes do clique.",
-          youtubeEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
-        },
-
-        productsTitle: "Produtos em destaque",
-        productsSubtitle: "Configure os produtos no CONFIG sem alterar o HTML.",
-        products: [
-          {
-            id: "pre_treino_evora",
-            name: "Pré-Treino Évora",
-            image: "https://images.unsplash.com/photo-1612532774276-cfa70ca7aa35?q=80&w=900&auto=format&fit=crop",
-            description: "Mais energia, foco e intensidade para treinos mais fortes.",
-            benefits: ["Mais energia", "Mais resistência", "Mais foco"],
-            cta: "Tenho interesse"
-          },
-          {
-            id: "dimethylex",
-            name: "Dimethylex",
-            image: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=900&auto=format&fit=crop",
-            description: "Termogênico para quem busca mais disposição e suporte ao emagrecimento.",
-            benefits: ["Controle de apetite", "Queima de gordura", "Mais disposição"],
-            cta: "Quero saber mais"
-          },
-          {
-            id: "creatina",
-            name: "Creatina",
-            image: "https://images.unsplash.com/photo-1579722820308-d74e571900a9?q=80&w=900&auto=format&fit=crop",
-            description: "Suplemento essencial para força, desempenho e evolução nos treinos.",
-            benefits: ["Mais força", "Mais desempenho", "Uso diário"],
-            cta: "Pedir indicação"
-          }
+        Curiosidade: [
+          "Sabe por que esse kit é um dos mais procurados da loja?",
+          "Pouca gente entende por que whey e creatina funcionam tão bem juntos."
         ],
-
-        testimonialsTitle: "Depoimentos",
-        testimonialsSubtitle: "Prova social simples e direta.",
-        testimonials: [
-          {
-            name: "Cliente Base",
-            text: "Fui muito bem atendido e consegui escolher o suplemento certo para meu objetivo."
-          },
-          {
-            name: "Cliente WhatsApp",
-            text: "Cheguei pelo anúncio, chamei no WhatsApp e recebi uma indicação rápida."
-          },
-          {
-            name: "Cliente Local",
-            text: "Gostei da praticidade. Atendimento objetivo e produtos de qualidade."
-          }
+        Erro: [
+          "O erro de muita gente é comprar suplementos sem estratégia.",
+          "Muita gente compra whey e creatina separados e acaba pagando mais."
         ],
-
-        faqTitle: "Dúvidas frequentes",
-        faqSubtitle: "Responda objeções antes do lead chamar no WhatsApp.",
-        faq: [
-          {
-            question: "Como faço para comprar?",
-            answer: "Clique no botão de WhatsApp e fale com nossa equipe. Vamos confirmar disponibilidade e forma de entrega ou retirada."
-          },
-          {
-            question: "Vocês indicam o suplemento ideal?",
-            answer: "Sim. Informe seu objetivo, rotina de treino e preferência. A equipe indica uma opção mais adequada."
-          },
-          {
-            question: "Atendem Goiânia e região?",
-            answer: "Sim. O atendimento pode ser feito pelo WhatsApp, com orientação conforme a região."
-          }
+        Economia: [
+          "Quer começar a suplementar sem gastar muito?",
+          "Kit completo para quem quer economizar e treinar melhor."
         ],
-
-        finalCtaTitle: "Fale agora com nossa equipe",
-        finalCtaText: "Clique no botão abaixo, diga seu objetivo e receba uma indicação pelo WhatsApp."
-      },
-
-      INTEGRATIONS: {
-        metaPixelId: "000000000000000",
-        ga4Id: "",
-        gtmId: "",
-        tikTokPixelId: "",
-        linkedinPartnerId: "",
-        supabaseUrl: "",
-        supabaseAnonKey: "",
-        n8nWebhookUrl: "",
-        conversionsApiEndpoint: ""
+        Autoridade: [
+          "Se eu fosse indicar apenas dois suplementos para começar, seriam esses.",
+          "Dois suplementos básicos para quem leva treino a sério."
+        ],
+        Resultado: [
+          "Quer mais força e uma recuperação melhor?",
+          "Mais suporte para evoluir nos treinos."
+        ],
+        Oferta: [
+          "Condição especial no kit por tempo limitado.",
+          "Kit Max com condição especial hoje."
+        ]
       }
     };
 
-    const Utils = (() => {
-      const log = (...args) => {
-        if (CONFIG.FLAGS.ENABLE_DEBUG_MODE) console.log("[LandingLab]", ...args);
-      };
+    const NAV_ITEMS = [
+      { id: "dashboard", label: "Dashboard", subtitle: "Visão geral da performance dos criativos." },
+      { id: "clientes", label: "Clientes", subtitle: "Cadastro e organização dos clientes." },
+      { id: "experimentos", label: "Experimentos", subtitle: "Gestão dos criativos testados." },
+      { id: "cadastro", label: "Cadastro", subtitle: "Cadastrar ou editar experimento." },
+      { id: "metodo", label: "Método", subtitle: "Regras operacionais de teste." },
+      { id: "hooks", label: "Hooks", subtitle: "Biblioteca de hooks por categoria." },
+      { id: "aprendizados", label: "Aprendizados", subtitle: "Registro do que funcionou e próximos testes." },
+      { id: "configuracoes", label: "Configurações", subtitle: "Dados locais e preparação futura." }
+    ];
 
-      const qs = (selector, scope = document) => scope.querySelector(selector);
-      const qsa = (selector, scope = document) => [...scope.querySelectorAll(selector)];
+    const $ = (selector, scope = document) => scope.querySelector(selector);
+    const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 
-      const getParam = (key) => new URLSearchParams(window.location.search).get(key);
+    const money = value => {
+      const number = Number(value || 0);
+      return number.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    };
 
-      const safeJson = (data) => {
-        try { return JSON.stringify(data); } catch { return "{}"; }
-      };
+    const percent = value => {
+      const number = Number(value || 0);
+      return `${number.toFixed(2).replace(".", ",")}%`;
+    };
 
-      const now = () => new Date().toISOString();
+    const safeDiv = (a, b) => {
+      a = Number(a || 0);
+      b = Number(b || 0);
+      if (!b) return 0;
+      return a / b;
+    };
 
-      const device = () => ({
-        userAgent: navigator.userAgent,
-        language: navigator.language,
-        platform: navigator.platform,
-        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        screen: `${window.screen.width}x${window.screen.height}`,
-        viewport: `${window.innerWidth}x${window.innerHeight}`
+    const today = () => new Date().toISOString().slice(0, 10);
+
+    const Storage = {
+      key: "creative_os_v1",
+
+      defaultData() {
+        return {
+          clients: [CONFIG.defaultClient],
+          experiments: [],
+          hooks: CONFIG.initialHooks,
+          learnings: [
+            {
+              id: crypto.randomUUID(),
+              date: today(),
+              client: "Base Nutrição Esportiva",
+              product: "Kit Whey + Creatina",
+              creative: "Exemplo - Curiosidade",
+              hypothesis: "Hook de curiosidade gera mais conversas para Kit Whey + Creatina.",
+              result: "CPA menor e CTR Link maior.",
+              learning: "Hooks que despertam curiosidade sobre combinação de suplementos tendem a atrair leads mais qualificados.",
+              recommendation: "Criar novos criativos usando curiosidade no primeiro segundo do vídeo.",
+              createdAt: new Date().toISOString()
+            }
+          ]
+        };
+      },
+
+      get() {
+        const raw = localStorage.getItem(this.key);
+        if (!raw) {
+          const data = this.defaultData();
+          this.set(data);
+          return data;
+        }
+
+        try {
+          const data = JSON.parse(raw);
+          return {
+            clients: data.clients || [CONFIG.defaultClient],
+            experiments: data.experiments || [],
+            hooks: data.hooks || CONFIG.initialHooks,
+            learnings: data.learnings || []
+          };
+        } catch {
+          const data = this.defaultData();
+          this.set(data);
+          return data;
+        }
+      },
+
+      set(data) {
+        localStorage.setItem(this.key, JSON.stringify(data));
+      },
+
+      clear() {
+        localStorage.removeItem(this.key);
+      }
+    };
+
+    const Calculations = {
+      calculate(exp) {
+        const impressions = Number(exp.metrics?.impressions || 0);
+        const clicks = Number(exp.metrics?.clicks || 0);
+        const conversations = Number(exp.metrics?.conversations || 0);
+        const spend = Number(exp.metrics?.spend || 0);
+        const sales = Number(exp.metrics?.sales || 0);
+        const revenue = Number(exp.metrics?.revenue || 0);
+
+        const ctr = safeDiv(clicks, impressions) * 100;
+        const cpc = safeDiv(spend, clicks);
+        const costPerConversation = safeDiv(spend, conversations);
+        const conversationRate = safeDiv(conversations, clicks) * 100;
+        const closeRate = safeDiv(sales, conversations) * 100;
+        const costPerSale = safeDiv(spend, sales);
+        const roas = safeDiv(revenue, spend);
+
+        const iqc = this.iqc({
+          ctr,
+          costPerConversation,
+          conversationRate,
+          closeRate,
+          sales
+        });
+
+        return {
+          ctr,
+          cpc,
+          costPerConversation,
+          conversationRate,
+          closeRate,
+          costPerSale,
+          roas,
+          iqc
+        };
+      },
+
+      iqc({ ctr, costPerConversation, conversationRate, closeRate, sales }) {
+        const ctrScore = Math.min(ctr / 3, 1) * 25;
+        const conversationScore = Math.min(conversationRate / 60, 1) * 30;
+
+        let costScore = 0;
+        if (costPerConversation > 0) {
+          if (costPerConversation <= 5) costScore = 25;
+          else if (costPerConversation <= 10) costScore = 20;
+          else if (costPerConversation <= 20) costScore = 12;
+          else if (costPerConversation <= 35) costScore = 6;
+          else costScore = 2;
+        }
+
+        if (sales > 0) {
+          const salesScore = Math.min(sales / 5, 1) * 10;
+          const closeScore = Math.min(closeRate / 30, 1) * 10;
+          return Math.round(Math.min(100, ctrScore + conversationScore + costScore + salesScore + closeScore));
+        }
+
+        const partialScore = ctrScore + conversationScore + costScore;
+        return Math.round(Math.min(100, partialScore / 80 * 100));
+      },
+
+      iqcBadge(iqc) {
+        if (iqc >= 70) return `<span class="badge green">${iqc}</span>`;
+        if (iqc >= 45) return `<span class="badge yellow">${iqc}</span>`;
+        return `<span class="badge red">${iqc}</span>`;
+      },
+
+      statusBadge(status) {
+        const map = {
+          Controle: "green",
+          Vencedor: "green",
+          Desafiante: "yellow",
+          Pausado: "gray",
+          Perdedor: "red"
+        };
+
+        return `<span class="badge ${map[status] || "gray"}">${status}</span>`;
+      }
+    };
+
+    const AppState = {
+      currentSection: "dashboard"
+    };
+
+    function getData() {
+      return Storage.get();
+    }
+
+    function saveData(data) {
+      Storage.set(data);
+      renderAll();
+    }
+
+    function navigate(sectionId) {
+      AppState.currentSection = sectionId;
+
+      $$(".section").forEach(section => {
+        section.classList.toggle("active", section.id === sectionId);
       });
 
-      return { log, qs, qsa, getParam, safeJson, now, device };
-    })();
+      const item = NAV_ITEMS.find(i => i.id === sectionId);
+      $("#pageTitle").textContent = item?.label || "Creative OS";
+      $("#pageSubtitle").textContent = item?.subtitle || "";
 
-    const Storage = (() => {
-      const KEY = "landing_lab_data";
+      $$("[data-nav]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.nav === sectionId);
+      });
+    }
 
-      const get = () => {
-        if (!CONFIG.FLAGS.ENABLE_LOCAL_STORAGE) return {};
-        try {
-          return JSON.parse(localStorage.getItem(KEY)) || {};
-        } catch {
-          return {};
+    function renderNavigation() {
+      const desktop = $("#desktopNav");
+      const mobile = $("#mobileNav");
+
+      desktop.innerHTML = NAV_ITEMS.map(item => `
+        <button data-nav="${item.id}">${item.label}</button>
+      `).join("");
+
+      mobile.innerHTML = NAV_ITEMS.slice(0, 4).map(item => `
+        <button data-nav="${item.id}">${item.label}</button>
+      `).join("");
+
+      $$("[data-nav]").forEach(btn => {
+        btn.addEventListener("click", () => navigate(btn.dataset.nav));
+      });
+
+      $$("[data-go]").forEach(btn => {
+        btn.addEventListener("click", () => navigate(btn.dataset.go));
+      });
+    }
+
+    function populateSelect(select, options, placeholder = "Todos") {
+      select.innerHTML = `<option value="">${placeholder}</option>` + options.map(option => `
+        <option value="${option}">${option}</option>
+      `).join("");
+    }
+
+    function populateStaticSelects() {
+      const data = getData();
+      const clients = data.clients.map(c => c.name);
+      const products = [...new Set(data.experiments.map(e => e.product).filter(Boolean))];
+      const statuses = ["Controle", "Desafiante", "Pausado", "Vencedor", "Perdedor"];
+      const hooks = CONFIG.hookCategories;
+
+      [
+        $("#filterClient"),
+        $("#expFilterClient")
+      ].forEach(select => populateSelect(select, clients, "Todos os clientes"));
+
+      [
+        $("#filterProduct"),
+        $("#expFilterProduct")
+      ].forEach(select => populateSelect(select, products, "Todos os produtos"));
+
+      [
+        $("#filterStatus"),
+        $("#expFilterStatus")
+      ].forEach(select => populateSelect(select, statuses, "Todos os status"));
+
+      [
+        $("#filterHook"),
+        $("#expFilterHook")
+      ].forEach(select => populateSelect(select, hooks, "Todas as categorias"));
+
+      populateSelect($("#expClient"), clients, "Selecione o cliente");
+      populateSelect($("#learningClient"), clients, "Selecione o cliente");
+      populateSelect($("#expHookCategory"), hooks, "Selecione a categoria");
+      populateSelect($("#hookCategory"), hooks, "Selecione a categoria");
+    }
+
+    function enrichedExperiments() {
+      return getData().experiments.map(exp => ({
+        ...exp,
+        calculated: Calculations.calculate(exp)
+      }));
+    }
+
+    function applyFilters(experiments, prefix = "") {
+      const client = $(`#${prefix}FilterClient`)?.value || "";
+      const product = $(`#${prefix}FilterProduct`)?.value || "";
+      const status = $(`#${prefix}FilterStatus`)?.value || "";
+      const hook = $(`#${prefix}FilterHook`)?.value || "";
+
+      return experiments.filter(exp => {
+        return (!client || exp.client === client)
+          && (!product || exp.product === product)
+          && (!status || exp.status === status)
+          && (!hook || exp.hookCategory === hook);
+      });
+    }
+
+    function sortExperiments(experiments, sortBy) {
+      return [...experiments].sort((a, b) => {
+        if (sortBy === "costPerConversation") {
+          const av = a.calculated.costPerConversation || Infinity;
+          const bv = b.calculated.costPerConversation || Infinity;
+          return av - bv;
         }
+
+        if (sortBy === "sales") {
+          return Number(b.metrics?.sales || 0) - Number(a.metrics?.sales || 0);
+        }
+
+        if (sortBy === "ctr") {
+          return b.calculated.ctr - a.calculated.ctr;
+        }
+
+        if (sortBy === "createdAt") {
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        }
+
+        return b.calculated.iqc - a.calculated.iqc;
+      });
+    }
+
+    function renderDashboard() {
+      const experiments = enrichedExperiments();
+      const active = experiments.filter(e => !["Pausado", "Perdedor"].includes(e.status));
+      const finished = experiments.filter(e => ["Vencedor", "Perdedor", "Pausado"].includes(e.status));
+      const control = experiments.find(e => e.status === "Controle");
+
+      const bestBy = (key, higher = true) => {
+        const valid = experiments.filter(e => Number(e.calculated[key] || 0) > 0);
+        if (!valid.length) return null;
+        return valid.sort((a, b) => higher ? b.calculated[key] - a.calculated[key] : a.calculated[key] - b.calculated[key])[0];
       };
 
-      const set = (payload) => {
-        if (!CONFIG.FLAGS.ENABLE_LOCAL_STORAGE) return;
-        const current = get();
-        localStorage.setItem(KEY, JSON.stringify({ ...current, ...payload }));
-      };
-
-      const pushEvent = (event) => {
-        if (!CONFIG.FLAGS.ENABLE_LOCAL_STORAGE) return;
-        const current = get();
-        const events = current.events || [];
-        events.push(event);
-        set({ events });
-      };
-
-      return { get, set, pushEvent };
-    })();
-
-    const UTM = (() => {
-      const capture = () => {
-        const data = {
-          utm_source: Utils.getParam("utm_source"),
-          utm_medium: Utils.getParam("utm_medium"),
-          utm_campaign: Utils.getParam("utm_campaign"),
-          utm_content: Utils.getParam("utm_content"),
-          utm_term: Utils.getParam("utm_term"),
-          origin: document.referrer || "direct"
-        };
-
-        if (CONFIG.FLAGS.ENABLE_FBCLID) data.fbclid = Utils.getParam("fbclid");
-        if (CONFIG.FLAGS.ENABLE_GCLID) data.gclid = Utils.getParam("gclid");
-        if (CONFIG.FLAGS.ENABLE_TTCLID) data.ttclid = Utils.getParam("ttclid");
-
-        Storage.set({
-          acquisition: data,
-          device: Utils.device(),
-          capturedAt: Utils.now()
+      const bestProduct = (() => {
+        const map = {};
+        experiments.forEach(e => {
+          if (!e.product) return;
+          map[e.product] = (map[e.product] || 0) + e.calculated.iqc;
         });
+        return Object.entries(map).sort((a,b) => b[1] - a[1])[0]?.[0] || "-";
+      })();
 
-        Utils.log("UTM captured", data);
-        return data;
-      };
-
-      return { capture };
-    })();
-
-    const Pixel = (() => {
-      const init = () => {
-        if (!CONFIG.FLAGS.ENABLE_PIXEL || !CONFIG.INTEGRATIONS.metaPixelId) return;
-
-        !(function(f,b,e,v,n,t,s){
-          if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)
-        })(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-        fbq("init", CONFIG.INTEGRATIONS.metaPixelId);
-        fbq("track", "PageView");
-      };
-
-      const track = (name, params = {}) => {
-        if (CONFIG.FLAGS.ENABLE_PIXEL && typeof fbq === "function") {
-          fbq("track", name, params);
-        }
-      };
-
-      const custom = (name, params = {}) => {
-        if (CONFIG.FLAGS.ENABLE_PIXEL && typeof fbq === "function") {
-          fbq("trackCustom", name, params);
-        }
-      };
-
-      return { init, track, custom };
-    })();
-
-    const Analytics = (() => {
-      const send = async (name, payload = {}) => {
-        const event = {
-          name,
-          payload,
-          timestamp: Utils.now(),
-          url: window.location.href,
-          path: window.location.pathname
-        };
-
-        Storage.pushEvent(event);
-        Utils.log("Event", event);
-
-        if (CONFIG.FLAGS.ENABLE_N8N && CONFIG.INTEGRATIONS.n8nWebhookUrl) {
-          try {
-            await fetch(CONFIG.INTEGRATIONS.n8nWebhookUrl, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(event)
-            });
-          } catch (error) {
-            Utils.log("N8N error", error);
-          }
-        }
-
-        if (CONFIG.FLAGS.ENABLE_SUPABASE) {
-          Utils.log("Supabase prepared", event);
-        }
-
-        if (CONFIG.FLAGS.ENABLE_CONVERSIONS_API) {
-          Utils.log("Conversions API prepared", event);
-        }
-      };
-
-      const viewContent = () => {
-        Pixel.track("ViewContent", {
-          content_name: CONFIG.CLIENT.companyName
+      const bestHook = (() => {
+        const map = {};
+        experiments.forEach(e => {
+          if (!e.hookCategory) return;
+          map[e.hookCategory] = (map[e.hookCategory] || 0) + e.calculated.iqc;
         });
-        send("ViewContent", { company: CONFIG.CLIENT.companyName });
-      };
+        return Object.entries(map).sort((a,b) => b[1] - a[1])[0]?.[0] || "-";
+      })();
 
-      const lead = (payload = {}) => {
-        Pixel.track("Lead", payload);
-        send("Lead", payload);
-      };
+      const bestCPC = bestBy("costPerConversation", false);
+      const bestCTR = bestBy("ctr", true);
+      const bestConversationRate = bestBy("conversationRate", true);
+      const bestCloseRate = bestBy("closeRate", true);
+      const bestIQC = bestBy("iqc", true);
 
-      return { send, viewContent, lead };
-    })();
+      const metrics = [
+        ["Total de criativos", experiments.length],
+        ["Criativos ativos", active.length],
+        ["Criativos finalizados", finished.length],
+        ["Controle atual", control?.name || "-"],
+        ["Melhor produto", bestProduct],
+        ["Melhor categoria de hook", bestHook],
+        ["Menor custo por conversa", bestCPC ? money(bestCPC.calculated.costPerConversation) : "-"],
+        ["Maior CTR Link", bestCTR ? percent(bestCTR.calculated.ctr) : "-"],
+        ["Maior taxa conversa/clique", bestConversationRate ? percent(bestConversationRate.calculated.conversationRate) : "-"],
+        ["Maior taxa de fechamento", bestCloseRate ? percent(bestCloseRate.calculated.closeRate) : "-"],
+        ["Melhor IQC", bestIQC ? bestIQC.calculated.iqc : "-"]
+      ];
 
-    const Renderer = (() => {
-      const applyTheme = () => {
-        const colors = CONFIG.BRAND.colors;
-        Object.entries(colors).forEach(([key, value]) => {
-          const cssKey = key === "surface2" ? "surface-2" : key;
-          document.documentElement.style.setProperty(`--${cssKey}`, value);
-        });
-        document.documentElement.style.setProperty("--font", CONFIG.BRAND.font);
-      };
+      $("#metricsGrid").innerHTML = metrics.map(([label, value]) => `
+        <div class="card metric">
+          <small>${label}</small>
+          <strong>${value}</strong>
+        </div>
+      `).join("");
 
-      const renderSeo = () => {
-        document.title = CONFIG.CLIENT.pageTitle;
-        Utils.qs('meta[name="description"]').setAttribute("content", CONFIG.CLIENT.metaDescription);
-        Utils.qs('link[rel="canonical"]').setAttribute("href", CONFIG.CLIENT.canonicalUrl);
+      const filtered = sortExperiments(
+        applyFilters(experiments, ""),
+        $("#sortBy").value || "iqc"
+      );
 
-        Utils.qs('meta[property="og:title"]').setAttribute("content", CONFIG.CLIENT.pageTitle);
-        Utils.qs('meta[property="og:description"]').setAttribute("content", CONFIG.CLIENT.metaDescription);
-        Utils.qs('meta[property="og:url"]').setAttribute("content", CONFIG.CLIENT.canonicalUrl);
+      $("#rankingTable").innerHTML = filtered.length ? filtered.map(exp => `
+        <tr>
+          <td><strong>${exp.name}</strong><br><small>${exp.id.slice(0, 8)}</small></td>
+          <td>${exp.client}</td>
+          <td>${exp.product}</td>
+          <td>${Calculations.statusBadge(exp.status)}</td>
+          <td>${exp.hookCategory}<br><small>${exp.hook || ""}</small></td>
+          <td>${percent(exp.calculated.ctr)}</td>
+          <td>${money(exp.calculated.cpc)}</td>
+          <td>${money(exp.calculated.costPerConversation)}</td>
+          <td>${percent(exp.calculated.conversationRate)}</td>
+          <td>${percent(exp.calculated.closeRate)}</td>
+          <td>${exp.metrics.sales || 0}</td>
+          <td>${exp.calculated.roas.toFixed(2)}</td>
+          <td>${Calculations.iqcBadge(exp.calculated.iqc)}</td>
+          <td>${actionButtons(exp.id)}</td>
+        </tr>
+      `).join("") : `<tr><td colspan="14" class="empty">Nenhum experimento cadastrado.</td></tr>`;
+    }
 
-        Utils.qs('meta[name="twitter:title"]').setAttribute("content", CONFIG.CLIENT.pageTitle);
-        Utils.qs('meta[name="twitter:description"]').setAttribute("content", CONFIG.CLIENT.metaDescription);
+    function actionButtons(id) {
+      return `
+        <div class="row-actions">
+          <button class="icon-btn" onclick="editExperiment('${id}')">Editar</button>
+          <button class="icon-btn" onclick="deleteExperiment('${id}')">Excluir</button>
+        </div>
+      `;
+    }
 
-        const schema = {
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          "name": CONFIG.CLIENT.companyName,
-          "telephone": CONFIG.CLIENT.phone,
-          "address": CONFIG.CLIENT.address,
-          "url": CONFIG.CLIENT.canonicalUrl,
-          "sameAs": [CONFIG.CLIENT.instagram, CONFIG.CLIENT.facebook]
-        };
+    function renderClients() {
+      const { clients } = getData();
 
-        Utils.qs("#schemaJson").textContent = JSON.stringify(schema);
-      };
+      $("#clientsList").innerHTML = clients.map(client => `
+        <div class="card">
+          <strong>${client.name}</strong>
+          <p style="color:var(--muted); margin-top:6px;">
+            ${client.niche || "-"} · ${client.city || "-"}
+          </p>
+          <p style="color:var(--muted); margin-top:10px;">${client.notes || ""}</p>
+        </div>
+      `).join("");
+    }
 
-      const renderContent = () => {
-        const C = CONFIG.CONTENT;
+    function renderExperiments() {
+      const experiments = enrichedExperiments();
 
-        Utils.qs("#brandLogo").src = CONFIG.CLIENT.logo;
-        Utils.qs("#brandName").textContent = CONFIG.CLIENT.companyName;
-        Utils.qs("#heroPill").textContent = C.heroPill;
-        Utils.qs("#headline").textContent = C.headline;
-        Utils.qs("#subheadline").textContent = C.subheadline;
-        Utils.qs("#heroCta").textContent = C.ctaText;
-        Utils.qs("#heroImage").src = C.heroImage;
+      const filtered = sortExperiments(
+        applyFilters(experiments, "exp"),
+        $("#expSortBy").value || "createdAt"
+      );
 
-        Utils.qs("#benefitsTitle").textContent = C.benefitsTitle;
-        Utils.qs("#benefitsSubtitle").textContent = C.benefitsSubtitle;
+      $("#experimentsTable").innerHTML = filtered.length ? filtered.map(exp => `
+        <tr>
+          <td>${exp.id.slice(0, 8)}</td>
+          <td><strong>${exp.name}</strong></td>
+          <td>${exp.client}</td>
+          <td>${exp.product}</td>
+          <td>${Calculations.statusBadge(exp.status)}</td>
+          <td>${exp.hypothesis || "-"}</td>
+          <td>${exp.hookCategory}</td>
+          <td>${Calculations.iqcBadge(exp.calculated.iqc)}</td>
+          <td>${actionButtons(exp.id)}</td>
+        </tr>
+      `).join("") : `<tr><td colspan="9" class="empty">Nenhum experimento cadastrado.</td></tr>`;
+    }
 
-        Utils.qs("#productsTitle").textContent = C.productsTitle;
-        Utils.qs("#productsSubtitle").textContent = C.productsSubtitle;
+    function renderHooks() {
+      const { hooks } = getData();
 
-        Utils.qs("#testimonialsTitle").textContent = C.testimonialsTitle;
-        Utils.qs("#testimonialsSubtitle").textContent = C.testimonialsSubtitle;
-
-        Utils.qs("#faqTitle").textContent = C.faqTitle;
-        Utils.qs("#faqSubtitle").textContent = C.faqSubtitle;
-
-        Utils.qs("#finalCtaTitle").textContent = C.finalCtaTitle;
-        Utils.qs("#finalCtaText").textContent = C.finalCtaText;
-        Utils.qs("#finalCtaButton").textContent = C.ctaText;
-
-        Utils.qs("#footerCompany").textContent = CONFIG.CLIENT.companyName;
-        Utils.qs("#footerAddress").textContent = CONFIG.CLIENT.address;
-        Utils.qs("#footerInstagram").href = CONFIG.CLIENT.instagram;
-        Utils.qs("#footerMap").href = CONFIG.CLIENT.mapUrl;
-
-        Utils.qs("#trustIndicators").innerHTML = C.trustIndicators.map(item => `
-          <div class="trust-item">
-            <strong>${item.number}</strong>
-            <span>${item.label}</span>
+      $("#hooksLibrary").innerHTML = Object.entries(hooks).map(([category, list]) => `
+        <div class="card hook-category">
+          <h3>${category}</h3>
+          <div class="hook-list">
+            ${list.map(hook => `<span class="hook-chip">${hook}</span>`).join("")}
           </div>
-        `).join("");
+        </div>
+      `).join("");
+    }
 
-        Utils.qs("#benefitsGrid").innerHTML = C.benefits.map(item => `
-          <article class="card" data-animate>
-            <div class="icon">${item.icon}</div>
-            <h3>${item.title}</h3>
-            <p>${item.text}</p>
-          </article>
-        `).join("");
+    function renderLearnings() {
+      const { learnings } = getData();
+
+      $("#learningsList").innerHTML = learnings.length ? learnings.map(item => `
+        <div class="card">
+          <small style="color:var(--muted); font-weight:800;">${item.date} · ${item.client} · ${item.product}</small>
+          <h3 style="margin:10px 0;">${item.creative}</h3>
+          <p><strong>Hipótese:</strong> ${item.hypothesis}</p>
+          <p><strong>Resultado:</strong> ${item.result}</p>
+          <p><strong>Aprendizado:</strong> ${item.learning}</p>
+          <p><strong>Recomendação:</strong> ${item.recommendation}</p>
+        </div>
+      `).join("") : `<div class="empty">Nenhum aprendizado registrado.</div>`;
+    }
+
+    function collectExperimentForm() {
+      const id = $("#experimentId").value || crypto.randomUUID();
+
+      return {
+        id,
+        client: $("#expClient").value,
+        product: $("#expProduct").value.trim(),
+        name: $("#expName").value.trim(),
+        status: $("#expStatus").value,
+        startDate: $("#expStartDate").value,
+        analysisDate: $("#expAnalysisDate").value,
+        campaign: $("#expCampaign").value.trim(),
+        adset: $("#expAdset").value.trim(),
+        hypothesis: $("#expHypothesis").value.trim(),
+        hookCategory: $("#expHookCategory").value,
+        hook: $("#expHook").value.trim(),
+        angle: $("#expAngle").value.trim(),
+        offer: $("#expOffer").value.trim(),
+        headline: $("#expHeadline").value.trim(),
+        copy: $("#expCopy").value.trim(),
+        cta: $("#expCta").value.trim(),
+        variable: $("#expVariable").value.trim(),
+        audience: $("#expAudience").value.trim(),
+        budget: Number($("#expBudget").value || 0),
+        notes: $("#expNotes").value.trim(),
+        metrics: {
+          impressions: Number($("#mImpressions").value || 0),
+          reach: Number($("#mReach").value || 0),
+          clicks: Number($("#mClicks").value || 0),
+          conversations: Number($("#mConversations").value || 0),
+          spend: Number($("#mSpend").value || 0),
+          sales: Number($("#mSales").value || 0),
+          revenue: Number($("#mRevenue").value || 0),
+          profit: Number($("#mProfit").value || 0)
+        },
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
       };
+    }
 
-      return { applyTheme, renderSeo, renderContent };
-    })();
+    function resetExperimentForm() {
+      $("#experimentFormTitle").textContent = "Cadastro de experimento";
+      $("#experimentId").value = "";
+      [
+        "expProduct","expName","expStartDate","expAnalysisDate","expCampaign","expAdset",
+        "expHypothesis","expHook","expAngle","expOffer","expHeadline","expCopy","expCta",
+        "expVariable","expAudience","expBudget","expNotes","mImpressions","mReach","mClicks",
+        "mConversations","mSpend","mSales","mRevenue","mProfit"
+      ].forEach(id => $("#" + id).value = "");
 
-    const Products = (() => {
-      const render = () => {
-        const section = Utils.qs("#produtos");
+      $("#expStatus").value = "Desafiante";
+    }
 
-        if (!CONFIG.FLAGS.ENABLE_PRODUCTS) {
-          section.classList.add("hidden");
-          return;
+    window.editExperiment = function(id) {
+      const data = getData();
+      const exp = data.experiments.find(e => e.id === id);
+      if (!exp) return;
+
+      $("#experimentFormTitle").textContent = "Editar experimento";
+      $("#experimentId").value = exp.id;
+      $("#expClient").value = exp.client;
+      $("#expProduct").value = exp.product;
+      $("#expName").value = exp.name;
+      $("#expStatus").value = exp.status;
+      $("#expStartDate").value = exp.startDate;
+      $("#expAnalysisDate").value = exp.analysisDate;
+      $("#expCampaign").value = exp.campaign;
+      $("#expAdset").value = exp.adset;
+      $("#expHypothesis").value = exp.hypothesis;
+      $("#expHookCategory").value = exp.hookCategory;
+      $("#expHook").value = exp.hook;
+      $("#expAngle").value = exp.angle;
+      $("#expOffer").value = exp.offer;
+      $("#expHeadline").value = exp.headline;
+      $("#expCopy").value = exp.copy;
+      $("#expCta").value = exp.cta;
+      $("#expVariable").value = exp.variable;
+      $("#expAudience").value = exp.audience;
+      $("#expBudget").value = exp.budget;
+      $("#expNotes").value = exp.notes;
+
+      $("#mImpressions").value = exp.metrics?.impressions || "";
+      $("#mReach").value = exp.metrics?.reach || "";
+      $("#mClicks").value = exp.metrics?.clicks || "";
+      $("#mConversations").value = exp.metrics?.conversations || "";
+      $("#mSpend").value = exp.metrics?.spend || "";
+      $("#mSales").value = exp.metrics?.sales || "";
+      $("#mRevenue").value = exp.metrics?.revenue || "";
+      $("#mProfit").value = exp.metrics?.profit || "";
+
+      navigate("cadastro");
+    };
+
+    window.deleteExperiment = function(id) {
+      if (!confirm("Tem certeza que deseja excluir este experimento?")) return;
+      const data = getData();
+      data.experiments = data.experiments.filter(e => e.id !== id);
+      saveData(data);
+    };
+
+    function saveExperiment() {
+      const exp = collectExperimentForm();
+
+      if (!exp.client || !exp.product || !exp.name) {
+        alert("Preencha pelo menos cliente, produto e nome do criativo.");
+        return;
+      }
+
+      const data = getData();
+      const index = data.experiments.findIndex(e => e.id === exp.id);
+
+      if (index >= 0) {
+        exp.createdAt = data.experiments[index].createdAt;
+        data.experiments[index] = exp;
+      } else {
+        data.experiments.push(exp);
+      }
+
+      saveData(data);
+      resetExperimentForm();
+      navigate("experimentos");
+    }
+
+    function saveClient() {
+      const name = $("#clientName").value.trim();
+
+      if (!name) {
+        alert("Informe o nome do cliente.");
+        return;
+      }
+
+      const data = getData();
+      data.clients.push({
+        id: crypto.randomUUID(),
+        name,
+        niche: $("#clientNiche").value.trim(),
+        city: $("#clientCity").value.trim(),
+        notes: $("#clientNotes").value.trim()
+      });
+
+      saveData(data);
+
+      $("#clientName").value = "";
+      $("#clientNiche").value = "";
+      $("#clientCity").value = "";
+      $("#clientNotes").value = "";
+    }
+
+    function saveHook() {
+      const category = $("#hookCategory").value;
+      const hook = $("#hookText").value.trim();
+
+      if (!category || !hook) {
+        alert("Informe categoria e hook.");
+        return;
+      }
+
+      const data = getData();
+      data.hooks[category] = data.hooks[category] || [];
+      data.hooks[category].push(hook);
+      saveData(data);
+
+      $("#hookText").value = "";
+    }
+
+    function saveLearning() {
+      const data = getData();
+
+      data.learnings.unshift({
+        id: crypto.randomUUID(),
+        date: $("#learningDate").value || today(),
+        client: $("#learningClient").value,
+        product: $("#learningProduct").value.trim(),
+        creative: $("#learningCreative").value.trim(),
+        hypothesis: $("#learningHypothesis").value.trim(),
+        result: $("#learningResult").value.trim(),
+        learning: $("#learningText").value.trim(),
+        recommendation: $("#learningRecommendation").value.trim(),
+        createdAt: new Date().toISOString()
+      });
+
+      saveData(data);
+
+      [
+        "learningProduct","learningCreative","learningHypothesis",
+        "learningResult","learningText","learningRecommendation"
+      ].forEach(id => $("#" + id).value = "");
+    }
+
+    function exportCSV() {
+      const rows = enrichedExperiments().map(exp => ({
+        id: exp.id,
+        cliente: exp.client,
+        produto: exp.product,
+        criativo: exp.name,
+        status: exp.status,
+        campanha: exp.campaign,
+        conjunto: exp.adset,
+        hipotese: exp.hypothesis,
+        categoria_hook: exp.hookCategory,
+        hook: exp.hook,
+        angulo: exp.angle,
+        oferta: exp.offer,
+        headline: exp.headline,
+        copy: exp.copy,
+        cta: exp.cta,
+        variavel_testada: exp.variable,
+        publico: exp.audience,
+        orcamento_diario: exp.budget,
+        impressoes: exp.metrics.impressions,
+        alcance: exp.metrics.reach,
+        cliques_link: exp.metrics.clicks,
+        conversas: exp.metrics.conversations,
+        valor_gasto: exp.metrics.spend,
+        vendas: exp.metrics.sales,
+        faturamento: exp.metrics.revenue,
+        lucro: exp.metrics.profit,
+        ctr_link: exp.calculated.ctr,
+        cpc: exp.calculated.cpc,
+        custo_por_conversa: exp.calculated.costPerConversation,
+        taxa_conversa_clique: exp.calculated.conversationRate,
+        taxa_fechamento: exp.calculated.closeRate,
+        custo_por_venda: exp.calculated.costPerSale,
+        roas: exp.calculated.roas,
+        iqc: exp.calculated.iqc
+      }));
+
+      if (!rows.length) {
+        alert("Nenhum experimento para exportar.");
+        return;
+      }
+
+      const headers = Object.keys(rows[0]);
+      const csv = [
+        headers.join(";"),
+        ...rows.map(row => headers.map(header => {
+          const value = String(row[header] ?? "").replaceAll('"', '""');
+          return `"${value}"`;
+        }).join(";"))
+      ].join("\n");
+
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `creative-os-export-${today()}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function loadDemoData() {
+      const data = getData();
+
+      data.experiments.push(
+        {
+          id: crypto.randomUUID(),
+          client: "Base Nutrição Esportiva",
+          product: "Pré-Treino Évora",
+          name: "R1 - Energia no treino",
+          status: "Controle",
+          startDate: today(),
+          analysisDate: today(),
+          campaign: "WhatsApp - Pré Treino",
+          adset: "Goiânia - Musculação",
+          hypothesis: "Hook de resultado aumenta conversas qualificadas.",
+          hookCategory: "Resultado",
+          hook: "Quer explodir de energia nos seus treinos?",
+          angle: "Energia e performance",
+          offer: "Chame no WhatsApp",
+          headline: "Mais energia para treinar pesado",
+          copy: "O Pré-Treino Évora entrega mais energia, foco e intensidade.",
+          cta: "Chamar no WhatsApp",
+          variable: "Hook",
+          audience: "Goiânia, 18-65, academia e musculação",
+          budget: 30,
+          notes: "Criativo de controle inicial.",
+          metrics: {
+            impressions: 4800,
+            reach: 3900,
+            clicks: 82,
+            conversations: 31,
+            spend: 145.6,
+            sales: 5,
+            revenue: 650,
+            profit: 230
+          },
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        },
+        {
+          id: crypto.randomUUID(),
+          client: "Base Nutrição Esportiva",
+          product: "Dimethylex",
+          name: "R2 - Gordura teimosa",
+          status: "Desafiante",
+          startDate: today(),
+          analysisDate: today(),
+          campaign: "WhatsApp - Termogênico",
+          adset: "Goiânia - Emagrecimento",
+          hypothesis: "Hook de dor reduz custo por conversa.",
+          hookCategory: "Dor",
+          hook: "Gordura teimosa travando seu resultado?",
+          angle: "Emagrecimento",
+          offer: "Indicação pelo WhatsApp",
+          headline: "Suporte para queima de gordura",
+          copy: "Mais disposição, controle de apetite e foco no objetivo.",
+          cta: "Quero saber mais",
+          variable: "Produto",
+          audience: "Goiânia, 18-65, emagrecimento",
+          budget: 25,
+          notes: "Teste de produto termogênico.",
+          metrics: {
+            impressions: 3500,
+            reach: 2900,
+            clicks: 74,
+            conversations: 19,
+            spend: 118,
+            sales: 2,
+            revenue: 240,
+            profit: 80
+          },
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
         }
+      );
 
-        Utils.qs("#productsGrid").innerHTML = CONFIG.CONTENT.products.map(product => `
-          <article class="card product-card" data-animate data-product-card="${product.id}">
-            <img src="${product.image}" alt="${product.name}" loading="lazy">
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
-            <ul>
-              ${product.benefits.map(item => `<li>${item}</li>`).join("")}
-            </ul>
-            <a href="#" class="btn" data-whatsapp data-product="${product.id}">
-              ${product.cta}
-            </a>
-          </article>
-        `).join("");
-      };
+      saveData(data);
+      alert("Dados de exemplo carregados.");
+    }
 
-      return { render };
-    })();
+    function bindEvents() {
+      $("#saveExperimentBtn").addEventListener("click", saveExperiment);
+      $("#resetExperimentBtn").addEventListener("click", resetExperimentForm);
+      $("#saveClientBtn").addEventListener("click", saveClient);
+      $("#saveHookBtn").addEventListener("click", saveHook);
+      $("#saveLearningBtn").addEventListener("click", saveLearning);
+      $("#exportCsvBtn").addEventListener("click", exportCSV);
+      $("#loadDemoBtn").addEventListener("click", loadDemoData);
 
-    const Video = (() => {
-      const render = () => {
-        const section = Utils.qs("#videoSection");
+      $("#clearDataBtn").addEventListener("click", () => {
+        if (!confirm("Isso apagará todos os dados salvos no Creative OS. Confirmar?")) return;
+        Storage.clear();
+        renderAll();
+        navigate("dashboard");
+      });
 
-        if (!CONFIG.FLAGS.ENABLE_VIDEO) {
-          section.classList.add("hidden");
-          return;
-        }
+      [
+        "filterClient", "filterProduct", "filterStatus", "filterHook", "sortBy",
+        "expFilterClient", "expFilterProduct", "expFilterStatus", "expFilterHook", "expSortBy"
+      ].forEach(id => {
+        $("#" + id).addEventListener("change", renderAll);
+      });
+    }
 
-        Utils.qs("#videoTitle").textContent = CONFIG.CONTENT.video.title;
-        Utils.qs("#videoSubtitle").textContent = CONFIG.CONTENT.video.subtitle;
+    function renderAll() {
+      populateStaticSelects();
+      renderDashboard();
+      renderClients();
+      renderExperiments();
+      renderHooks();
+      renderLearnings();
+      navigate(AppState.currentSection);
+    }
 
-        Utils.qs("#videoWrapper").innerHTML = `
-          <iframe
-            src="${CONFIG.CONTENT.video.youtubeEmbedUrl}"
-            title="Vídeo da campanha"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            data-track-click="video">
-          </iframe>
-        `;
-      };
+    function init() {
+      renderNavigation();
+      bindEvents();
+      $("#learningDate").value = today();
+      renderAll();
+    }
 
-      return { render };
-    })();
-
-    const FAQ = (() => {
-      const render = () => {
-        const section = Utils.qs("#faqSection");
-
-        if (!CONFIG.FLAGS.ENABLE_FAQ) {
-          section.classList.add("hidden");
-          return;
-        }
-
-        Utils.qs("#faqList").innerHTML = CONFIG.CONTENT.faq.map((item, index) => `
-          <div class="faq-item">
-            <button class="faq-question" data-faq-index="${index}">
-              ${item.question}
-              <span>+</span>
-            </button>
-            <div class="faq-answer">${item.answer}</div>
-          </div>
-        `).join("");
-
-        Utils.qsa(".faq-question").forEach(button => {
-          button.addEventListener("click", () => {
-            const item = button.closest(".faq-item");
-            item.classList.toggle("active");
-
-            Analytics.send("FAQ_Click", {
-              index: button.dataset.faqIndex,
-              question: button.textContent.trim()
-            });
-
-            Pixel.custom("FAQ_Click", {
-              question: button.textContent.trim()
-            });
-          });
-        });
-      };
-
-      return { render };
-    })();
-
-    const Carousel = (() => {
-      let index = 0;
-
-      const render = () => {
-        const section = Utils.qs("#testimonialsSection");
-
-        if (!CONFIG.FLAGS.ENABLE_TESTIMONIALS) {
-          section.classList.add("hidden");
-          return;
-        }
-
-        Utils.qs("#carouselTrack").innerHTML = CONFIG.CONTENT.testimonials.map(item => `
-          <div class="testimonial">
-            <div class="testimonial-inner">
-              <div class="stars">★★★★★</div>
-              <p>“${item.text}”</p>
-              <br>
-              <strong>${item.name}</strong>
-            </div>
-          </div>
-        `).join("");
-
-        bind();
-      };
-
-      const update = () => {
-        const track = Utils.qs("#carouselTrack");
-        track.style.transform = `translateX(-${index * 100}%)`;
-      };
-
-      const bind = () => {
-        Utils.qs("#nextTestimonial").addEventListener("click", () => {
-          index = (index + 1) % CONFIG.CONTENT.testimonials.length;
-          update();
-          Analytics.send("Testimonial_Next");
-        });
-
-        Utils.qs("#prevTestimonial").addEventListener("click", () => {
-          index = (index - 1 + CONFIG.CONTENT.testimonials.length) % CONFIG.CONTENT.testimonials.length;
-          update();
-          Analytics.send("Testimonial_Prev");
-        });
-      };
-
-      return { render };
-    })();
-
-    const WhatsApp = (() => {
-      const buildUrl = (product = "geral") => {
-        const storage = Storage.get();
-        const message = `${CONFIG.CONTENT.whatsappMessage}
-
-Produto/Interesse: ${product}
-Campanha: ${storage?.acquisition?.utm_campaign || "não informado"}
-Origem: ${storage?.acquisition?.utm_source || storage?.acquisition?.origin || "direto"}`;
-
-        return `https://wa.me/${CONFIG.CLIENT.whatsappNumber}?text=${encodeURIComponent(message)}`;
-      };
-
-      const bind = () => {
-        Utils.qsa("[data-whatsapp]").forEach(button => {
-          button.addEventListener("click", async (event) => {
-            event.preventDefault();
-
-            const product = button.dataset.product || "geral";
-
-            const payload = {
-              product,
-              clickedAt: Utils.now(),
-              acquisition: Storage.get().acquisition || {},
-              device: Storage.get().device || Utils.device()
-            };
-
-            if (CONFIG.FLAGS.ENABLE_WHATSAPP_TRACKING) {
-              Storage.set({
-                lastWhatsappClick: payload
-              });
-
-              await Analytics.lead(payload);
-              Pixel.custom("WhatsApp_Click", payload);
-            }
-
-            window.location.href = buildUrl(product);
-          });
-        });
-      };
-
-      return { bind };
-    })();
-
-    const ScrollEvents = (() => {
-      const fired = new Set();
-
-      const init = () => {
-        if (!CONFIG.FLAGS.ENABLE_SCROLL_EVENTS) return;
-
-        window.addEventListener("scroll", () => {
-          const scrollTop = window.scrollY;
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          const percentage = Math.round((scrollTop / docHeight) * 100);
-
-          [25, 50, 75, 100].forEach(mark => {
-            if (percentage >= mark && !fired.has(mark)) {
-              fired.add(mark);
-              Analytics.send(`Scroll_${mark}`, { percentage: mark });
-              Pixel.custom(`Scroll_${mark}`, { percentage: mark });
-            }
-          });
-        }, { passive: true });
-      };
-
-      return { init };
-    })();
-
-    const TimerEvents = (() => {
-      const init = () => {
-        if (!CONFIG.FLAGS.ENABLE_TIME_EVENTS) return;
-
-        [15, 30, 60].forEach(seconds => {
-          setTimeout(() => {
-            Analytics.send(`Time_${seconds}s`, { seconds });
-            Pixel.custom(`Time_${seconds}s`, { seconds });
-          }, seconds * 1000);
-        });
-      };
-
-      return { init };
-    })();
-
-    const Animations = (() => {
-      const init = () => {
-        const elements = Utils.qsa("[data-animate]");
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: .12 });
-
-        elements.forEach(element => observer.observe(element));
-      };
-
-      return { init };
-    })();
-
-    const ClickTracking = (() => {
-      const bind = () => {
-        Utils.qsa("[data-track-click]").forEach(element => {
-          element.addEventListener("click", () => {
-            const name = element.dataset.trackClick;
-            Analytics.send("Click", { target: name });
-            Pixel.custom("Click", { target: name });
-          });
-        });
-      };
-
-      return { bind };
-    })();
-
-    const Cookies = (() => {
-      const init = () => {
-        if (!CONFIG.FLAGS.ENABLE_COOKIE_BANNER) return;
-
-        const accepted = localStorage.getItem("landing_lab_cookie_accepted");
-        const banner = Utils.qs("#cookieBanner");
-
-        if (!accepted) banner.classList.add("active");
-
-        Utils.qs("#acceptCookies").addEventListener("click", () => {
-          localStorage.setItem("landing_lab_cookie_accepted", "true");
-          banner.classList.remove("active");
-          Analytics.send("Cookie_Accepted");
-        });
-      };
-
-      return { init };
-    })();
-
-    const App = (() => {
-      const init = () => {
-        Renderer.applyTheme();
-        Renderer.renderSeo();
-        Renderer.renderContent();
-
-        UTM.capture();
-        Pixel.init();
-
-        Products.render();
-        Video.render();
-        FAQ.render();
-        Carousel.render();
-
-        WhatsApp.bind();
-        ClickTracking.bind();
-        ScrollEvents.init();
-        TimerEvents.init();
-        Cookies.init();
-        Animations.init();
-
-        Analytics.viewContent();
-
-        Utils.log("Framework initialized");
-      };
-
-      return { init };
-    })();
-
-    document.addEventListener("DOMContentLoaded", App.init);
+    document.addEventListener("DOMContentLoaded", init);
   </script>
 </body>
 </html>
