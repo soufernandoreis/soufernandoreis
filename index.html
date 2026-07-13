@@ -2,12 +2,20 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Domine as Redes Sociais</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+  />
+
+  <title>Estratégia de Marketing para sua Empresa</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     * {
@@ -37,12 +45,12 @@
     body {
       width: 100%;
       min-height: 100dvh;
-      font-family: 'Inter', sans-serif;
+      position: relative;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+      font-family: "Inter", sans-serif;
       background: var(--bg);
       color: var(--white);
-      overflow-x: hidden;
-      position: relative;
-      overscroll-behavior-x: none;
     }
 
     button,
@@ -55,8 +63,16 @@
       min-height: 100dvh;
       overflow-x: hidden;
       background:
-        radial-gradient(circle at top center, rgba(255, 0, 85, 0.22), transparent 32%),
-        linear-gradient(180deg, #050505 0%, #090909 100%);
+        radial-gradient(
+          circle at top center,
+          rgba(255, 0, 85, 0.22),
+          transparent 32%
+        ),
+        linear-gradient(
+          180deg,
+          #050505 0%,
+          #090909 100%
+        );
     }
 
     .container {
@@ -75,8 +91,8 @@
 
     .header-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
 
     .logo {
@@ -89,25 +105,25 @@
 
     .header-cta {
       display: none;
+      padding: 12px 20px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
       color: var(--white);
-      text-decoration: none;
       font-size: 0.9rem;
       font-weight: 800;
-      border: 1px solid var(--border);
-      padding: 12px 20px;
-      border-radius: 999px;
-      transition: 0.3s ease;
+      text-decoration: none;
       white-space: nowrap;
+      transition: 0.3s ease;
     }
 
     .header-cta:hover {
-      border-color: var(--accent);
       color: var(--accent);
+      border-color: var(--accent);
     }
 
     .hero {
       width: 100%;
-      padding: 52px 0 64px;
+      padding: 52px 0 58px;
       text-align: center;
       overflow-x: hidden;
     }
@@ -117,13 +133,13 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
+      max-width: 100%;
       margin-bottom: 24px;
       color: var(--accent);
       font-size: 0.68rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      max-width: 100%;
     }
 
     .eyebrow::before {
@@ -131,19 +147,19 @@
       flex: 0 0 auto;
       width: 8px;
       height: 8px;
-      background: var(--accent);
       border-radius: 50%;
+      background: var(--accent);
       box-shadow: 0 0 22px var(--accent);
     }
 
     h1 {
       width: 100%;
       max-width: 100%;
-      font-size: clamp(2.65rem, 13.5vw, 3.9rem);
-      line-height: 0.92;
+      margin: 0 auto 28px;
+      font-size: clamp(2.55rem, 12.5vw, 3.8rem);
+      line-height: 0.93;
       letter-spacing: -0.055em;
       font-weight: 900;
-      margin: 0 auto 28px;
       overflow-wrap: break-word;
     }
 
@@ -158,7 +174,7 @@
       margin: 0 auto;
       color: var(--gray);
       font-size: 1rem;
-      line-height: 1.55;
+      line-height: 1.6;
       font-weight: 500;
     }
 
@@ -172,19 +188,19 @@
       max-width: 100%;
       margin: 34px auto 0;
       padding: 24px 20px;
-      background: rgba(255, 255, 255, 0.045);
+      overflow: hidden;
       border: 1px solid var(--border);
       border-radius: 24px;
+      background: rgba(255, 255, 255, 0.045);
       backdrop-filter: blur(16px);
       text-align: left;
-      overflow: hidden;
     }
 
     .copy-box p {
+      margin-bottom: 20px;
       color: var(--gray);
       font-size: 0.96rem;
       line-height: 1.65;
-      margin-bottom: 20px;
     }
 
     .copy-box p:last-child {
@@ -193,6 +209,164 @@
 
     .copy-box strong {
       color: var(--white);
+    }
+
+    .paths-section {
+      width: 100%;
+      padding: 38px 0 76px;
+      overflow-x: hidden;
+    }
+
+    .section-label {
+      margin-bottom: 14px;
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .paths-title {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 18px;
+      font-size: clamp(2rem, 10vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      font-weight: 900;
+      text-align: center;
+      overflow-wrap: break-word;
+    }
+
+    .paths-title span {
+      color: var(--accent);
+    }
+
+    .paths-subtitle {
+      max-width: 100%;
+      margin: 0 auto 34px;
+      color: var(--gray);
+      font-size: 0.96rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .paths-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .path-card {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      padding: 28px 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: var(--bg-soft);
+      cursor: pointer;
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .path-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 0, 85, 0.55);
+    }
+
+    .path-card:focus-visible {
+      outline: 3px solid rgba(255, 0, 85, 0.35);
+      outline-offset: 4px;
+    }
+
+    .path-card.selected {
+      border-color: var(--accent);
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(255, 0, 85, 0.16),
+          transparent 38%
+        ),
+        #0d0d0d;
+      box-shadow:
+        0 0 0 1px rgba(255, 0, 85, 0.2),
+        0 24px 70px rgba(255, 0, 85, 0.14);
+    }
+
+    .path-number {
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    .path-card h3 {
+      margin-bottom: 16px;
+      font-size: 1.6rem;
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
+
+    .path-card p {
+      margin-bottom: 18px;
+      color: var(--gray);
+      font-size: 0.97rem;
+      line-height: 1.65;
+    }
+
+    .path-card p:last-of-type {
+      margin-bottom: 24px;
+    }
+
+    .path-benefit {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .path-button {
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .path-card.selected .path-button {
+      border-color: var(--accent);
+      background: var(--accent);
+      box-shadow: 0 0 32px rgba(255, 0, 85, 0.35);
+    }
+
+    .selection-message {
+      display: none;
+      margin-top: 24px;
+      color: var(--white);
+      font-size: 0.94rem;
+      font-weight: 700;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .selection-message.active {
+      display: block;
+    }
+
+    .selection-message span {
+      color: var(--accent);
     }
 
     .form-section {
@@ -205,39 +379,43 @@
       width: 100%;
       max-width: 100%;
       padding: 30px 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
       border-radius: 28px;
       background:
-        radial-gradient(circle at top right, rgba(255, 0, 85, 0.18), transparent 36%),
+        radial-gradient(
+          circle at top right,
+          rgba(255, 0, 85, 0.18),
+          transparent 36%
+        ),
         #0b0b0b;
-      border: 1px solid var(--border);
       box-shadow: 0 30px 120px rgba(0, 0, 0, 0.45);
-      overflow: hidden;
     }
 
     .form-title {
       width: 100%;
       max-width: 100%;
+      margin-bottom: 18px;
       font-size: clamp(2rem, 11vw, 3rem);
       line-height: 0.95;
       letter-spacing: -0.055em;
       font-weight: 900;
       text-align: center;
-      margin-bottom: 18px;
       overflow-wrap: break-word;
     }
 
     .form-title span {
-      color: var(--accent);
       display: block;
+      color: var(--accent);
     }
 
     .form-subtitle {
       max-width: 100%;
       margin: 0 auto 32px;
-      text-align: center;
       color: var(--gray);
       font-size: 0.96rem;
       line-height: 1.6;
+      text-align: center;
     }
 
     .lead-form {
@@ -253,13 +431,13 @@
       max-width: 100%;
       min-height: 58px;
       padding: 0 20px;
-      border-radius: 999px;
       border: 1px solid var(--border);
+      border-radius: 999px;
+      outline: none;
       background: rgba(255, 255, 255, 0.04);
       color: var(--white);
       font-size: 0.9rem;
       font-weight: 600;
-      outline: none;
       transition: 0.3s ease;
     }
 
@@ -291,8 +469,8 @@
     }
 
     .lead-form button:hover {
-      background: var(--accent-hover);
       transform: translateY(-2px);
+      background: var(--accent-hover);
       box-shadow: 0 0 54px rgba(255, 0, 85, 0.58);
     }
 
@@ -305,11 +483,11 @@
     .form-message {
       display: none;
       margin-top: 22px;
-      text-align: center;
       color: var(--white);
       font-size: 0.95rem;
       font-weight: 700;
       line-height: 1.5;
+      text-align: center;
     }
 
     .form-message.active {
@@ -324,35 +502,35 @@
       color: #ff7a9f;
     }
 
-    .section {
+    .direction-section {
       width: 100%;
       padding: 72px 0;
       overflow-x: hidden;
     }
 
-    .section-title {
+    .direction-title {
       width: 100%;
       max-width: 100%;
+      margin-bottom: 22px;
       font-size: clamp(2rem, 10vw, 3rem);
       line-height: 1;
       letter-spacing: -0.055em;
       font-weight: 900;
-      margin-bottom: 22px;
       text-align: center;
       overflow-wrap: break-word;
     }
 
-    .section-title span {
+    .direction-title span {
       color: var(--accent);
     }
 
-    .section-subtitle {
+    .direction-subtitle {
       max-width: 100%;
       margin: 0 auto 36px;
-      text-align: center;
       color: var(--gray);
       font-size: 0.96rem;
       line-height: 1.6;
+      text-align: center;
     }
 
     .cards {
@@ -365,41 +543,41 @@
     .card {
       width: 100%;
       max-width: 100%;
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: 26px;
       padding: 28px 24px;
       overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background: var(--bg-soft);
     }
 
     .card-number {
+      margin-bottom: 18px;
       color: var(--accent);
       font-size: 0.9rem;
       font-weight: 900;
-      margin-bottom: 18px;
     }
 
     .card h3 {
+      margin-bottom: 14px;
       font-size: 1.35rem;
       line-height: 1.2;
       letter-spacing: -0.04em;
-      margin-bottom: 14px;
     }
 
     .card p {
       color: var(--gray);
-      line-height: 1.65;
       font-size: 0.98rem;
+      line-height: 1.65;
     }
 
     footer {
       width: 100%;
       padding: 28px 0;
+      overflow-x: hidden;
       border-top: 1px solid var(--border);
-      text-align: center;
       color: var(--gray-dark);
       font-size: 0.85rem;
-      overflow-x: hidden;
+      text-align: center;
     }
 
     @media (min-width: 768px) {
@@ -415,11 +593,11 @@
 
       .hero {
         padding-top: 70px;
-        padding-bottom: 100px;
+        padding-bottom: 80px;
       }
 
       h1 {
-        font-size: clamp(4.5rem, 8vw, 6.8rem);
+        font-size: clamp(4.3rem, 7.8vw, 6.7rem);
         letter-spacing: -0.075em;
       }
 
@@ -436,6 +614,28 @@
       .copy-box p {
         font-size: 1.05rem;
         line-height: 1.75;
+      }
+
+      .paths-section {
+        padding-top: 60px;
+        padding-bottom: 100px;
+      }
+
+      .paths-title {
+        font-size: clamp(3rem, 5vw, 4.3rem);
+      }
+
+      .paths-subtitle {
+        max-width: 650px;
+        font-size: 1.06rem;
+      }
+
+      .path-card {
+        padding: 36px 32px;
+      }
+
+      .path-card h3 {
+        font-size: 2rem;
       }
 
       .form-section {
@@ -455,8 +655,8 @@
 
       .form-subtitle {
         max-width: 640px;
-        font-size: 1.08rem;
         margin-bottom: 42px;
+        font-size: 1.08rem;
       }
 
       .lead-form {
@@ -470,20 +670,20 @@
         font-size: 1rem;
       }
 
-      .section {
+      .direction-section {
         padding-top: 100px;
         padding-bottom: 100px;
       }
 
-      .section-title {
+      .direction-title {
         font-size: clamp(3rem, 4vw, 4rem);
         letter-spacing: -0.06em;
       }
 
-      .section-subtitle {
+      .direction-subtitle {
         max-width: 680px;
-        font-size: 1.1rem;
         margin-bottom: 56px;
+        font-size: 1.1rem;
       }
     }
 
@@ -492,8 +692,13 @@
         max-width: 1100px;
       }
 
+      .paths-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
       .cards {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 22px;
       }
     }
@@ -502,117 +707,271 @@
 
 <body>
   <main class="page">
+
     <header>
       <div class="container header-inner">
         <div class="logo">Marketing Digital</div>
-        <a href="#formulario" class="header-cta">Preencher formulário</a>
+
+        <a href="#formulario" class="header-cta">
+          Preencher formulário
+        </a>
       </div>
     </header>
 
     <section class="hero">
       <div class="container">
-        <div class="eyebrow">Estratégia, método e execução</div>
+
+        <div class="eyebrow">
+          Estratégia para o momento da sua empresa
+        </div>
 
         <h1>
-          DOMINE AS REDES SOCIAIS
-          <span>E CONSTRUA SUA PRÓPRIA FONTE DE OPORTUNIDADES.</span>
+          DESCUBRA QUAL É A MELHOR ESTRATÉGIA
+          <span>PARA SUA EMPRESA VENDER MAIS PELA INTERNET.</span>
         </h1>
 
         <p class="intro">
-          As redes sociais podem ser uma das ferramentas mais poderosas para gerar
-          <strong>autoridade, conexões, clientes e novas oportunidades de crescimento.</strong>
+          Toda empresa precisa de marketing.
+          <strong>Mas nem toda empresa precisa da mesma solução.</strong>
         </p>
 
         <div class="copy-box">
-          <p><strong>Mas isso não acontece por acaso.</strong></p>
-
           <p>
-            Se você está procurando fórmulas mágicas, atalhos ou resultados sem esforço,
-            provavelmente meu trabalho não é para você.
+            Algumas empresas ainda não possuem estrutura para investir alto em
+            gestão e mídia.
           </p>
 
           <p>
-            Agora, se você entende que resultados consistentes são construídos com
-            estratégia, método e execução, então estamos falando a mesma língua.
+            Outras já estão prontas para acelerar o crescimento com uma
+            assessoria especializada.
           </p>
 
           <p>
-            Meu foco é ajudar pessoas que valorizam processos eficientes, decisões inteligentes
-            e um trabalho contínuo que gera crescimento real ao longo do tempo.
+            <strong>
+              O meu trabalho é identificar o momento da sua empresa e indicar
+              o caminho mais inteligente para que você invista da forma correta.
+            </strong>
           </p>
         </div>
+      </div>
+    </section>
+
+    <section class="paths-section" id="caminhos">
+      <div class="container">
+
+        <div class="section-label">
+          Escolha o momento da sua empresa
+        </div>
+
+        <h2 class="paths-title">
+          Qual destes caminhos
+          <span>faz mais sentido para você?</span>
+        </h2>
+
+        <p class="paths-subtitle">
+          Selecione a opção que melhor representa o momento atual do seu negócio.
+          Depois, preencha o formulário para que eu possa analisar seu caso.
+        </p>
+
+        <div class="paths-grid">
+
+          <article
+            class="path-card"
+            data-path="implantacao"
+            role="button"
+            tabindex="0"
+            aria-pressed="false"
+          >
+            <div class="path-number">CAMINHO 01</div>
+
+            <h3>
+              Sua empresa fatura até R$ 50 mil por mês?
+            </h3>
+
+            <p>
+              Nesta fase, contratar uma operação completa de marketing pode
+              comprometer uma parte importante do caixa da empresa.
+            </p>
+
+            <p>
+              Minha proposta é implantar um método para que você aprenda a criar,
+              gerenciar e analisar os anúncios do seu próprio negócio.
+            </p>
+
+            <p class="path-benefit">
+              Você reduz a dependência de terceiros e conquista autonomia para
+              gerar novas oportunidades pela internet.
+            </p>
+
+            <button
+              type="button"
+              class="path-button"
+              data-path-button="implantacao"
+            >
+              Quero aprender a fazer
+            </button>
+          </article>
+
+          <article
+            class="path-card"
+            data-path="assessoria"
+            role="button"
+            tabindex="0"
+            aria-pressed="false"
+          >
+            <div class="path-number">CAMINHO 02</div>
+
+            <h3>
+              Sua empresa já está pronta para crescer?
+            </h3>
+
+            <p>
+              Se sua empresa já possui estrutura para investir em gestão e mídia,
+              você não precisa continuar assumindo sozinho toda a operação.
+            </p>
+
+            <p>
+              Neste modelo, eu entro como parceiro estratégico, estruturando as
+              campanhas, acompanhando os resultados e direcionando as próximas
+              decisões.
+            </p>
+
+            <p class="path-benefit">
+              Você ganha estratégia, acompanhamento e uma operação focada em
+              acelerar o crescimento do negócio.
+            </p>
+
+            <button
+              type="button"
+              class="path-button"
+              data-path-button="assessoria"
+            >
+              Quero uma assessoria
+            </button>
+          </article>
+
+        </div>
+
+        <p class="selection-message" id="selectionMessage">
+          Caminho selecionado:
+          <span id="selectedPathLabel"></span>
+        </p>
+
       </div>
     </section>
 
     <section class="form-section" id="formulario">
       <div class="container">
+
         <div class="form-wrapper">
+
           <h2 class="form-title">
-            SE ESSE É O SEU PERFIL,
-            <span>PREENCHA O FORMULÁRIO.</span>
+            AGORA, CONTE UM POUCO
+            <span>SOBRE VOCÊ.</span>
           </h2>
 
           <p class="form-subtitle">
-            Informe seus dados abaixo para avaliarmos se faz sentido trabalharmos juntos.
-            O contato será feito pelo WhatsApp ou Instagram informado.
+            Informe seus dados abaixo para avaliarmos se faz sentido trabalharmos
+            juntos. O contato será feito pelo WhatsApp ou Instagram informado.
           </p>
 
           <form class="lead-form" id="leadForm">
-            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
-            <input type="text" id="instagram" name="instagram" placeholder="@seuinstagram" required>
-            <input type="tel" id="telefone" name="telefone" placeholder="WhatsApp com DDD" required>
+
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Seu nome"
+              autocomplete="name"
+              required
+            >
+
+            <input
+              type="text"
+              id="instagram"
+              name="instagram"
+              placeholder="@seuinstagram"
+              autocomplete="off"
+              required
+            >
+
+            <input
+              type="tel"
+              id="telefone"
+              name="telefone"
+              placeholder="WhatsApp com DDD"
+              autocomplete="tel"
+              inputmode="tel"
+              required
+            >
 
             <button type="submit" id="submitButton">
-              Quero construir minha fonte de oportunidades ↗
+              Quero encontrar a melhor estratégia ↗
             </button>
+
           </form>
 
-          <div class="form-message" id="formMessage">
+          <div
+            class="form-message"
+            id="formMessage"
+            role="status"
+            aria-live="polite"
+          >
             Cadastro recebido. Em breve entraremos em contato.
           </div>
+
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="direction-section">
       <div class="container">
-        <h2 class="section-title">
-          Redes sociais não são sobre postar mais.
-          <span>São sobre postar com direção.</span>
+
+        <h2 class="direction-title">
+          Marketing não é sobre gastar mais.
+          <span>É sobre escolher o caminho certo.</span>
         </h2>
 
-        <p class="section-subtitle">
-          O objetivo não é apenas aparecer. É construir uma presença digital capaz de atrair
-          as pessoas certas e transformar atenção em oportunidades reais.
+        <p class="direction-subtitle">
+          A estratégia precisa respeitar o estágio da empresa, sua capacidade de
+          investimento e os objetivos que ela pretende alcançar.
         </p>
 
         <div class="cards">
+
           <div class="card">
             <div class="card-number">01</div>
-            <h3>Autoridade</h3>
+
+            <h3>Diagnóstico</h3>
+
             <p>
-              Posicione sua imagem ou sua empresa de forma mais clara, estratégica e confiável
-              para o público que você deseja alcançar.
+              Entender o momento atual do negócio antes de recomendar ferramentas,
+              investimentos ou estratégias.
             </p>
           </div>
 
           <div class="card">
             <div class="card-number">02</div>
-            <h3>Consistência</h3>
+
+            <h3>Direção</h3>
+
             <p>
-              Aprenda a construir uma rotina de conteúdo com método, sem depender apenas de
-              inspiração, tendências ou improviso.
+              Definir um caminho claro para que a empresa saiba o que executar,
+              acompanhar e melhorar.
             </p>
           </div>
 
           <div class="card">
             <div class="card-number">03</div>
-            <h3>Oportunidades</h3>
+
+            <h3>Crescimento</h3>
+
             <p>
-              Use as redes sociais como uma ferramenta para gerar conexões, clientes,
-              propostas, vendas e crescimento real.
+              Construir uma operação compatível com a realidade da empresa e
+              preparada para evoluir com consistência.
             </p>
           </div>
+
         </div>
       </div>
     </section>
@@ -622,29 +981,137 @@
         © 2026 — Todos os direitos reservados.
       </div>
     </footer>
+
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
-    const SUPABASE_URL = "https://vuztkuyakgiylfvzhzcd.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_FEmdo8ReamngQFgKjZL-MA_l2ysWIBV";
+    const SUPABASE_URL =
+      "https://vuztkuyakgiylfvzhzcd.supabase.co";
 
-    const TELEGRAM_BOT_TOKEN = "8927822938:AAGP0bEkEYD_gK0iOSkm_yGPTeRN7wWwdx0";
-    const TELEGRAM_CHAT_ID = "5893824296";
+    const SUPABASE_KEY =
+      "sb_publishable_FEmdo8ReamngQFgKjZL-MA_l2ysWIBV";
+
+    const TELEGRAM_BOT_TOKEN =
+      "8927822938:AAGP0bEkEYD_gK0iOSkm_yGPTeRN7wWwdx0";
+
+    const TELEGRAM_CHAT_ID =
+      "5893824296";
 
     const supabaseClient = supabase.createClient(
       SUPABASE_URL,
       SUPABASE_KEY
     );
 
-    const leadForm = document.getElementById("leadForm");
-    const formMessage = document.getElementById("formMessage");
-    const submitButton = document.getElementById("submitButton");
+    const pathCards =
+      document.querySelectorAll(".path-card");
+
+    const selectionMessage =
+      document.getElementById("selectionMessage");
+
+    const selectedPathLabel =
+      document.getElementById("selectedPathLabel");
+
+    const leadForm =
+      document.getElementById("leadForm");
+
+    const formMessage =
+      document.getElementById("formMessage");
+
+    const submitButton =
+      document.getElementById("submitButton");
+
+    let selectedPath = "";
+
+    const pathLabels = {
+      implantacao:
+        "Implantação — aprender a fazer o próprio tráfego",
+
+      assessoria:
+        "Assessoria — delegar a estratégia e a gestão"
+    };
+
+    function selectPath(path) {
+      selectedPath = path;
+
+      pathCards.forEach((card) => {
+        const isSelected =
+          card.dataset.path === path;
+
+        card.classList.toggle(
+          "selected",
+          isSelected
+        );
+
+        card.setAttribute(
+          "aria-pressed",
+          String(isSelected)
+        );
+
+        const button =
+          card.querySelector(".path-button");
+
+        if (button) {
+          if (isSelected) {
+            button.textContent =
+              "Opção selecionada ✓";
+          } else if (
+            card.dataset.path === "implantacao"
+          ) {
+            button.textContent =
+              "Quero aprender a fazer";
+          } else {
+            button.textContent =
+              "Quero uma assessoria";
+          }
+        }
+      });
+
+      selectedPathLabel.textContent =
+        pathLabels[path];
+
+      selectionMessage.classList.add(
+        "active"
+      );
+
+      setTimeout(() => {
+        document
+          .getElementById("formulario")
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+      }, 220);
+    }
+
+    pathCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        selectPath(card.dataset.path);
+      });
+
+      card.addEventListener(
+        "keydown",
+        (event) => {
+          if (
+            event.key === "Enter" ||
+            event.key === " "
+          ) {
+            event.preventDefault();
+            selectPath(card.dataset.path);
+          }
+        }
+      );
+    });
 
     function showMessage(message, type) {
       formMessage.textContent = message;
-      formMessage.classList.remove("success", "error");
+
+      formMessage.classList.remove(
+        "success",
+        "error"
+      );
+
       formMessage.classList.add("active");
 
       if (type) {
@@ -652,7 +1119,17 @@
       }
     }
 
-    async function sendTelegramMessage(nome, instagram, telefone) {
+    async function sendTelegramMessage(
+      nome,
+      instagram,
+      telefone,
+      caminho
+    ) {
+      const caminhoTexto =
+        caminho && pathLabels[caminho]
+          ? pathLabels[caminho]
+          : "Nenhum caminho selecionado";
+
       const message = `
 🔥 NOVO LEAD
 
@@ -665,81 +1142,135 @@ ${instagram}
 📱 WhatsApp:
 ${telefone}
 
+🧭 Interesse:
+${caminhoTexto}
+
 📌 Origem:
 Landing Page
 `;
 
-      const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+      const telegramUrl =
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
-      const response = await fetch(telegramUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: message
-        })
-      });
+      const response = await fetch(
+        telegramUrl,
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: message
+          })
+        }
+      );
 
       if (!response.ok) {
-        throw new Error("Erro ao enviar mensagem para o Telegram");
+        throw new Error(
+          "Erro ao enviar mensagem para o Telegram"
+        );
       }
     }
 
-    leadForm.addEventListener("submit", async function(event) {
-      event.preventDefault();
+    leadForm.addEventListener(
+      "submit",
+      async function (event) {
+        event.preventDefault();
 
-      const nome = document.getElementById("nome").value.trim();
-      const instagram = document.getElementById("instagram").value.trim();
-      const telefone = document.getElementById("telefone").value.trim();
+        const nome =
+          document
+            .getElementById("nome")
+            .value
+            .trim();
 
-      if (!nome || !instagram || !telefone) {
-        showMessage("Preencha todos os campos antes de enviar.", "error");
-        return;
-      }
+        const instagram =
+          document
+            .getElementById("instagram")
+            .value
+            .trim();
 
-      submitButton.disabled = true;
-      submitButton.textContent = "Enviando...";
+        const telefone =
+          document
+            .getElementById("telefone")
+            .value
+            .trim();
 
-      try {
-        const { error } = await supabaseClient
-          .from("leads")
-          .insert([
-            {
-              nome: nome,
-              instagram: instagram,
-              telefone: telefone,
-              origem: "landing_page"
-            }
-          ]);
+        if (
+          !nome ||
+          !instagram ||
+          !telefone
+        ) {
+          showMessage(
+            "Preencha todos os campos antes de enviar.",
+            "error"
+          );
 
-        if (error) {
-          throw error;
+          return;
         }
 
-        await sendTelegramMessage(nome, instagram, telefone);
+        submitButton.disabled = true;
+        submitButton.textContent =
+          "Enviando...";
 
-        showMessage(
-          "Cadastro recebido. Em breve entraremos em contato.",
-          "success"
-        );
+        const origem =
+          selectedPath
+            ? `landing_page_${selectedPath}`
+            : "landing_page_sem_selecao";
 
-        leadForm.reset();
+        try {
+          const { error } =
+            await supabaseClient
+              .from("leads")
+              .insert([
+                {
+                  nome: nome,
+                  instagram: instagram,
+                  telefone: telefone,
+                  origem: origem
+                }
+              ]);
 
-      } catch (error) {
-        console.error("Erro ao enviar lead:", error);
+          if (error) {
+            throw error;
+          }
 
-        showMessage(
-          "Erro ao enviar. Tente novamente em alguns instantes.",
-          "error"
-        );
+          await sendTelegramMessage(
+            nome,
+            instagram,
+            telefone,
+            selectedPath
+          );
 
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = "Quero construir minha fonte de oportunidades ↗";
+          showMessage(
+            "Cadastro recebido. Em breve entraremos em contato.",
+            "success"
+          );
+
+          leadForm.reset();
+
+        } catch (error) {
+          console.error(
+            "Erro ao enviar lead:",
+            error
+          );
+
+          showMessage(
+            "Erro ao enviar. Tente novamente em alguns instantes.",
+            "error"
+          );
+
+        } finally {
+          submitButton.disabled = false;
+
+          submitButton.textContent =
+            "Quero encontrar a melhor estratégia ↗";
+        }
       }
-    });
+    );
   </script>
 </body>
 </html>
