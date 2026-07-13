@@ -355,6 +355,19 @@
       message.className = `show ${type}`;
     }
 
+    async function saveInSupabase(nome, instagram, telefone){
+      const { error } = await client.from("leads").insert([{
+        nome,
+        instagram,
+        telefone,
+        origem:selectedPath
+          ? `landing_page_${selectedPath}`
+          : "landing_page"
+      }]);
+
+      if(error) throw error;
+    }
+
     async function sendTelegram(nome, instagram, telefone){
       const text =
 `🔥 NOVO LEAD
@@ -365,19 +378,19 @@
 🧭 Interesse: ${labels[selectedPath] || "Não informado"}
 📌 Origem: Landing Page`;
 
-      const response = await fetch(
-        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+      const params = new URLSearchParams({
+        chat_id: TELEGRAM_CHAT_ID,
+        text
+      });
+
+      await fetch(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?${params}`,
         {
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({
-            chat_id:TELEGRAM_CHAT_ID,
-            text
-          })
+          method: "GET",
+          mode: "no-cors",
+          cache: "no-store"
         }
       );
-
-      if(!response.ok) throw new Error("Falha no Telegram");
     }
 
     form.addEventListener("submit", async event => {
@@ -395,29 +408,31 @@
       button.disabled = true;
       button.textContent = "Enviando...";
 
-      try{
-        const { error } = await client.from("leads").insert([{
-          nome,
-          instagram,
-          telefone,
-          origem:selectedPath
-            ? `landing_page_${selectedPath}`
-            : "landing_page"
-        }]);
+      const results = await Promise.allSettled([
+        saveInSupabase(nome, instagram, telefone),
+        sendTelegram(nome, instagram, telefone)
+      ]);
 
-        if(error) throw error;
+      const supabaseOk = results[0].status === "fulfilled";
+      const telegramOk = results[1].status === "fulfilled";
 
-        await sendTelegram(nome, instagram, telefone);
+      if(!supabaseOk){
+        console.error("Erro no Supabase:", results[0].reason);
+      }
 
+      if(!telegramOk){
+        console.error("Erro no Telegram:", results[1].reason);
+      }
+
+      if(supabaseOk || telegramOk){
         showMessage("Cadastro recebido. Entrarei em contato em breve.");
         form.reset();
-      }catch(error){
-        console.error(error);
+      }else{
         showMessage("Não foi possível enviar. Tente novamente.", "error");
-      }finally{
-        button.disabled = false;
-        button.textContent = "Solicitar análise";
       }
+
+      button.disabled = false;
+      button.textContent = "Solicitar análise";
     });
   </script>
 </body>
